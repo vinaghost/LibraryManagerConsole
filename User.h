@@ -1,5 +1,5 @@
 #pragma once
-
+#include <stdio.h>
 struct User {
 	char *name;
 	char *password;
@@ -7,8 +7,8 @@ struct User {
 };
 
 void initUser(User &t) {
-	t.name = nullptr;
-	t.password = nullptr;
+	t.name = NULL;
+	t.password = NULL;
 
 	t.permission = 0;
 }
