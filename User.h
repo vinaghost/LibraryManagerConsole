@@ -7,8 +7,8 @@ struct User {
 };
 
 void initUser(User &t) {
-	sprintf_s(t.name, sizeof(t.name) - 1, "");
-	sprintf_s(t.password, sizeof(t.password) - 1, "");
+	sprintf_s(t.name, sizeof(t.name) , "");
+	sprintf_s(t.password, sizeof(t.password), "");
 
 	t.permission = 0;
 }
