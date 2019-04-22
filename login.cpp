@@ -20,7 +20,7 @@ User isExistUser(User u)
 		char str[200];
 		fgets(str, sizeof(str), userFile);
 
-		sscanf(str, "%[^|]%[^|] %d", fuser.name, fuser.password, &fuser.permission);
+		sscanf(str, "%s %s %d", fuser.name, fuser.password, &fuser.permission);
 
 		if (strcmp(u.name, fuser.name) == 0) {
 			return fuser;
