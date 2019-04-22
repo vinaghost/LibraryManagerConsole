@@ -31,3 +31,11 @@ User isExistUser(User u)
 
 	return fuser;
 }
+
+int isPassWordSame(User u, User f)
+{
+	if (strcmp(u.password, f.password) == 0) {
+		return 1;
+	}
+	return 0;
+}
