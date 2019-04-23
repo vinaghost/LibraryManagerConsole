@@ -15,6 +15,8 @@ void AddInf(User &u)
 {
 	printf("Name: ");
 	scanf("%s", u.name);
+	printf("Password: ");
+	scanf("%s", u.password);
 	printf("Ho Ten(cac tu cach nhau bang dau _): ");
 	scanf("%s", u.HoTen);
 	printf("Ma So SV: ");
@@ -35,7 +37,7 @@ void CreateUser(User u)
 	FILE *f;
 	f = fopen(USER_FILE, "a");
 	AddInf(u);
-	fprintf(f, "%s | %s | %s | %s | %s | %s | %s", u.name, u.HoTen, u.MS, u.Birth, u.DiaChi, u.Nam, u.active);
+	fprintf(f, "%s | %s | %s | %s | %s | %s | %s | %s", u.name, u.password, u.HoTen, u.MS, u.Birth, u.DiaChi, u.Nam, u.active);
 	fclose(f);
 }
 =======
