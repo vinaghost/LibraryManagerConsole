@@ -1,6 +1,7 @@
 #include "User.h"
 #include "const.h"
 #include <stdio.h>
+#include <conio.h>
 
 void initUser(User &t) {
 	sprintf_s(t.name, sizeof(t.name), "");
