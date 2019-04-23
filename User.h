@@ -1,14 +1,15 @@
-#pragma once
-#include <stdio.h>
+#ifndef _USER_H_
+
+#define _USER_H_
+
+
 struct User {
 	char name[50];
 	char password[50];
 	int permission;
 };
 
-void initUser(User &t) {
-	sprintf_s(t.name, sizeof(t.name) , "");
-	sprintf_s(t.password, sizeof(t.password), "");
+void initUser(User &t);
 
-	t.permission = 0;
-}
+
+#endif
