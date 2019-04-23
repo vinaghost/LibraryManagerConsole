@@ -1,10 +1,7 @@
-#ifndef _CONST_H_
-
-#define _CONST_H_
+#pragma once
 #define _CRT_SECURE_NO_WARNINGS
 
 #define USER_FILE "user.dat"
-
 
 enum Perm {
 	LOGIN = 0,
@@ -39,5 +36,3 @@ enum Perm {
 	VIEWREADERASLATE
 };
 
-
-#endif
