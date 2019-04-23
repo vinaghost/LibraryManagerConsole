@@ -18,6 +18,12 @@ struct User {
 
 
 void initUser(User &t);
+//
+//Input User's Information
+void AddInf(User &u);
+//
+//Add User's Information to File
+void CreateUser(User u);
 
 
 #endif
