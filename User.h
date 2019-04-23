@@ -10,8 +10,8 @@ struct User {
 	char MS[10];
 	char Birth[9];
 	char DiaChi[20];
-	int Nam;
-	int active;
+	char Nam[2];
+	char active[2];
 };
 
 
