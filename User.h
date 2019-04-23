@@ -1,6 +1,4 @@
-#ifndef _USER_H_
-
-#define _USER_H_
+#pragma once
 
 
 struct User {
@@ -19,5 +17,5 @@ struct User {
 
 void initUser(User &t);
 
+int isVaildUser(User t);
 
-#endif

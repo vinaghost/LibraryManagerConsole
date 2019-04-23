@@ -2,8 +2,16 @@
 #include <stdio.h>
 
 void initUser(User &t) {
-	sprintf_s(t.name, sizeof(t.name), "");
-	sprintf_s(t.password, sizeof(t.password), "");
+	t.name[0] = '\0';
+	t.password[0] = '\0';
 
 	t.permission = 0;
+}
+
+int isVaildUser(User t)
+{
+	if (t.name[0] == '\0') {
+		return 0;
+	}
+	return 1;
 }
