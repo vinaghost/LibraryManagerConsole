@@ -4,12 +4,13 @@
 #include <conio.h>
 
 void initUser(User &t) {
-	sprintf_s(t.name, sizeof(t.name), "");
-	sprintf_s(t.password, sizeof(t.password), "");
+	t.name[0] = '\0';
+	t.password[0] = '\0';
 
 	t.permission = 0;
 }
 
+<<<<<<< HEAD
 void AddInf(User &u)
 {
 	printf("Name: ");
@@ -37,3 +38,12 @@ void CreateUser(User u)
 	fprintf(f, "%s | %s | %s | %s | %s | %s | %s", u.name, u.HoTen, u.MS, u.Birth, u.DiaChi, u.Nam, u.active);
 	fclose(f);
 }
+=======
+int isVaildUser(User t)
+{
+	if (t.name[0] == '\0') {
+		return 0;
+	}
+	return 1;
+}
+
