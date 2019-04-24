@@ -2,7 +2,7 @@
 #include "User.h"
 #include "const.h"
 #include <stdio.h>
-#include <conio.h>
+#include <string.h>
 
 void initUser(User &t) {
 	t.name[0] = '\0';
@@ -11,7 +11,6 @@ void initUser(User &t) {
 	t.permission = 0;
 }
 
-<<<<<<< HEAD
 void AddInf(User &u)
 {
 	printf("Name: ");
@@ -41,7 +40,6 @@ void CreateUser(User u)
 	fprintf(f, "%s %s %s %s %s %s %s %s", u.name, u.password, u.HoTen, u.MS, u.Birth, u.DiaChi, u.Nam, u.active);
 	fclose(f);
 }
-=======
 int isVaildUser(User t)
 {
 	if (t.name[0] == '\0') {
@@ -53,7 +51,7 @@ int isVaildUser(User t)
 void NewPass(User &u)
 {
 	printf("Name: ");
-	scanf("%s", u.Name);
+	scanf("%s", u.name);
 	printf("New Pass: ");
 	scanf("%s", u.password);
 
@@ -110,6 +108,7 @@ void ChangePass(User u)
 			putc(ch, file2);
 		}
 	}
+<<<<<<< HEAD
 	fprintf(file2, "%s %s %s %s %s %s %s %s", h.name, h.password, f.HoTen, f.MS, f.Birth, f.DiaChi, f.Nam, f.active);
 	fclose(file1);
 	fclose(file2);
@@ -186,6 +185,9 @@ void ChangeInf(User u)
 		}
 	}
 	fprintf(file2, "%s %s %s %s %s %s %s %s", f.name, f.password, h.HoTen, h.MS, h.Birth, h.DiaChi, h.Nam, h.active);
+=======
+	fprintf(file2, "%s | %s | %s | %s | %s | %s | %s | %s", h.name, h.password, f.HoTen, f.MS, f.Birth, f.DiaChi, f.Nam, f.active);
+>>>>>>> 8698c68db8d94e5e1758be1412ce6cd18c550299
 	fclose(file1);
 	fclose(file2);
 	remove(USER_FILE);
