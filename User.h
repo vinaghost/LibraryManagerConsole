@@ -21,6 +21,15 @@ void AddInf(User &u);
 //
 //Add User's Information to File
 void CreateUser(User u);
+//
+//Add Name and newpass
+void NewPass(User &u);
+//
+//Find place old pass
+int FindPlaceOldPass(User u, User &f, User &h);
+//
+//Change Pass
+void ChangePass(User u);
 
 
 int isVaildUser(User t);

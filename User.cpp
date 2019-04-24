@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "User.h"
 #include "const.h"
 #include <stdio.h>
@@ -37,7 +38,7 @@ void CreateUser(User u)
 	FILE *f;
 	f = fopen(USER_FILE, "a");
 	AddInf(u);
-	fprintf(f, "%s | %s | %s | %s | %s | %s | %s | %s", u.name, u.password, u.HoTen, u.MS, u.Birth, u.DiaChi, u.Nam, u.active);
+	fprintf(f, "%s %s %s %s %s %s %s %s", u.name, u.password, u.HoTen, u.MS, u.Birth, u.DiaChi, u.Nam, u.active);
 	fclose(f);
 }
 =======
@@ -49,3 +50,69 @@ int isVaildUser(User t)
 	return 1;
 }
 
+void NewPass(User &u)
+{
+	printf("Name: ");
+	scanf("%s", u.Name);
+	printf("New Pass: ");
+	scanf("%s", u.password);
+
+}
+
+int FindPlaceOldPass(User u, User &f, User &h)
+{
+	FILE *userFile;
+
+	userFile = fopen(USER_FILE, "r");
+
+	if (userFile == NULL)
+	{
+		printf("[ERROR] Khong tim thay file user.dat");
+	}
+
+	NewPass(h);
+	int dem = 0;
+	while (!feof(userFile)) 
+	{
+
+		dem = dem + 1;
+		char str[200];
+		fgets(str, sizeof(str), userFile);
+		sscanf(str, "%s %s %s %s %s %s %s %s", u.name, u.password, u.HoTen, u.MS, u.Birth, u.DiaChi, u.Nam, u.active);
+		sscanf(str, "%s %s %s %s %s %s %s %s", f.name, f.password, f.HoTen, f.MS, f.Birth, f.DiaChi, f.Nam, f.active);
+
+		if (strcmp(u.name, h.name) == 0) 
+		{
+			return dem;
+		}
+	}
+}
+
+void ChangePass(User u)
+{
+	User f, h;
+	int vitri = 0;
+	vitri = FindPlaceOldPass(u, f, h);
+	FILE *file1, *file2;
+	char ch;
+	int temp = 1;
+
+	file1 = fopen(USER_FILE, "r");
+	file2 = fopen("test.dat", "w"); 
+	ch = getc(file1);
+	while (ch != EOF)
+	{
+		ch = getc(file1);
+		if (ch == '\n')
+			temp++;
+		if (temp != vitri)
+		{
+			putc(ch, file2);
+		}
+	}
+	fprintf(file2, "%s %s %s %s %s %s %s %s", h.name, h.password, f.HoTen, f.MS, f.Birth, f.DiaChi, f.Nam, f.active)
+	fclose(file1);
+	fclose(file2);
+	remove(USER_FILE);
+	rename("test.dat", USER_FILE);
+}
