@@ -30,6 +30,15 @@ int FindPlaceOldPass(User u, User &f, User &h);
 //
 //Change Pass
 void ChangePass(User u);
+//
+//Input User's New Information
+void NewInf(User &u);
+//
+//Find User's old Information
+void FindPlaceOldInf(User u, User &f, User &h);
+//
+//Chang User's Information
+void ChangeInf(User u);
 
 
 int isVaildUser(User t);

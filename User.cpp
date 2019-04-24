@@ -91,8 +91,8 @@ int FindPlaceOldPass(User u, User &f, User &h)
 void ChangePass(User u)
 {
 	User f, h;
-	int vitri = 0;
-	vitri = FindPlaceOldPass(u, f, h);
+	int delete_line = 0;
+	delete_line = FindPlaceOldPass(u, f, h);
 	FILE *file1, *file2;
 	char ch;
 	int temp = 1;
@@ -105,12 +105,87 @@ void ChangePass(User u)
 		ch = getc(file1);
 		if (ch == '\n')
 			temp++;
-		if (temp != vitri)
+		if (temp != delete_line)
 		{
 			putc(ch, file2);
 		}
 	}
-	fprintf(file2, "%s %s %s %s %s %s %s %s", h.name, h.password, f.HoTen, f.MS, f.Birth, f.DiaChi, f.Nam, f.active)
+	fprintf(file2, "%s %s %s %s %s %s %s %s", h.name, h.password, f.HoTen, f.MS, f.Birth, f.DiaChi, f.Nam, f.active);
+	fclose(file1);
+	fclose(file2);
+	remove(USER_FILE);
+	rename("test.dat", USER_FILE);
+}
+
+
+void NewInf(User &u)
+{
+	printf("Name: ");
+	scanf("%s", u.Name);
+	printf("Ho Ten(viet cach nhau bang dau _): ");
+	scanf("%s", u.Hoten);
+	printf("MSSV: ");
+	scanf("%s", u.MS);
+	printf("Birth: ");
+	scanf("%s", u.Birth);
+	printf("Sex(Nam: 1; Nu: 0): ");
+	scanf("%s", u.Nam);
+	printf("Tinh trang(Active: 1; Block: 0): ");
+	scanf("%s", u.active);
+}
+
+void FindPlaceOldInf(User u, User &f, User &h)
+{
+	FILE *userFile;
+
+	userFile = fopen(USER_FILE, "r");
+
+	if (userFile == NULL)
+	{
+		printf("[ERROR] Khong tim thay file user.dat");
+	}
+
+	NewInf(h);
+	int dem = 0;
+	while (!feof(userFile))
+	{
+
+		dem = dem + 1;
+		char str[200];
+		fgets(str, sizeof(str), userFile);
+		sscanf(str, "%s %s %s %s %s %s %s %s", u.name, u.password, u.HoTen, u.MS, u.Birth, u.DiaChi, u.Nam, u.active);
+		sscanf(str, "%s %s %s %s %s %s %s %s", f.name, f.password, f.HoTen, f.MS, f.Birth, f.DiaChi, f.Nam, f.active);
+
+		if (strcmp(u.name, h.name) == 0)
+		{
+			return dem;
+		}
+	}
+}
+
+void ChangeInf(User u)
+{
+	User f, h;
+	int delete_line = 0;
+	delete_line = FindPlaceOldPass(u, f, h);
+	FILE *file1, *file2;
+	char ch;
+	int temp = 1;
+
+	file1 = fopen(USER_FILE, "r");
+	file2 = fopen("test.dat", "w");
+	ch = getc(file1);
+	while (ch != EOF)
+	{
+		ch = getc(file1);
+		if (ch == '\n')
+			temp++;
+		if (temp != delete_line)
+		{
+			putc(ch, file2);
+		}
+	}
+	fprintf(file2, "%s %s %s %s %s %s %s %s", f.name, f.password, h.HoTen, h.MS, h.Birth, h.DiaChi, h.Nam, h.active);
 	fclose(file1);
 	fclose(file2);
 	remove(USER_FILE);
