@@ -1,6 +1,7 @@
 #include "menu.h"
 #include "const.h"
 #include <stdio.h>
+#include <conio.h>
 #include "login.h"
 
 void menuMain(User &u)
@@ -17,9 +18,8 @@ void menuLogin(User &u) {
 	printf("1. Dang nhap\n");
 	printf("2. Thoat chuong trinh\n");
 
-	int item;
-	scanf("%d", &item);
-
+	int item = _getch();
+	item -= ('1' - 1);
 	menuLogin_handler(u, item);
 }
 
@@ -30,7 +30,7 @@ void menuLogin_handler(User &u, int item) {
 			if (Login(u)) {
 				printf("Dang nhap thanh cong");
 
-				menuSub(u);
+				showUser(u);
 			}
 			break;
 		}

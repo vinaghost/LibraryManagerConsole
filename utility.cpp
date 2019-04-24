@@ -1,4 +1,5 @@
 #include "utility.h"
+#include "const.h"
 #include <stdio.h>
 #include <conio.h>
 
@@ -6,8 +7,9 @@ void getPassword(char *pass)
 {
 	char buff[50] = { 0 }, ch;
 	int len = 0;
-	while ((ch= getchar()) != '\n' && ch != EOF);
+	
 
+	//clear;
 
 	while ((ch = _getch()) != '\n' )
 	{

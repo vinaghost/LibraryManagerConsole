@@ -45,3 +45,5 @@ enum Perm {
 
 #define setBit(a, b) a |= (1 << b)
 #define getBit(a, b) a & (1 << b)
+
+#define clear char t; while ((t= _getch()) != '\n' && t != EOF)

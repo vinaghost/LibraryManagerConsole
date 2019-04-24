@@ -15,16 +15,20 @@ User isExistUser(User u)
 
 
 	User fuser;
+	int count = 1;
 	while (!feof(userFile)) {
 		
 		char str[200];
 		fgets(str, sizeof(str), userFile);
 
-		sscanf(str, "%s %s %d", fuser.name, fuser.password, &fuser.permission);
-
+		sscanf(str, "%s %s %d %s %s %s %s %d %d", fuser.name, fuser.password, &fuser.permission, fuser.HoTen, fuser.MS, fuser.Birth, fuser.DiaChi, &fuser.Nam, &fuser.active);
+		
 		if (strcmp(u.name, fuser.name) == 0) {
+			fuser.location = count;
 			return fuser;
 		}
+
+		count++;
 	}
 
 	initUser(fuser);
@@ -43,7 +47,6 @@ int isPassWordSame(User u, User f)
 int Login(User &u)
 {
 	printf("Username: ");
-	fflush(stdin);
 	gets_s(u.name, sizeof(u.name));
 
 	printf("Password: ");
@@ -60,6 +63,8 @@ int Login(User &u)
 		printf("Password khong dung");
 		return 0;
 	}
+
+	u = tmp;
 	return 1;
 }
 

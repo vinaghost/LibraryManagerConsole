@@ -25,23 +25,23 @@ void initUser(User &t) {
 void showUser(User u)
 {
 
-	printf("Username: %s", u.name);
-	printf("password: %s", u.password);
+	printf("Username: %s\n", u.name);
+	printf("password: %s\n", u.password);
 
 
-	printf("Phan quyen (Quan li: 1, Chuyen vien: 2): %d ", u.permission);
+	printf("Phan quyen (Quan li: 1, Chuyen vien: 2): %d\n", u.permission);
 
-	printf("Ho Ten(cac tu cach nhau bang dau _): %s", u.HoTen);
+	printf("Ho Ten(cac tu cach nhau bang dau _): %s\n", u.HoTen);
 
-	printf("Ma So SV: %s", u.MS);
+	printf("Ma So SV: %s\n", u.MS);
 
-	printf("Birth: %s", u.Birth);
+	printf("Birth: %s\n", u.Birth);
 
-	printf("Tinh/Thanh pho(cac tu cach nhau bang dau _): %s", u.DiaChi);
+	printf("Tinh/Thanh pho(cac tu cach nhau bang dau _): %s\n", u.DiaChi);
 
-	printf("Gioi Tinh (Nam: 1; Nu: 0): %d", u.Nam);
+	printf("Gioi Tinh (Nam: 1; Nu: 0): %d\n", u.Nam);
 	
-	printf("Location : %d", u.location);
+	printf("Location : %d\n", u.location);
 
 }
 
