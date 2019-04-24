@@ -3,6 +3,7 @@
 
 #define USER_FILE "user.dat"
 
+
 <<<<<<< HEAD
 =======
 enum Perm {
