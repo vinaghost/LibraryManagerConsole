@@ -39,3 +39,27 @@ int isPassWordSame(User u, User f)
 	}
 	return 0;
 }
+
+int Login(User &u)
+{
+	printf("Username: ");
+	fflush(stdin);
+	gets_s(u.name, sizeof(u.name));
+
+	printf("Password: ");
+	getPassword(u.password);
+
+	User tmp = isExistUser(u);
+
+	if (tmp.name[0] == '\0') {
+		printf("Username khong ton tai");
+		return 0;
+	}
+
+	if (!isPassWordSame(u, tmp)) {
+		printf("Password khong dung");
+		return 0;
+	}
+	return 1;
+}
+

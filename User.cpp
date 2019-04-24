@@ -4,6 +4,7 @@
 #include "const.h"
 #include <stdio.h>
 #include <string.h>
+#include "utility.h"
 
 void initUser(User &t) {
 	t.name[0] = '\0';
@@ -86,14 +87,17 @@ int findUserLocation(User u)
 
 void createUser(User u)
 {
-	printf("Nhap thong tin nguoi dung:/n");
+	printf("Nhap thong tin nguoi dung:\n");
 	FILE *f;
-	f = fopen(USER_FILE, "a");
+	f = fopen(USER_FILE, "a+");
 	
+	nhapUser(u);
 	nhapInf(u);
 
-	fprintf(f, "%s %s %d %s %s %s %s %d 1", u.name, u.password, u.permission, u.HoTen, u.MS, u.Birth, u.DiaChi, u.Nam);
+	fprintf(f, "%s %s %d %s %s %s %s %d 1\n", u.name, u.password, u.permission, u.HoTen, u.MS, u.Birth, u.DiaChi, u.Nam);
 	fclose(f);
+
+	printf("Ghi file thanh cong");
 }
 
 void addPerm(User &u, PermUser perm) {
@@ -188,14 +192,14 @@ void addPerm(User &u, PermUser perm) {
 
 }
 
-void nhapUser(User & u)
+void nhapUser(User &u)
 {
-
 	printf("Username: ");
 	scanf("%s", u.name);
 	
+	
 	printf("Password: ");
-	scanf("%s", u.password);
+	getPassword(u.password);
 
 
 	printf("Phan quyen (Quan li: 1, Chuyen vien: 2): ");
@@ -254,7 +258,7 @@ int changePass(User &u)
 		}
 	}
 
-	fprintf(tmp, "%s %s %d %s %s %s %s %d 1", u.name, pass, u.permission, u.HoTen, u.MS, u.Birth, u.DiaChi, u.Nam);
+	fprintf(tmp, "%s %s %d %s %s %s %s %d 1\n", u.name, pass, u.permission, u.HoTen, u.MS, u.Birth, u.DiaChi, u.Nam);
 
 	fclose(root);
 	fclose(tmp);

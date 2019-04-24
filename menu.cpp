@@ -5,7 +5,7 @@
 
 void menuMain(User &u)
 {
-	if (isVaildUser(u)) {
+	if (!isVaildUser(u)) {
 		menuLogin(u);
 	}
 	else {
@@ -26,11 +26,15 @@ void menuLogin(User &u) {
 void menuLogin_handler(User &u, int item) {
 	
 	switch (item) {
-		case 0: {
-			//Login(u);
+		case 1: {
+			if (Login(u)) {
+				printf("Dang nhap thanh cong");
+
+				menuSub(u);
+			}
 			break;
 		}
-		case 1: {
+		case 2: {
 			break;
 		}
 	}
