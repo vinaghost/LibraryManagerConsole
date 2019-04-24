@@ -1,5 +1,6 @@
 #pragma once
 
+#include "const.h"
 
 struct User {
 	char name[50];
@@ -10,36 +11,35 @@ struct User {
 	char MS[10];
 	char Birth[9];
 	char DiaChi[20];
-	char Nam[2];
-	char active[2];
+	int Nam;
+	int active;
+
+	int location;
 };
 
 void initUser(User &t);
-//
-//Input User's Information
-void AddInf(User &u);
-//
-//Add User's Information to File
-void CreateUser(User u);
-//
-//Add Name and newpass
-void NewPass(User &u);
-//
-//Find place old pass
-int FindPlaceOldPass(User u, User &f, User &h);
-//
-//Change Pass
-void ChangePass(User u);
-//
-//Input User's New Information
-void NewInf(User &u);
-//
-//Find User's old Information
-void FindPlaceOldInf(User u, User &f, User &h);
-//
-//Chang User's Information
-void ChangeInf(User u);
+
+void showUser(User u);
 
 
 int isVaildUser(User t);
+
+int findUserLocation(User u);
+
+void createUser(User u);
+
+void addPerm(User &u, PermUser perm);
+
+void nhapUser(User &u);
+
+void nhapInf(User &u);
+
+int changePass(User &u);
+
+void newPass(char *pass);
+
+int changeInf(User &u);
+
+
+
 
