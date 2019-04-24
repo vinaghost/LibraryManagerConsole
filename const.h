@@ -3,8 +3,6 @@
 
 #define USER_FILE "user.dat"
 
-<<<<<<< HEAD
-=======
 enum Perm {
 	LOGIN = 0,
 	LOGOUT,
@@ -37,5 +35,3 @@ enum Perm {
 	VIEWBOOKASBORROW,
 	VIEWREADERASLATE
 };
-
->>>>>>> d91aa99aa523094a761f72f458bcd6783cfd0257
