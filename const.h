@@ -48,7 +48,13 @@ enum LOGIN_CASE {
 	WRONG_PASSWORD,
 	WRONG_USERNAME
 };
+
+
 #define setBit(a, b) a |= (1 << b)
 #define getBit(a, b) a & (1 << b)
 
 #define clear char t; while ((t= _getch()) != '\n' && t != EOF)
+
+
+#define Line() printf("======================================\n")
+#define Title() printf("\tPhan mem quan li thu vien\n")

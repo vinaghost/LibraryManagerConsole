@@ -17,6 +17,7 @@ void menuMain(User &u)
 }
 
 void menuLogin(User &u) {
+	showTitle();
 	printf("1. Dang nhap\n");
 	printf("2. Thoat chuong trinh\n");
 
@@ -29,23 +30,25 @@ void menuLogin_handler(User &u, int item) {
 	switch (item) {
 		case 1: {
 			system("cls");
+			showTitle();
+			printf("Dang nhap: \n");
 			LOGIN_CASE Case = Login(u);
 			system("cls");
 			switch (Case) {
 				
 				case ACCEPT: {
-					printf("Dang nhap thanh cong\n");
+					showInfo("Dang nhap thanh cong");
 
 					menuSub(u);
 					break;
 				}
 				case WRONG_PASSWORD: {
-					printf("Sai password\n");
+					showInfo("Sai password");
 					menuLogin(u);
 					break;
 				}
 				case WRONG_USERNAME: {
-					printf("Username khong ton tai\n");
+					showInfo("Username khong ton tai");
 					menuLogin(u);
 					break;
 				}
@@ -58,6 +61,8 @@ void menuLogin_handler(User &u, int item) {
 }
 
 void menuSub(User &u) {
+	showTitle();
+
 	printf("1. Tai khoan\n");
 	printf("2. Quan li doc gia\n");
 	printf("3. Quan li sach\n");
@@ -74,7 +79,7 @@ void menuSub_handler(User &u, int item) {
 	switch (item/7) {
 	case 0: {
 		system("cls");
-		printf("Chuc nang dang duoc xay dung\n");
+		showInfo("Chuc nang dang duoc xay dung");
 		menuSub(u);
 	}
 	case 7: {

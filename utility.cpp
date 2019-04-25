@@ -36,3 +36,19 @@ int getChoice()
 	item -= ('1' - 1);
 	return item;
 }
+
+void showTitle()
+{
+	Line();
+	Title();
+	Line();
+}
+
+void showInfo(const char *info)
+{
+	Line();
+	printf("] %s\n", info);
+	Line();
+	printf("\n\n");
+}
+
