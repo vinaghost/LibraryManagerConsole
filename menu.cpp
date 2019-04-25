@@ -1,8 +1,10 @@
 #include "menu.h"
 #include "const.h"
 #include <stdio.h>
-#include <conio.h>
+#include <stdlib.h>
+
 #include "login.h"
+#include "utility.h"
 
 void menuMain(User &u)
 {
@@ -18,8 +20,7 @@ void menuLogin(User &u) {
 	printf("1. Dang nhap\n");
 	printf("2. Thoat chuong trinh\n");
 
-	int item = _getch();
-	item -= ('1' - 1);
+	int item = getChoice();
 	menuLogin_handler(u, item);
 }
 
@@ -27,12 +28,28 @@ void menuLogin_handler(User &u, int item) {
 	
 	switch (item) {
 		case 1: {
-			if (Login(u)) {
-				printf("Dang nhap thanh cong");
+			system("cls");
+			LOGIN_CASE Case = Login(u);
+			system("cls");
+			switch (Case) {
+				
+				case ACCEPT: {
+					printf("Dang nhap thanh cong\n");
 
-				showUser(u);
+					menuSub(u);
+					break;
+				}
+				case WRONG_PASSWORD: {
+					printf("Sai password\n");
+					menuLogin(u);
+					break;
+				}
+				case WRONG_USERNAME: {
+					printf("Username khong ton tai\n");
+					menuLogin(u);
+					break;
+				}
 			}
-			break;
 		}
 		case 2: {
 			break;
@@ -49,15 +66,20 @@ void menuSub(User &u) {
 	printf("6. Thong ke\n");
 	printf("7. Thoat chuong trinh");
 
-	int item;
-	scanf("%d", &item);
+	int item = getChoice();
 	menuSub_handler(u, item);
 }
 
 void menuSub_handler(User &u, int item) {
-	switch (item) {
-	case 0: break;
-	default: break;
+	switch (item/7) {
+	case 0: {
+		system("cls");
+		printf("Chuc nang dang duoc xay dung\n");
+		menuSub(u);
+	}
+	case 7: {
+		break;
+	}
 
 	}
 }

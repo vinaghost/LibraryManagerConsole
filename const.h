@@ -43,6 +43,11 @@ enum Perm {
 	VIEWNUMREADERASLATE
 };
 
+enum LOGIN_CASE {
+	ACCEPT,
+	WRONG_PASSWORD,
+	WRONG_USERNAME
+};
 #define setBit(a, b) a |= (1 << b)
 #define getBit(a, b) a & (1 << b)
 

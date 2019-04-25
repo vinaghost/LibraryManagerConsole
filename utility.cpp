@@ -17,7 +17,7 @@ void getPassword(char *pass)
 			break;
 		}
 		// nguon: https://www.includehelp.com/c-programs/c-program-puzzle-design-login-screen-check-username-and-password.aspx
-		if (ch == '\b')    // dau khoang trang
+		if (ch == '\b')    // dau backspace
 		{
 			if (len == 0)  continue;
 			printf("\b \b"); len--; continue;
@@ -28,4 +28,11 @@ void getPassword(char *pass)
 	}
 	pass[len] = '\0';
 	putc('\n', stdout);
+}
+
+int getChoice()
+{
+	int item = _getch();
+	item -= ('1' - 1);
+	return item;
 }
