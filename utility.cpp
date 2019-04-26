@@ -51,4 +51,3 @@ void showInfo(const char *info)
 	Line();
 	printf("\n\n");
 }
-

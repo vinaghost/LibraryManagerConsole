@@ -8,4 +8,4 @@ int getChoice();
 
 void showTitle();
 
-void showInfo(const char* info);
+void showInfo(const char* info); 
