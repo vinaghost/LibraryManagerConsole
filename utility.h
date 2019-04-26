@@ -12,6 +12,10 @@ void showTitle();
 
 void showInfo(const char* info);
 
+
+
+void initDate(Date &date);
+
 int CharToNum(char num);
 
 char* DateToString(Date date);

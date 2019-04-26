@@ -53,6 +53,13 @@ void showInfo(const char *info)
 	printf("\n\n");
 }
 
+void initDate(Date &date)
+{
+	date.day = 0;
+	date.month = 0;
+	date.year = 0;
+}
+
 int CharToNum(char num)
 {
 	return (int)(num - '1' + 1);
