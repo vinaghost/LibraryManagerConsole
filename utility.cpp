@@ -67,7 +67,7 @@ int CharToNum(char num)
 
 char* DateToString(Date date)
 {
-	char* sDate = (char*)malloc(sizeof(char) * 9);
+	char* sDate = (char*)malloc(sizeof(char) * 11); // dd/mm/yyyy
 
 	if (sDate == NULL) {
 		return sDate;
