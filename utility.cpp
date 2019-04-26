@@ -1,6 +1,7 @@
 #include "utility.h"
 #include "const.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <conio.h>
 
 void getPassword(char *pass)
@@ -52,3 +53,20 @@ void showInfo(const char *info)
 	printf("\n\n");
 }
 
+int CharToNum(char num)
+{
+	return (int)(num - '1' + 1);
+}
+
+char* DateToString(Date date)
+{
+	char* sDate = (char*)malloc(sizeof(char) * 9);
+
+	if (sDate == NULL) {
+		return sDate;
+	}
+
+	sprintf(sDate, "%02d/%02d/%04d", date.day, date.month, date.year);
+
+	return sDate;
+}
