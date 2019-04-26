@@ -2,8 +2,12 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #define USER_FILE "user.dat"
+#define READER_FILE "reader.dat"
+
 #define TMP_FILE "tmp.dat"
 
+
+#define HET_HAN_THE 48
 enum PermUser {
 	ADMIN,
 	QUANLI,
