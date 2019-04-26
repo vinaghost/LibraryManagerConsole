@@ -64,5 +64,8 @@
     <None Include="user.dat">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="reader.dat">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

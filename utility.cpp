@@ -60,6 +60,14 @@ void initDate(Date &date)
 	date.year = 0;
 }
 
+Date nhapDate()
+{
+	Date result;
+
+	scanf("%d/%d/%d", &result.day, &result.month, &result.year);
+	return result;
+}
+
 int CharToNum(char num)
 {
 	return (int)(num - '1' + 1);

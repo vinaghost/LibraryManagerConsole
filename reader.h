@@ -17,3 +17,5 @@ int isVaildReader(Reader reader);
 Date getHetHan(Date lapThe);
 
 int addReaderToFile(Reader reader);
+
+int nhapReader(Reader &reader);

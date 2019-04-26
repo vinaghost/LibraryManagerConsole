@@ -13,6 +13,8 @@ void showTitle();
 void showInfo(const char* info);
 
 void initDate(Date &date);
+Date nhapDate();
+
 
 int CharToNum(char num);
 
