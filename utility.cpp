@@ -70,3 +70,13 @@ char* DateToString(Date date)
 
 	return sDate;
 }
+
+int isCapPhatThanhCong(void *p, const char *info)
+{
+	if (p == nullptr) {
+		printf("\nCap phat bo nho that bai ( %s )\n", info);
+		return 0;
+	}
+	return 1;
+}
+

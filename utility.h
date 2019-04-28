@@ -16,3 +16,6 @@ int CharToNum(char num);
 
 char* DateToString(Date date);
 void showInfo(const char* info); 
+
+
+int isCapPhatThanhCong(void* p, const char* info);

@@ -4,6 +4,8 @@
 #define USER_FILE "user.dat"
 #define TMP_FILE "tmp.dat"
 
+#define HET_HAN_THE 48
+
 enum PermUser {
 	ADMIN,
 	QUANLI,
