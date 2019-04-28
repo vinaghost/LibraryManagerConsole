@@ -62,12 +62,16 @@
     <ClCompile Include="reader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="LinkedListReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="user.dat">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="reader.dat">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

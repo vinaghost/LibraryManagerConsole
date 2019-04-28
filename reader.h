@@ -5,10 +5,25 @@ struct Reader {
 	char MS[20];
 	char HoTen[40];
 	char CMND[20];
-	char birth[9];
+	Date birth;
 	int nam;
 	Date lapThe;
 };
 
+void initReader(Reader &reader);
 
-Date getHetHan(Date lapThe)
+int isVaildReader(Reader reader);
+
+Date getHetHan(Date lapThe);
+
+int addReaderToFile(Reader reader);
+
+int nhapReader(Reader &reader);
+
+void NhapReaderFind_CMND(Reader &reader_find);
+
+void FindReader_CMND(Reader reader);
+
+void NhapReaderFind_HoTen(Reader &reader_find);
+
+void FindReader_HoTen(Reader reader);

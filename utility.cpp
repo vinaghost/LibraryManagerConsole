@@ -53,6 +53,21 @@ void showInfo(const char *info)
 	printf("\n\n");
 }
 
+void initDate(Date &date)
+{
+	date.day = 0;
+	date.month = 0;
+	date.year = 0;
+}
+
+Date nhapDate()
+{
+	Date result;
+
+	scanf("%d/%d/%d", &result.day, &result.month, &result.year);
+	return result;
+}
+
 int CharToNum(char num)
 {
 	return (int)(num - '1' + 1);
@@ -60,7 +75,7 @@ int CharToNum(char num)
 
 char* DateToString(Date date)
 {
-	char* sDate = (char*)malloc(sizeof(char) * 9);
+	char* sDate = (char*)malloc(sizeof(char) * 11); // dd/mm/yyyy
 
 	if (sDate == NULL) {
 		return sDate;
