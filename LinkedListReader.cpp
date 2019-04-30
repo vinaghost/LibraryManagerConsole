@@ -2,6 +2,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 
 void initList(List &l)
@@ -215,7 +216,7 @@ int getTotal(List l)
 	return l.total;
 }
 
-Node* getNodeFromData(List l, TData data)
+/*Node* getNodeFromData(List l, TData data)
 {
 	if (l.head == NULL) {
 		return NULL;
@@ -229,6 +230,40 @@ Node* getNodeFromData(List l, TData data)
 			return NULL;
 		}
 	}
+	return current;
+}*/
+
+Node* getNodeFromData(List l, char *data, READER_CASE type)
+{
+	if (l.head == NULL) {
+		return NULL;
+	}
+	Node* current = l.head;
+	switch(type) 
+	{
+		case HO_TEN: {
+			while ( strcmp(current->data.HoTen, data) != 0) {
+				current = current->next;
+
+				if (current == NULL) {
+					return NULL;
+				}
+			}
+			break;
+		}
+		case CMND: {
+			while ( strcmp(current->data.CMND, data) != 0) {
+				current = current->next;
+
+				if (current == NULL) {
+					return NULL;
+				}
+			}
+			break;
+		}
+	}
+	
+
 	return current;
 }
 

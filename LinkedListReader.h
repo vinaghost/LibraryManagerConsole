@@ -1,6 +1,7 @@
 #pragma once
 
 #include "reader.h"
+#include "const.h"
 
 typedef Reader TData;
 
@@ -38,6 +39,7 @@ TData getDataPos(List l, int pos);
 
 int getTotal(List l);
 
-Node* getNodeFromData(List l, TData data);
+//Node* getNodeFromData(List l, TData data);
+Node* getNodeFromData(List l, char* data, READER_CASE type);
 
 List joinList(List a, List b);

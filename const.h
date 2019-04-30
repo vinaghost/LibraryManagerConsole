@@ -53,6 +53,10 @@ enum LOGIN_CASE {
 	WRONG_USERNAME
 };
 
+enum READER_CASE {
+	HO_TEN,
+	CMND
+};
 
 #define setBit(a, b) a |= (1 << b)
 #define getBit(a, b) a & (1 << b)
