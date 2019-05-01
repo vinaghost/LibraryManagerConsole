@@ -2,7 +2,7 @@
 #include "utility.h"
 
 struct Reader {
-	char MS[20];
+	char MS[10];
 	char HoTen[40];
 	char CMND[20];
 	Date birth;
@@ -16,14 +16,9 @@ int isVaildReader(Reader reader);
 
 Date getHetHan(Date lapThe);
 
-int addReaderToFile(Reader reader);
-
 int nhapReader(Reader &reader);
 
-void NhapReaderFind_CMND(Reader &reader_find);
+void showReader(Reader reader);
 
-void FindReader_CMND(Reader reader);
-
-void NhapReaderFind_HoTen(Reader &reader_find);
-
-void FindReader_HoTen(Reader reader);
+char* nhapReader_CMND();
+char* nhapReader_HoTen();

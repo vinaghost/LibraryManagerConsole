@@ -6,6 +6,9 @@
 #include "login.h"
 #include "utility.h"
 
+#include "reader.h"
+#include "LinkedListReader.h"
+
 void menuMain(User &u)
 {
 	if (!isVaildUser(u)) {
@@ -60,6 +63,30 @@ void menuLogin_handler(User &u, int item) {
 	}
 }
 
+void menuReader(User &u)
+{
+	ListReader lReader;
+	initListReader(lReader);
+
+	showTitle();
+
+	printf("1. Xem danh sach doc gia trong thu vien\n");
+	printf("2. Them doc gia\n");
+	printf("3. Quan li sach\n");
+	printf("4. Tim kiem doc gia theo ho ten\n");
+	printf("5. Tim kiem doc gia theo CND\n");
+	printf("6. Quay ve menu chinh");
+
+	int item = getChoice();
+	menuReader_handler(u, lReader, item);
+}
+
+void menuReader_handler(User &u, ListReader lReader, int item)
+{
+
+
+}
+
 void menuSub(User &u) {
 	showTitle();
 
@@ -76,11 +103,15 @@ void menuSub(User &u) {
 }
 
 void menuSub_handler(User &u, int item) {
-	switch (item/7) {
-	case 0: {
+	switch (item) {
+	case 1: {
 		system("cls");
 		showInfo("Chuc nang dang duoc xay dung");
 		menuSub(u);
+	}
+	case 2: {
+		system("cls");
+		menuReader(u);
 	}
 	case 7: {
 		break;

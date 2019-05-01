@@ -58,6 +58,11 @@ enum READER_CASE {
 	CMND
 };
 
+enum FUNCTION_CASE {
+	INVAILD = -1,
+	SUCCESS,
+	ERROR
+};
 #define setBit(a, b) a |= (1 << b)
 #define getBit(a, b) a & (1 << b)
 

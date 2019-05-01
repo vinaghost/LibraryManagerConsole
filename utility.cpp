@@ -68,6 +68,11 @@ Date nhapDate()
 	return result;
 }
 
+void showDate(Date date)
+{
+	printf("%02d/%02d/%04d", date.day, date.month, date.year);
+}
+
 int CharToNum(char num)
 {
 	return (int)(num - '1' + 1);
@@ -86,6 +91,18 @@ char* DateToString(Date date)
 	return sDate;
 }
 
+Date StringToDate(char *sdate)
+{
+	Date date;
+
+	//dd/mm/yyyy
+	date.day = CharToNum(sdate[0]) * 10 + CharToNum(sdate[1]);
+	date.month = CharToNum(sdate[3]) * 10 + CharToNum(sdate[4]);
+	date.year = CharToNum(sdate[6]) * 1000 + CharToNum(sdate[7]) * 100 + CharToNum(sdate[8]) * 10 + CharToNum(sdate[9]);
+
+	return Date();
+}
+
 int isCapPhatThanhCong(void *p, const char *info)
 {
 	if (p == nullptr) {
@@ -93,5 +110,10 @@ int isCapPhatThanhCong(void *p, const char *info)
 		return 0;
 	}
 	return 1;
+}
+
+int isHavePerm(unsigned int uPerm, Perm perm)
+{
+	return !(!(getBit(uPerm, perm)));
 }
 

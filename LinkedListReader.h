@@ -5,41 +5,45 @@
 
 typedef Reader TData;
 
-struct Node {
+struct NodeReader {
 	TData data;
-	Node* next;
+	NodeReader* next;
 };
 
-struct List {
-	Node *head, *tail;
+struct ListReader {
+	NodeReader *head, *tail;
 	int total;
 
 
 };
 
-void initList(List &l);
+void initListReader(ListReader &l);
 
-Node* CreatNode(TData data);
+NodeReader* CreatNodeReader(TData data);
 
-Node* addFirst(List &l, Node *p);
-Node* addLast(List &l, Node *p);
-Node* addPos(List &l, Node *p, int pos);
+NodeReader* addFirst(ListReader &l, NodeReader *p);
+NodeReader* addLast(ListReader &l, NodeReader *p);
+NodeReader* addPos(ListReader &l, NodeReader *p, int pos);
 
-Node* addFirst(List &l, TData data);
-Node* addLast(List &l, TData data);
-Node* addPos(List &l, TData data, int pos);
+NodeReader* addFirst(ListReader &l, TData data);
+NodeReader* addLast(ListReader &l, TData data);
+NodeReader* addPos(ListReader &l, TData data, int pos);
 
-void deletePos(List &l, int pos);
-void showList(List l);
-void deleteList(List &l);
+void deletePos(ListReader &l, int pos);
+int showListReader(ListReader l);
+void deleteListReader(ListReader &l);
 
-TData getDataFirst(List l);
-TData getDataLast(List l);
-TData getDataPos(List l, int pos);
+TData getDataFirst(ListReader l);
+TData getDataLast(ListReader l);
+TData getDataPos(ListReader l, int pos);
 
-int getTotal(List l);
+int getTotal(ListReader l);
 
-//Node* getNodeFromData(List l, TData data);
-Node* getNodeFromData(List l, char* data, READER_CASE type);
+//NodeReader* getNodeReaderFromData(ListReader l, TData data);
+ListReader getNodeReaderFromData(ListReader l, char* data, READER_CASE type);
 
-List joinList(List a, List b);
+ListReader joinListReader(ListReader a, ListReader b);
+
+void loadListReader(ListReader &l);
+
+void writeListReaderToFile(ListReader l);

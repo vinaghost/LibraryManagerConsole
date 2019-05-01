@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="const.h" />
+    <ClInclude Include="function.h" />
     <ClInclude Include="LinkedListReader.h" />
     <ClInclude Include="login.h" />
     <ClInclude Include="logout.h" />
@@ -125,6 +126,7 @@
     <ClInclude Include="utility.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="function.cpp" />
     <ClCompile Include="LinkedListReader.cpp" />
     <ClCompile Include="login.cpp" />
     <ClCompile Include="logout.cpp" />

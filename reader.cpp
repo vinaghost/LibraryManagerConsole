@@ -64,28 +64,9 @@ Date getHetHan(Date lapThe)
 	return hetHan;
 }
 
-int addReaderToFile(Reader reader)
-{
-	if (!isVaildReader(reader)) {
-		return 0;
-	}
-
-	FILE *f = fopen(READER_FILE, "a");
-
-	char *birth = DateToString(reader.birth);
-	char *lapThe = DateToString(reader.lapThe);
-	fprintf(f, "%s, %s, %s, %s, %d, %s\n", reader.MS, reader.HoTen, reader.CMND, birth, reader.nam, lapThe );
-
-	free(birth);
-	free(lapThe);
-
-	fclose(f);
-	return 1;
-}
-
 int nhapReader(Reader &reader)
 {
-	sprintf(reader.MS, "01");
+	sprintf(reader.MS, "processing");
 
 	printf("Nhap thong tin doc gia: \n");
 	printf("] Ho ten: ");
@@ -112,67 +93,54 @@ int nhapReader(Reader &reader)
 	return 1;
 }
 
-void NhapReaderFind_CMND(Reader &reader_find)
+void showReader(Reader reader)
 {
-		printf("Nhap CMND cua doc gia: ");
-		if (fgets(reader.CMND, sizeof(reader.CMND), stdin) != NULL) {
-			size_t len = strlen(reader.CMND);
-			if (len > 0 && reader.CMND[len - 1] == '\n') {
-				reader.CMND[--len] = '\0';
-			}
+	printf("] Ma so: %s\n", reader.MS);
 
-void FindReader_CMND(Reader reader)
-{
-	Reader reader_find;
-	NhapReaderFind_CMND(reader_find);
-	FILE *readerfile;
-	readerfind = fopen(READER_FILE, "r");
-	while (!feof(f))
-	{
-		char st[200];
-		fgets(st, sizeof(st), readerfile);
-		sscanf(st, "%s, %s, %s, %s, %d, %s", reader.MS, reader.HoTen, reader.CMND, birth, reader.nam, lapThe);
-		if (strcmp(reader_find.CMND, reader.CMND) == 0)
-		{
-			printf("Thong tin doc gia can tim:/n");
-			printf("%s, %s, %s, %s, %d, %s", reader.MS, reader.HoTen, reader.CMND, birth, reader.nam, lapThe);
-		}
-		else
-		{
-			printf("Khong tim thay doc gia\n");
-		}
-	}
+	printf("] Ho ten: %s \n", reader.HoTen);
+
+	printf("] CMND: %s \n", reader.CMND);
+
+	printf("] Ngay sinh: ");
+	showDate(reader.birth);
+	printf("\n");
+
+	printf("] Gioi tinh: %s", reader.nam ? "nam" : "nu");
+
+	printf("] Ngay tao the: ");
+	showDate(reader.lapThe);
+	printf("\n");
 }
 
-void NhapReaderFind_HoTen(Reader &reader_find)
+char* nhapReader_CMND()
 {
-	printf("Nhap Ho va Ten cua doc gia: ");
-	if (fgets(reader.HoTen, sizeof(reader.HoTen), stdin) != NULL) {
-		size_t len = strlen(reader.HoTen);
-		if (len > 0 && reader.HoTen[len - 1] == '\n') {
-			reader.HoTen[--len] = '\0';
-		}
-}
-
-void FindReader_HoTen(Reader reader)
-{
-	Reader reader_find;
-	NhapReaderFind_HoTen(reader_find);
-	FILE *readerfile;
-	readerfind = fopen(READER_FILE, "r");
-	while (!feof(f))
-	{
-		char st[200];
-		fgets(st, sizeof(st), readerfile);
-		sscanf(st, "%s, %s, %s, %s, %d, %s", reader.MS, reader.HoTen, reader.CMND, birth, reader.nam, lapThe);
-		if (strcmp(reader_find.HoTen, reader.HoTen) == 0)
-		{
-			printf("Thong tin doc gia can tim:/n");
-			printf("%s, %s, %s, %s, %d, %s", reader.MS, reader.HoTen, reader.CMND, birth, reader.nam, lapThe);
-		}
-		else
-		{
-			printf("Khong tim thay doc gia\n");
+	char* cmnd = (char*)malloc(sizeof(char) * 13);
+	if (cmnd == NULL) {
+		return NULL;
+	}
+	printf("Nhap CMND cua doc gia: ");
+	if (fgets(cmnd, sizeof(cmnd), stdin) != NULL) {
+		size_t len = strlen(cmnd);
+		if (len > 0 && cmnd[len - 1] == '\n') {
+			cmnd[--len] = '\0';
 		}
 	}
+
+	return cmnd;
+}
+
+char* nhapReader_HoTen()
+{
+	char* hoTen = (char*)malloc(sizeof(char) * 13);
+	if (hoTen == NULL) {
+		return NULL;
+	}
+	if (fgets(hoTen, sizeof(hoTen), stdin) != NULL) {
+		size_t len = strlen(hoTen);
+		if (len > 0 && hoTen[len - 1] == '\n') {
+			hoTen[--len] = '\0';
+		}
+	}
+
+	return hoTen;
 }
