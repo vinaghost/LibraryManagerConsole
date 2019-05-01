@@ -226,3 +226,138 @@ void menuSub_handler(User &u, int item) {
 
 	}
 }
+
+
+
+
+//////////////////Menu Book/////////////////
+void menuBook(User &u)
+{
+	ListBook lBook;
+	initListBook(lBook);
+	loadListBook(lBook);
+
+	showTitle();
+
+	printf("1. Xem danh sach cac sach hien co trong thu vien\n");
+	printf("2. Them sach\n");
+	printf("3. Tim kiem sach theo ten sach\n");
+	printf("4. Tim kiem sach theo ISBN\n");
+	printf("5. Luu thong tin sach vao file\n");
+	printf("6. Quay ve menu chinh");
+
+	int item = getChoice();
+	menuBook_handler(u, lBook, item);
+}
+void menuBook(User &u, ListBook &lBook)
+{
+	showTitle();
+
+	printf("1. Xem danh sach cac sach hien co trong thu vien\n");
+	printf("2. Them sach\n");
+	printf("3. Tim kiem sach theo ten sach\n");
+	printf("4. Tim kiem sach theo ISBN\n");
+	printf("5. Luu thong tin sach vao file\n");
+	printf("6. Quay ve menu chinh");
+
+	int item = getChoice();
+	menuBook_handler(u, lBook, item);
+}
+void menuBook_handler(User &u, ListBook &lBook, int item)
+{
+	if (item == 6) {
+		system("cls");
+		menuMain(u);
+		return;
+	}
+	if (item == 5) {
+
+		writeListBookToFile(lBook);
+		system("cls");
+		showInfo("Luu thanh cong");
+		menuMain(u);
+		return;
+	}
+
+	system("cls");
+	FUNCTION_CASE result;
+	ListBook findBook;
+	switch (item) {
+	case 1: {
+		result = viewBook(u, lBook);
+		break;
+	}
+	case 2: {
+		result = addBook(u, lBook);
+		break;
+	}
+	case 3: {
+		result = findBookAsName(u, lBook, findBook);
+		break;
+	}
+	case 4: {
+		result = findBookAsCMND(u, lBook, findBook);
+		break;
+	}
+	}
+
+	switch (result) {
+	case INVAILD: {
+		showInfo("Tai khoan cua ban khong co quyen truy cap lenh nay");
+		break;
+	}
+	case ERROR: {
+		showInfo("Co loi xay ra vui long khoi dong lai chuong trinh");
+		break;
+	}
+	case SUCCESS: {
+		if (item == 2 || item == 1) {
+			menuChoice(u, lBook);
+		}
+		else {
+			menuBook_sub(u, lBook, findBook);
+		}
+
+		break;
+	}
+	}
+}
+
+void menuBook_sub(User &u, ListBook &lBook, ListBook &findBook)
+{
+	printf("\n\n\n");
+	printf("1. Thay doi thong tin sach\n");
+	printf("2. Xoa sach\n");
+	printf("3. Quay lai");
+
+	int item = getChoice();
+	menuBook_sub_handler(u, lBook, findBook, item);
+}
+void menuBook_sub_handler(User &u, ListBook &lBook, ListBook &findBook, int item)
+{
+	if (item == 3) {
+		menuBook(u, lBook);
+		return;
+	}
+
+	printf("Chon sach de thuc hien: \n\n");
+	showListBook(findBook);
+
+	int item_ = getChoice();
+
+	printf("Ban da chon sach #%d", item);
+	printf("Tinh nang van dang duoc xay dung\n");
+	printf("Nhan bat ki phim nao de quay lai");
+	_getch();
+	menuBook(u, lBook);
+}
+
+void menuChoice(User &u, ListBook &lBook)
+{
+	printf("\n\n\n");
+	printf("Nhan bat ki nut nao de quay lai");
+
+	_getch();
+	system("cls");
+	menuBook(u, lBook);
+}
