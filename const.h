@@ -58,6 +58,11 @@ enum READER_CASE {
 	CMND
 };
 
+enum BOOK_CASE {
+	ISBN,
+	TEN_SACH
+};
+
 enum FUNCTION_CASE {
 	INVAILD = -1,
 	SUCCESS,
