@@ -100,7 +100,7 @@ Date StringToDate(char *sdate)
 	date.month = CharToNum(sdate[3]) * 10 + CharToNum(sdate[4]);
 	date.year = CharToNum(sdate[6]) * 1000 + CharToNum(sdate[7]) * 100 + CharToNum(sdate[8]) * 10 + CharToNum(sdate[9]);
 
-	return Date();
+	return date;
 }
 
 int isCapPhatThanhCong(void *p, const char *info)

@@ -151,6 +151,7 @@ int showListReader(ListReader l)
 		return -1;
 	}
 	printf("Co tong cong %d doc gia trong du lieu\n", l.total);
+	int num = 1;
 	while (l.head != NULL) {
 
 		/*//Nen dung std::cout de co the dung TData tot nhat
@@ -160,7 +161,8 @@ int showListReader(ListReader l)
 		if (l.head->next != NULL) {
 			printf(" -> ");
 		}*/
-		
+		printf("Doc gia #%d/\n", num);
+		num++;
 		showReader(l.head->data);
 		Line();
 
@@ -298,23 +300,21 @@ void loadListReader(ListReader &l)
 	}
 
 	Reader freader;
-	int count = 1;
-	while (!feof(readerFile)) {
+	
+	char birth[11];
+	char lapThe[11];
+	char str[200];
+	while (fgets(str, sizeof(str), readerFile)!= NULL) {
 
-		char str[200];
+		/*char str[200];
 		fgets(str, sizeof(str), readerFile);
+		*/
 
-		char birth[11];
-		char lapThe[11];
-
-		sscanf(str, "%s, %[^,\n], %s, %s, %d, %s\n", freader.MS, freader.HoTen, freader.CMND, birth, &freader.nam, lapThe);
-
+		sscanf(str, "%[^,\n], %[^,\n], %[^,\n], %[^,\n], %d, %[^,\n]\n", freader.MS, freader.HoTen, freader.CMND, birth, &freader.nam, lapThe);
 		freader.birth = StringToDate(birth);
 		freader.lapThe = StringToDate(lapThe);
 
 		addFirst(l, freader);
-
-		count++;
 	}
 
 	fclose(readerFile);
