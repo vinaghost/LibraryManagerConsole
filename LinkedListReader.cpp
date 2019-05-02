@@ -151,18 +151,11 @@ int showListReader(ListReader l)
 		return -1;
 	}
 	printf("Co tong cong %d doc gia trong du lieu\n", l.total);
-	int num = 1;
+	int num = 0;
 	while (l.head != NULL) {
-
-		/*//Nen dung std::cout de co the dung Reader tot nhat
-
-		printf("%d", l.head->data);
-
-		if (l.head->next != NULL) {
-			printf(" -> ");
-		}*/
-		printf("Doc gia #%d/\n", num);
 		num++;
+		printf("Doc gia #%d\n", num);
+	
 		showReader(l.head->data);
 		Line();
 
@@ -170,6 +163,41 @@ int showListReader(ListReader l)
 	}
 	printf("\n");
 	return 0;
+}
+
+int showListReader(ListReader l, char* data, READER_CASE type)
+{
+	if (l.head == NULL) {
+		return -1;
+	}
+	int num = 0;
+	char *str = NULL;
+	while (l.head != NULL) {
+		num++;
+
+		switch (type) {
+			case HO_TEN: {
+				str = l.head->data.HoTen;
+				break;
+			}
+			case CMND: {
+				str = l.head->data.CMND;
+				break;
+			}
+		}
+
+		if (strcmp(str, data) == 0) {
+			printf("Doc gia #%d\n", num);
+
+			showReader(l.head->data);
+			Line();
+		}
+
+		
+		l.head = l.head->next;
+	}
+	printf("\n");
+	return num;
 }
 
 void deleteListReader(ListReader &l)
@@ -240,7 +268,7 @@ int getTotal(ListReader l)
 	return current;
 }*/
 
-ListReader getNodeReaderFromData(ListReader l, char *data, READER_CASE type)
+/*ListReader getNodeReaderFromData(ListReader l, char *data, READER_CASE type)
 {
 	ListReader result;
 	initListReader(result);
@@ -277,7 +305,7 @@ ListReader getNodeReaderFromData(ListReader l, char *data, READER_CASE type)
 	
 
 	return result;
-}
+}*/
 
 ListReader joinListReader(ListReader a, ListReader b)
 {

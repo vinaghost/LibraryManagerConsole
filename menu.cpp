@@ -143,13 +143,8 @@ void menuReader_handler(User &u, ListReader &lReader, int item)
 			break;
 		}
 		case SUCCESS: {
-			if (item == 2 || item == 1) {
-				menuChoice(u, lReader);
-			}
-			else {
-				menuReader_sub(u, lReader, findReader);
-			}
-
+			menuChoice(u, lReader);
+			
 			break;
 		}
 	}
@@ -186,7 +181,7 @@ void menuReader_sub_handler(User &u, ListReader &lReader, ListReader &findReader
 
 void menuChoice(User &u, ListReader &lReader)
 {
-	printf("\n\n\n");
+	printf("\n");
 	printf("Nhan bat ki nut nao de quay lai");
 
 	_getch();

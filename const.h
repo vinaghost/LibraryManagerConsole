@@ -9,6 +9,9 @@
 
 #define HET_HAN_THE 48
 
+
+#define NAME_LENGTH 50
+#define CMND_LENGTH 13
 enum PermUser {
 	ADMIN,
 	QUANLI,
@@ -67,7 +70,8 @@ enum BOOK_CASE {
 enum FUNCTION_CASE {
 	INVAILD = -1,
 	SUCCESS,
-	ERROR
+	ERROR,
+	NOT_FOUND
 };
 #define setBit(a, b) a |= (1 << b)
 #define getBit(a, b) a & (1 << b)
