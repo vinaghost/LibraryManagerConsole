@@ -113,7 +113,6 @@ void menuReader_handler(User &u, ListReader &lReader, int item)
 
 	system("cls");
 	FUNCTION_CASE result;
-	ListReader findReader;
 	switch (item) {
 		case 1: {
 			result = viewReader(u, lReader);
@@ -124,30 +123,31 @@ void menuReader_handler(User &u, ListReader &lReader, int item)
 			break;
 		}
 		case 3: {
-			result = findReaderAsName(u, lReader, findReader);
+			result = findReaderAsName(u, lReader);
 			break;
 		}
 		case 4: {
-			result = findReaderAsCMND(u, lReader, findReader);
+			result = findReaderAsCMND(u, lReader);
 			break;
 		}
 	}
 
 	switch (result) {
 		case INVAILD: {
-			showInfo("Tai khoan cua ban khong co quyen truy cap lenh nay");
+			showInfo("Tai khoan cua ban khong co quyen truy cap lenh nay\n");
 			break;
 		}
 		case ERROR: {
-			showInfo("Co loi xay ra vui long khoi dong lai chuong trinh");
+			showInfo("Co loi xay ra vui long khoi dong lai chuong trinh\n");
 			break;
 		}
-		case SUCCESS: {
-			menuChoice(u, lReader);
-			
+		case NOT_FOUND: {
+			showInfo("Khong tim thay sach\n");
 			break;
 		}
 	}
+
+	menuChoice(u, lReader);
 }
 
 void menuReader_sub(User &u, ListReader &lReader, ListReader &findReader)
@@ -215,6 +215,9 @@ void menuSub_handler(User &u, int item) {
 		case 2: {
 			menuReader(u);
 		}
+		case 3: {
+			menuBook(u);
+		}
 		case 7: {
 			break;
 		}
@@ -276,46 +279,42 @@ void menuBook_handler(User &u, ListBook &lBook, int item)
 
 	system("cls");
 	FUNCTION_CASE result;
-	ListBook findBook;
 	switch (item) {
-	case 1: {
-		result = viewBook(u, lBook);
-		break;
-	}
-	case 2: {
-		result = addBook(u, lBook);
-		break;
-	}
-	case 3: {
-		result = findBookAsName(u, lBook, findBook);
-		break;
-	}
-	case 4: {
-		result = findBookAsCMND(u, lBook, findBook);
-		break;
-	}
+		case 1: {
+			result = viewBook(u, lBook);
+			break;
+		}
+		case 2: {
+			result = addBook(u, lBook);
+			break;
+		}
+		case 3: {
+			result = findBookAsName(u, lBook);
+			break;
+		}
+		case 4: {
+			result = findBookAsISBN(u, lBook);
+			break;
+		}
 	}
 
 	switch (result) {
-	case INVAILD: {
-		showInfo("Tai khoan cua ban khong co quyen truy cap lenh nay");
-		break;
-	}
-	case ERROR: {
-		showInfo("Co loi xay ra vui long khoi dong lai chuong trinh");
-		break;
-	}
-	case SUCCESS: {
-		if (item == 2 || item == 1) {
-			menuChoice(u, lBook);
+		case INVAILD: {
+			showInfo("Tai khoan cua ban khong co quyen truy cap lenh nay\n");
+			break;
 		}
-		else {
-			menuBook_sub(u, lBook, findBook);
+		case ERROR: {
+			showInfo("Co loi xay ra vui long khoi dong lai chuong trinh\n");
+			break;
 		}
+		case NOT_FOUND: {
+			showInfo("Khong tim thay sach\n");
+			break;
+		}
+	}
+	
+	menuChoice(u, lBook);
 
-		break;
-	}
-	}
 }
 
 void menuBook_sub(User &u, ListBook &lBook, ListBook &findBook)

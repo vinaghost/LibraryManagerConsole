@@ -171,6 +171,7 @@ int showListReader(ListReader l, char* data, READER_CASE type)
 		return -1;
 	}
 	int num = 0;
+	int count = 0;
 	char *str = NULL;
 	while (l.head != NULL) {
 		num++;
@@ -188,7 +189,7 @@ int showListReader(ListReader l, char* data, READER_CASE type)
 
 		if (strcmp(str, data) == 0) {
 			printf("Doc gia #%d\n", num);
-
+			count++;
 			showReader(l.head->data);
 			Line();
 		}
@@ -197,7 +198,7 @@ int showListReader(ListReader l, char* data, READER_CASE type)
 		l.head = l.head->next;
 	}
 	printf("\n");
-	return num;
+	return count;
 }
 
 void deleteListReader(ListReader &l)
@@ -214,7 +215,7 @@ void deleteListReader(ListReader &l)
 		current = next;
 	}
 
-	l = ListReader();
+	initListReader(l);
 }
 
 Reader geReaderFirst(ListReader l)

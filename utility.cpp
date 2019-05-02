@@ -2,6 +2,7 @@
 #include "const.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <conio.h>
 
 void getPassword(char *pass)
@@ -76,6 +77,20 @@ void showDate(Date date)
 int CharToNum(char num)
 {
 	return (int)(num - '1' + 1);
+}
+
+int MSToNum(char *str)
+{
+	if (str == NULL) {
+		return 0;
+	}
+	if (strlen(str) < 9) {
+		return 0;
+	}
+	int num; 
+
+	num = CharToNum(str[4]) * 10000 + CharToNum(str[5]) * 1000 + CharToNum(str[6]) * 100 + CharToNum(str[7]) * 10 + CharToNum(str[8]);
+	return num;
 }
 
 char* DateToString(Date date)

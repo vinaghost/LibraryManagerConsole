@@ -150,25 +150,54 @@ int showListBook(ListBook l)
 		return -1;
 	}
 	printf("Co tong cong %d sach trong du lieu\n", l.total);
-	int num = 1;
+	int num = 0;
 	while (l.head != NULL) {
-
-		/*//Nen dung std::cout de co the dung Book tot nhat
-
-		printf("%d", l.head->data);
-
-		if (l.head->next != NULL) {
-			printf(" -> ");
-		}*/
-		printf("Sach #%d/\n", num);
 		num++;
+
+
+		printf("Sach #%d/\n", num);
 		showBook(l.head->data);
 		Line();
 
 		l.head = l.head->next;
 	}
 	printf("\n");
-	return 0;
+	return num;
+}
+
+int showListBook(ListBook l, char * data, BOOK_CASE type)
+{
+	if (l.head == NULL) {
+		return -1;
+	}
+
+	int num = 0;
+	int count = 0;
+	char *str = NULL;
+	while (l.head != NULL) {
+		num++;
+
+
+		switch (type) {
+			case ISBN: {
+				str = l.head->data.ISBN;
+				break;
+			}
+			case TEN_SACH: {
+				str = l.head->data.TenSach;
+				break;
+			}
+		}
+
+		if (strcmp(str, data) == 0) {
+			printf("Sach #%d\n", num);
+			count++;
+			showBook(l.head->data);
+			Line();
+		}
+	}
+	printf("\n");
+	return count;
 }
 
 void deleteListBook(ListBook &l)

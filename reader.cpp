@@ -105,7 +105,7 @@ void showReader(Reader reader)
 	showDate(reader.birth);
 	printf("\n");
 
-	printf("] Gioi tinh: %s", reader.nam ? "nam" : "nu");
+	printf("] Gioi tinh: %s\n", reader.nam ? "nam" : "nu");
 
 	printf("] Ngay tao the: ");
 	showDate(reader.lapThe);

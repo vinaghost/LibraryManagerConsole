@@ -19,21 +19,22 @@ void initBook(Book &book)
 
 int isVaildBook(Book book)
 {
-	if (book.ISBN[0] == '/0') {
+	if (book.ISBN[0] == '\0') {
 		return 0;
 	}
-	if (book.TenSach[0] == '/0') {
+	if (book.TenSach[0] == '\0') {
 		return 0;
 	}
-	if (book.TenTacGia[0] == '/0') {
+	if (book.TenTacGia[0] == '\0') {
 		return 0;
 	}
-	if (book.NXB[0] == '/0') {
+	if (book.NXB[0] == '\0') {
 		return 0;
 	}
-	if (book.TheLoai[0] == '/0') {
+	if (book.TheLoai[0] == '\0') {
 		return 0;
 	}
+	return 1;
 }
 
 int addBookToFile(Book book)
@@ -99,9 +100,9 @@ void showBook(Book book)
 	printf("] Ten tac gia: %s\n", book.TenTacGia);
 	printf("] Ten nha xuat ban:  %s\n", book.NXB);
 	printf("] The loai: %s\n", book.TheLoai);
-	printf("Nam xuat ban: %d\n", book.NamXB);
-	printf("Gia sach: %d\n", book.Gia);
-	printf("So luong sach: %d\n", book.SoLuong);
+	printf("] Nam xuat ban: %d\n", book.NamXB);
+	printf("] Gia sach: %d\n", book.Gia);
+	printf("] So luong sach: %d\n", book.SoLuong);
 }
 
 char* nhapBook_ISBN()

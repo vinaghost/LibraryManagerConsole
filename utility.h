@@ -17,6 +17,7 @@ Date nhapDate();
 void showDate(Date date);
 
 int CharToNum(char num);
+int MSToNum(char *str);
 
 char* DateToString(Date date);
 Date StringToDate(char *sdate);

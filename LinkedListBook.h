@@ -29,6 +29,7 @@ NodeBook* addPos(ListBook &l, Book data, int pos);
 
 void deletePos(ListBook &l, int pos);
 int showListBook(ListBook l);
+int showListBook(ListBook l, char* data, BOOK_CASE type);
 void deleteListBook(ListBook &l);
 
 Book geBookFirst(ListBook l);
@@ -37,7 +38,7 @@ Book geBookPos(ListBook l, int pos);
 
 int getTotal(ListBook l);
 
-ListBook getNodeBookFromData(ListBook l, char* data, BOOK_CASE type);
+//ListBook getNodeBookFromData(ListBook l, char* data, BOOK_CASE type);
 
 ListBook joinListBook(ListBook a, ListBook b);
 
