@@ -132,3 +132,9 @@ int isHavePerm(unsigned int uPerm, Perm perm)
 	return !(!(getBit(uPerm, perm)));
 }
 
+void clearEnter()
+{
+	char t; 
+	while ((t = getchar()) != '\n' && t != EOF);
+}
+

@@ -218,21 +218,38 @@ void deleteListReader(ListReader &l)
 	initListReader(l);
 }
 
-Reader geReaderFirst(ListReader l)
+NodeReader* getNodeReaderPos(ListReader l, int pos)
+{
+	assert(l.head != NULL);
+
+	NodeReader* current = l.head;
+
+	int count = 1;
+	while (count != pos) {
+		current = current->next;
+		count++;
+		if (current == NULL) {
+			return NULL;
+		}
+	}
+	return current;
+}
+
+Reader getReaderFirst(ListReader l)
 {
 	assert(l.head != NULL);
 
 	return l.head->data;
 }
 
-Reader geReaderLast(ListReader l)
+Reader getReaderLast(ListReader l)
 {
 	assert(l.head != NULL);
 
 	return l.tail->data;
 }
 
-Reader geReaderPos(ListReader l, int pos)
+Reader getReaderPos(ListReader l, int pos)
 {
 	assert(l.head != NULL);
 

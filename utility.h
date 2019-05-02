@@ -27,3 +27,6 @@ void showInfo(const char* info);
 int isCapPhatThanhCong(void* p, const char* info);
 
 int isHavePerm(unsigned int uPerm, Perm perm);
+
+
+void clearEnter();

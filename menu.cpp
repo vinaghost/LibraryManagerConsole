@@ -73,10 +73,12 @@ void menuReader(User &u)
 
 	printf("1. Xem danh sach doc gia trong thu vien\n");
 	printf("2. Them doc gia\n");
-	printf("3. Tim kiem doc gia theo ho ten\n");
-	printf("4. Tim kiem doc gia theo CMND\n");
-	printf("5. Luu thong tin doc gia vao file\n");
-	printf("6. Quay ve menu chinh");
+	printf("3. Chinh sua doc gia\n");
+	printf("4. Xoa doc gia\n");
+	printf("5. Tim kiem doc gia theo ho ten\n");
+	printf("6. Tim kiem doc gia theo CMND\n");
+	printf("7. Luu thong tin doc gia vao file\n");
+	printf("8. Quay ve menu chinh");
 
 	int item = getChoice();
 	menuReader_handler(u, lReader, item);
@@ -87,27 +89,29 @@ void menuReader(User &u, ListReader &lReader)
 
 	printf("1. Xem danh sach doc gia trong thu vien\n");
 	printf("2. Them doc gia\n");
-	printf("3. Tim kiem doc gia theo ho ten\n");
-	printf("4. Tim kiem doc gia theo CMND\n");
-	printf("5. Luu thong tin doc gia vao file\n");
-	printf("6. Quay ve menu chinh");
+	printf("3. Chinh sua doc gia\n");
+	printf("4. Xoa doc gia\n");
+	printf("5. Tim kiem doc gia theo ho ten\n");
+	printf("6. Tim kiem doc gia theo CMND\n");
+	printf("7. Luu thong tin doc gia vao file\n");
+	printf("8. Quay ve menu chinh");
 
 	int item = getChoice();
 	menuReader_handler(u, lReader, item);
 }
 void menuReader_handler(User &u, ListReader &lReader, int item)
 {
-	if (item == 6) {
+	if (item == 8) {
 		system("cls");
 		menuMain(u);
 		return;
 	}
-	if (item == 5) {
+	if (item == 7) {
 
 		writeListReaderToFile(lReader);
 		system("cls");
 		showInfo("Luu thanh cong");
-		menuMain(u);
+		menuReader(u);
 		return;
 	}
 
@@ -123,10 +127,18 @@ void menuReader_handler(User &u, ListReader &lReader, int item)
 			break;
 		}
 		case 3: {
-			result = findReaderAsName(u, lReader);
+			result = editReader(u, lReader);
 			break;
 		}
 		case 4: {
+			result = deleteReader(u, lReader);
+			break;
+		}
+		case 5: {
+			result = findReaderAsName(u, lReader);
+			break;
+		}
+		case 6: {
 			result = findReaderAsCMND(u, lReader);
 			break;
 		}
@@ -211,12 +223,15 @@ void menuSub_handler(User &u, int item) {
 		case 1: {
 			showInfo("Chuc nang dang duoc xay dung");
 			menuSub(u);
+			break;
 		}
 		case 2: {
 			menuReader(u);
+			break;
 		}
 		case 3: {
 			menuBook(u);
+			break;
 		}
 		case 7: {
 			break;
@@ -273,7 +288,7 @@ void menuBook_handler(User &u, ListBook &lBook, int item)
 		writeListBookToFile(lBook);
 		system("cls");
 		showInfo("Luu thanh cong");
-		menuMain(u);
+		menuBook(u);
 		return;
 	}
 

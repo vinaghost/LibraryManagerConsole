@@ -33,9 +33,13 @@ int showListReader(ListReader l);
 int showListReader(ListReader l, char* data, READER_CASE type);
 void deleteListReader(ListReader &l);
 
-Reader geReaderFirst(ListReader l);
-Reader geReaderLast(ListReader l);
-Reader geReaderPos(ListReader l, int pos);
+Reader getReaderFirst(ListReader l);
+Reader getReaderLast(ListReader l);
+Reader getReaderPos(ListReader l, int pos);
+
+NodeReader* getNodeReaderPos(ListReader l, int pos);
+
+
 
 int getTotal(ListReader l);
 
