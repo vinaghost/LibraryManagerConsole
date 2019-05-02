@@ -16,5 +16,7 @@ FUNCTION_CASE findReaderAsCMND(User u, ListReader &lReader);
 
 FUNCTION_CASE viewBook(User u, ListBook lBook);
 FUNCTION_CASE addBook(User u, ListBook &lBook);
+FUNCTION_CASE editBook(User u, ListBook &lBook);
+FUNCTION_CASE deleteBook(User u, ListBook &lBook);
 FUNCTION_CASE findBookAsName(User u, ListBook &lBook);
 FUNCTION_CASE findBookAsISBN(User u, ListBook &lBook);

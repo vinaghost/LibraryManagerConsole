@@ -220,11 +220,6 @@ void menuSub_handler(User &u, int item) {
 
 	system("cls");
 	switch (item) {
-		case 1: {
-			showInfo("Chuc nang dang duoc xay dung");
-			menuSub(u);
-			break;
-		}
 		case 2: {
 			menuReader(u);
 			break;
@@ -234,6 +229,11 @@ void menuSub_handler(User &u, int item) {
 			break;
 		}
 		case 7: {
+			break;
+		}
+		default: {
+			showInfo("Chuc nang dang duoc xay dung");
+			menuSub(u);
 			break;
 		}
 
@@ -270,20 +270,22 @@ void menuBook(User &u, ListBook &lBook)
 	printf("2. Them sach\n");
 	printf("3. Tim kiem sach theo ten sach\n");
 	printf("4. Tim kiem sach theo ISBN\n");
-	printf("5. Luu thong tin sach vao file\n");
-	printf("6. Quay ve menu chinh");
+	printf("5. Tim kiem sach theo ten sach\n");
+	printf("6. Tim kiem sach theo ISBN\n");
+	printf("7. Luu thong tin sach vao file\n");
+	printf("8. Quay ve menu chinh");
 
 	int item = getChoice();
 	menuBook_handler(u, lBook, item);
 }
 void menuBook_handler(User &u, ListBook &lBook, int item)
 {
-	if (item == 6) {
+	if (item == 8) {
 		system("cls");
 		menuMain(u);
 		return;
 	}
-	if (item == 5) {
+	if (item == 7) {
 
 		writeListBookToFile(lBook);
 		system("cls");
@@ -304,10 +306,18 @@ void menuBook_handler(User &u, ListBook &lBook, int item)
 			break;
 		}
 		case 3: {
-			result = findBookAsName(u, lBook);
+			result = editBook(u, lBook);
 			break;
 		}
 		case 4: {
+			result = deleteBook(u, lBook);
+			break;
+		}
+		case 5: {
+			result = findBookAsName(u, lBook);
+			break;
+		}
+		case 6: {
 			result = findBookAsISBN(u, lBook);
 			break;
 		}
@@ -315,14 +325,17 @@ void menuBook_handler(User &u, ListBook &lBook, int item)
 
 	switch (result) {
 		case INVAILD: {
+			system("cls");
 			showInfo("Tai khoan cua ban khong co quyen truy cap lenh nay\n");
 			break;
 		}
 		case ERROR: {
+			system("cls");
 			showInfo("Co loi xay ra vui long khoi dong lai chuong trinh\n");
 			break;
 		}
 		case NOT_FOUND: {
+			system("cls");
 			showInfo("Khong tim thay sach\n");
 			break;
 		}

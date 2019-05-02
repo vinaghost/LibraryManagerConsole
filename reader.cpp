@@ -65,9 +65,7 @@ Date getHetHan(Date lapThe)
 }
 
 int nhapReader(Reader &reader)
-{
-	sprintf(reader.MS, "processing");
-	
+{	
 	clearEnter();
 	printf("] Ho ten: ");
 	if (fgets(reader.HoTen, sizeof(reader.HoTen), stdin) != NULL) {

@@ -39,7 +39,7 @@ Book geBookPos(ListBook l, int pos);
 int getTotal(ListBook l);
 
 //ListBook getNodeBookFromData(ListBook l, char* data, BOOK_CASE type);
-
+NodeBook* getNodeBookPos(ListBook l, int pos);
 ListBook joinListBook(ListBook a, ListBook b);
 
 void loadListBook(ListBook &l);

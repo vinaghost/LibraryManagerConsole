@@ -245,6 +245,22 @@ Book geBookPos(ListBook l, int pos)
 	return current->data;
 }
 
+NodeBook* getNodeBookPos(ListBook l, int pos)
+{
+	assert(l.head != NULL);
+
+	NodeBook* current = l.head;
+
+	int count = 1;
+	while (count != pos) {
+		current = current->next;
+		count++;
+		if (current == NULL) {
+			return NULL;
+		}
+	}
+	return current;
+}
 
 int getTotal(ListBook l)
 {
