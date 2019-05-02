@@ -44,7 +44,7 @@ int isPassWordSame(User u, User f)
 	return 0;
 }
 
-int Login(User &u)
+LOGIN_CASE Login(User &u)
 {
 	printf("Username: ");
 	gets_s(u.name, sizeof(u.name));
@@ -55,16 +55,15 @@ int Login(User &u)
 	User tmp = isExistUser(u);
 
 	if (tmp.name[0] == '\0') {
-		printf("Username khong ton tai");
-		return 0;
+		return WRONG_USERNAME;
 	}
 
 	if (!isPassWordSame(u, tmp)) {
-		printf("Password khong dung");
-		return 0;
+		return WRONG_PASSWORD;
 	}
 
 	u = tmp;
-	return 1;
+
+	return ACCEPT;
 }
 
