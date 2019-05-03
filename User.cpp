@@ -45,6 +45,36 @@ void showUser(User u)
 
 }
 
+User isExistUser(User u)
+{
+	FILE *userFile;
+
+	userFile = fopen(USER_FILE, "r");
+
+	if (userFile == NULL) {
+		printf("[ERROR] Khong tim thay file user.dat");
+	}
+
+
+	User fuser;
+	int count = 1;
+	char str[200];
+	while (fgets(str, sizeof(str), userFile) != NULL) {
+
+		sscanf(str, "%[^,\n], %[^,\n], %d, %[^,\n], %[^,\n], %[^,\n], %[^,\n], %d %d", fuser.name, fuser.password, &fuser.permission, fuser.HoTen, fuser.MS, fuser.Birth, fuser.DiaChi, &fuser.Nam, &fuser.active);
+
+		if (strcmp(u.name, fuser.name) == 0) {
+			fuser.location = count;
+			return fuser;
+		}
+
+		count++;
+	}
+
+	initUser(fuser);
+
+	return fuser;
+}
 int isVaildUser(User t)
 {
 	if (t.name[0] == '\0') {

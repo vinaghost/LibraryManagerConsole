@@ -120,7 +120,6 @@
     <ClCompile Include="LinkedListBook.cpp" />
     <ClCompile Include="LinkedListReader.cpp" />
     <ClCompile Include="login.cpp" />
-    <ClCompile Include="logout.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="reader.cpp" />
@@ -139,7 +138,6 @@
     <ClInclude Include="LinkedListBook.h" />
     <ClInclude Include="LinkedListReader.h" />
     <ClInclude Include="login.h" />
-    <ClInclude Include="logout.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="reader.h" />
     <ClInclude Include="User.h" />

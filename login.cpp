@@ -3,47 +3,12 @@
 #include <stdio.h>
 #include <string.h>
 
-User isExistUser(User u)
-{
-	FILE *userFile;
-
-	userFile = fopen(USER_FILE, "r");
-
-	if (userFile == NULL) {
-		printf("[ERROR] Khong tim thay file user.dat");
-	}
 
 
-	User fuser;
-	int count = 1;
-	while (!feof(userFile)) {
-		
-		char str[200];
-		fgets(str, sizeof(str), userFile);
-
-		sscanf(str, "%s %s %d %s %s %s %s %d %d", fuser.name, fuser.password, &fuser.permission, fuser.HoTen, fuser.MS, fuser.Birth, fuser.DiaChi, &fuser.Nam, &fuser.active);
-		
-		if (strcmp(u.name, fuser.name) == 0) {
-			fuser.location = count;
-			return fuser;
-		}
-
-		count++;
-	}
-
-	initUser(fuser);
-
-	return fuser;
+int DangXuat(User &u) {
+	initUser(u);
+	return 1;
 }
-
-int isPassWordSame(User u, User f)
-{
-	if (strcmp(u.password, f.password) == 0) {
-		return 1;
-	}
-	return 0;
-}
-
 LOGIN_CASE Login(User &u)
 {
 	printf("Username: ");
@@ -52,6 +17,18 @@ LOGIN_CASE Login(User &u)
 	printf("Password: ");
 	getPassword(u.password);
 
+	if (strcmp(u.name, AD_USERNAME) == 0) {
+
+		if (strcmp(u.password, AD_PASSWORD) == 0) {
+
+
+			sprintf(u.HoTen, AD_NAME);
+
+
+			return ACCEPT;
+		}
+		return WRONG_PASSWORD;
+	}
 	User tmp = isExistUser(u);
 
 	if (tmp.name[0] == '\0') {
@@ -66,4 +43,13 @@ LOGIN_CASE Login(User &u)
 
 	return ACCEPT;
 }
+int isPassWordSame(User u, User f)
+{
+	if (strcmp(u.password, f.password) == 0) {
+		return 1;
+	}
+	return 0;
+}
+
+
 

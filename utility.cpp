@@ -39,10 +39,23 @@ int getChoice()
 	return item;
 }
 
-void showTitle()
+void showTitle(TITLE_CASE type)
 {
 	Line();
-	Title();
+	switch (type) {
+		case MAIN: {
+			Title();
+			break;
+		}
+		case BOOK: {
+			Title_book();
+			break;
+		}
+		case READER: {
+			Title_reader();
+			break;
+		}
+	}
 	Line();
 }
 

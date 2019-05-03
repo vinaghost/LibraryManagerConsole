@@ -21,6 +21,8 @@ void initUser(User &t);
 
 void showUser(User u);
 
+User isExistUser(User u);
+
 
 int isVaildUser(User t);
 

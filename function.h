@@ -6,7 +6,6 @@
 
 
 
-
 FUNCTION_CASE viewReader(User u, ListReader lReader);
 FUNCTION_CASE addReader(User u, ListReader &lReader);
 FUNCTION_CASE editReader(User u, ListReader &lReader);

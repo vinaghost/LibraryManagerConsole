@@ -1,5 +1,12 @@
-#pragma once
+ #pragma once
 #define _CRT_SECURE_NO_WARNINGS
+
+// admin account
+#define AD_USERNAME "admin"
+#define AD_NAME "Admin"
+#define AD_PASSWORD "123"
+#define AD_PERMSSION 67108813
+
 
 #define USER_FILE "user.dat"
 #define READER_FILE "reader.dat"
@@ -12,6 +19,7 @@
 
 #define NAME_LENGTH 50
 #define CMND_LENGTH 13
+
 enum PermUser {
 	ADMIN,
 	QUANLI,
@@ -73,6 +81,12 @@ enum FUNCTION_CASE {
 	ERROR,
 	NOT_FOUND
 };
+
+enum TITLE_CASE {
+	MAIN,
+	READER,
+	BOOK
+};
 #define setBit(a, b) a |= (1 << b)
 #define getBit(a, b) a & (1 << b)
 
@@ -80,3 +94,5 @@ enum FUNCTION_CASE {
 
 #define Line() printf("======================================\n")
 #define Title() printf("\tPhan mem quan li thu vien\n")
+#define Title_reader() printf("\tQuan li doc gia\n")
+#define Title_book() printf("\tQuan li sach\n")
