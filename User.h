@@ -1,17 +1,17 @@
 #pragma once
 
 #include "const.h"
-
+#include "utility.h"
 struct User {
-	char name[50];
-	char password[50];
+	char name[PASS_LENGTH];
+	char password[PASS_LENGTH];
 	unsigned int permission;
 
-	char HoTen[50];
-	char MS[10];
-	char Birth[9];
-	char DiaChi[20];
+	char HoTen[NAME_LENGTH];
+	char CMND[CMND_LENGTH];
+	char DiaChi[ADDRESS_LENGTH];
 	int Nam;
+	Date ngaySinh;
 	int active;
 
 	int location;
@@ -26,8 +26,6 @@ User isExistUser(User u);
 
 int isVaildUser(User t);
 
-int findUserLocation(User u);
-
 void createUser(User u);
 
 void addPerm(User &u, PermUser perm);
@@ -36,12 +34,8 @@ void nhapUser(User &u);
 
 void nhapInf(User &u);
 
-int changePass(User &u);
-
 void newPass(char *pass);
 
-int changeInf(User &u);
-
-
+int isPassWordSame(User u, User f);
 
 

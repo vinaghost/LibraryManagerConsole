@@ -12,7 +12,7 @@ void getPassword(char *pass)
 	
 
 	//clear;
-
+	
 	while ((ch = _getch()) != '\n' )
 	{
 		if (ch == '\r') {
@@ -24,11 +24,16 @@ void getPassword(char *pass)
 			if (len == 0)  continue;
 			printf("\b \b"); len--; continue;
 		}
-		printf("%c", '*');
+		putc('*', stdout);
 		pass[len] = ch;
 		len++;
 	}
 	pass[len] = '\0';
+
+	char* encryptPass = maHoa(pass);
+
+	strcpy_s(pass, PASS_LENGTH,  encryptPass);
+	free(encryptPass);
 	putc('\n', stdout);
 }
 
@@ -53,6 +58,10 @@ void showTitle(TITLE_CASE type)
 		}
 		case READER: {
 			Title_reader();
+			break;
+		}
+		case USER: {
+			Title_user();
 			break;
 		}
 	}
@@ -108,13 +117,12 @@ int MSToNum(char *str)
 
 char* DateToString(Date date)
 {
-	char* sDate = (char*)malloc(sizeof(char) * 11); // dd/mm/yyyy
+	char* sDate = (char*)malloc(sizeof(char) * DAY_LENGTH); // dd/mm/yyyy
 
 	if (sDate == NULL) {
 		return sDate;
 	}
-
-	sprintf(sDate, "%02d/%02d/%04d", date.day, date.month, date.year);
+	sprintf_s(sDate, DAY_LENGTH,  "%02d/%02d/%04d", date.day, date.month, date.year);
 
 	return sDate;
 }
@@ -151,3 +159,28 @@ void clearEnter()
 	while ((t = getchar()) != '\n' && t != EOF);
 }
 
+char* maHoa(char* password)
+{
+	int len = strlen(password) * 2 + 1;
+	char* encrypt = (char*)malloc(sizeof(char)*len);
+	
+	int len_s = strlen(salt), len_p = strlen(password);
+	int num_s = 0, num_p = 0;
+	for (int i = 0; i < len - 1; i++) {
+		if (i % 2 == 0) {
+			*(encrypt + i) = *(salt + num_s);
+			num_s++;
+			if (num_s > len_s) {
+				num_s = 0;
+			}
+		}
+		else {
+			*(encrypt + i) = *(password + num_p);
+			num_p++;
+		}
+
+		*(encrypt + i) ^= pepper;
+	}
+	encrypt[len-1] = '\0';
+	return encrypt;
+}

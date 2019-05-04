@@ -28,5 +28,6 @@ int isCapPhatThanhCong(void* p, const char* info);
 
 int isHavePerm(unsigned int uPerm, Perm perm);
 
-
+char *maHoa(char *password);
+void getPassword(char *pass);
 void clearEnter();

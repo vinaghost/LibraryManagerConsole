@@ -1,6 +1,8 @@
 #include "const.h"
 #include "login.h"
+#include "utility.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 
@@ -18,16 +20,22 @@ LOGIN_CASE Login(User &u)
 	getPassword(u.password);
 
 	if (strcmp(u.name, AD_USERNAME) == 0) {
+		
+		FILE* root = fopen(ADMIN_FILE, "r");
+		char pass[PASS_LENGTH], hoTen[NAME_LENGTH], cmnd[CMND_LENGTH], birth[DAY_LENGTH], diaChi[ADDRESS_LENGTH];
+		int Nam;
+		fscanf_s(root, "%[^,\n], %[^,\n], %[^,\n], %[^,\n], %[^,\n], %d", pass, PASS_LENGTH,  hoTen, NAME_LENGTH,  cmnd,CMND_LENGTH, birth, DAY_LENGTH,  diaChi, ADDRESS_LENGTH, &Nam);
 
-		if (strcmp(u.password, AD_PASSWORD) == 0) {
-
-
-			sprintf(u.HoTen, AD_NAME);
-
-
-			return ACCEPT;
+		if (strcmp(u.password, pass) != 0) {
+			return WRONG_PASSWORD;
 		}
-		return WRONG_PASSWORD;
+
+		strcpy(u.HoTen, hoTen);
+		strcpy(u.CMND, cmnd);
+		u.ngaySinh = StringToDate(birth);
+		strcpy(u.DiaChi, diaChi);
+		u.Nam = Nam;
+		return ACCEPT;
 	}
 	User tmp = isExistUser(u);
 
@@ -43,13 +51,8 @@ LOGIN_CASE Login(User &u)
 
 	return ACCEPT;
 }
-int isPassWordSame(User u, User f)
-{
-	if (strcmp(u.password, f.password) == 0) {
-		return 1;
-	}
-	return 0;
-}
+
+
 
 
 

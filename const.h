@@ -3,12 +3,13 @@
 
 // admin account
 #define AD_USERNAME "admin"
-#define AD_NAME "Admin"
-#define AD_PASSWORD "123"
 #define AD_PERMSSION 67108813
 
+constexpr char salt[] = "NhanQuangViet";
+#define pepper 3
 
 #define USER_FILE "user.dat"
+#define ADMIN_FILE "admin.dat"
 #define READER_FILE "reader.dat"
 #define BOOK_FILE "book.dat"
 
@@ -16,6 +17,9 @@
 
 #define HET_HAN_THE 48
 
+#define PASS_LENGTH 50
+#define DAY_LENGTH 11
+#define ADDRESS_LENGTH 50
 
 #define NAME_LENGTH 50
 #define CMND_LENGTH 13
@@ -84,6 +88,7 @@ enum FUNCTION_CASE {
 
 enum TITLE_CASE {
 	MAIN,
+	USER,
 	READER,
 	BOOK
 };
@@ -95,4 +100,5 @@ enum TITLE_CASE {
 #define Line() printf("======================================\n")
 #define Title() printf("\tPhan mem quan li thu vien\n")
 #define Title_reader() printf("\tQuan li doc gia\n")
+#define Title_user() printf("\tQuan li tai khoan\n")
 #define Title_book() printf("\tQuan li sach\n")

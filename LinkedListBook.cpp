@@ -155,7 +155,7 @@ int showListBook(ListBook l)
 		num++;
 
 
-		printf("Sach #%d/\n", num);
+		printf("Sach #%d\n", num);
 		showBook(l.head->data);
 		Line();
 

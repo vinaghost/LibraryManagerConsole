@@ -127,6 +127,7 @@
     <ClCompile Include="utility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="admin.dat" />
     <None Include="book.dat" />
     <None Include="reader.dat" />
     <None Include="user.dat" />

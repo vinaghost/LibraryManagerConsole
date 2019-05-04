@@ -5,6 +5,9 @@
 #include "LinkedListBook.h"
 
 
+FUNCTION_CASE changePass(User &u);
+FUNCTION_CASE changeInfo(User &u);
+
 
 FUNCTION_CASE viewReader(User u, ListReader lReader);
 FUNCTION_CASE addReader(User u, ListReader &lReader);
