@@ -150,7 +150,7 @@ int isCapPhatThanhCong(void *p, const char *info)
 
 int isHavePerm(unsigned int uPerm, Perm perm)
 {
-	return !(!(getBit(uPerm, perm)));
+	return getBit(uPerm, perm);
 }
 
 void clearEnter()

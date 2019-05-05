@@ -90,7 +90,7 @@ int isVaildUser(User t)
 
 int addUser(User u)
 {
-	printf("Nhap thong tin nguoi dung:\n");
+	printf("Nhap thong tin tai khoan:\n");
 	FILE *f;
 	f = fopen(USER_FILE, "a+");
 	
@@ -204,6 +204,7 @@ void nhapUser(User &u)
 	printf("Username: ");
 	scanf("%s", u.name);
 	
+	clearEnter();
 	printf("Password: ");
 	getPassword(u.password);
 
@@ -211,6 +212,8 @@ void nhapUser(User &u)
 	PermUser perm;
 	scanf("%d", &perm);
 	addPerm(u, perm);
+
+	clearEnter();
 }
 
 void nhapInf(User &u)
@@ -222,14 +225,13 @@ void nhapInf(User &u)
 			u.HoTen[--len] = '\0';
 		}
 	}
-
 	printf("Ngay sinh (dd/mm/yyyy): ");
 	u.ngaySinh = nhapDate();
 
+	clearEnter();
 	printf("CMND: ");
 	scanf("%s", u.CMND);
-
-
+	clearEnter();
 	printf("Tinh/Thanh pho: ");
 	if (fgets(u.DiaChi, sizeof(u.DiaChi), stdin) != NULL) {
 		size_t len = strlen(u.DiaChi);
@@ -237,7 +239,6 @@ void nhapInf(User &u)
 			u.DiaChi[--len] = '\0';
 		}
 	}
-
 	printf("Gioi Tinh (Nam: 1; Nu: 0): ");
 	scanf("%d", &u.Nam);
 }

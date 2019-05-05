@@ -35,6 +35,7 @@ LOGIN_CASE Login(User &u)
 		u.ngaySinh = StringToDate(birth);
 		strcpy(u.DiaChi, diaChi);
 		u.Nam = Nam;
+		u.permission = AD_PERMSSION;
 		return ACCEPT;
 	}
 	User tmp = isExistUser(u);

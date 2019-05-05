@@ -3,7 +3,7 @@
 
 // admin account
 #define AD_USERNAME "admin"
-#define AD_PERMSSION 67108813
+#define AD_PERMSSION 67108863
 
 #define PEPPER 5
 
@@ -17,7 +17,7 @@
 #define HET_HAN_THE 48
 
 #define PASS_LENGTH 50
-#define DAY_LENGTH 11
+#define DAY_LENGTH 12
 #define ADDRESS_LENGTH 50
 
 #define NAME_LENGTH 50
@@ -92,7 +92,7 @@ enum TITLE_CASE {
 	BOOK
 };
 #define setBit(a, b) a |= (1 << b)
-#define getBit(a, b) a & (1 << b)
+#define getBit(a, b) !(!(a & (1 << b)))
 
 
 

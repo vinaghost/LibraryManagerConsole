@@ -15,5 +15,14 @@ int main() {
 	free(pass);
 	fclose(f);
 	getchar();*/
+
+	/*int perm = 0;
+	for (int i = LOGIN; i < VIEWNUMREADERASLATE + 1; i++) {
+		perm |= (1 << i);
+	}
+	printf("%d", perm);
+
+	printf("\n%d", isHavePerm(perm, CREATUSER));
+	getchar();*/
 	return 0;
 }
