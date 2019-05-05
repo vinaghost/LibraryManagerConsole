@@ -88,20 +88,23 @@ int isVaildUser(User t)
 	return 1;
 }
 
-void createUser(User u)
+int addUser(User u)
 {
 	printf("Nhap thong tin nguoi dung:\n");
 	FILE *f;
 	f = fopen(USER_FILE, "a+");
 	
+	if (f == NULL) {
+		return -1;
+	}
 	nhapUser(u);
 	nhapInf(u);
 
 	char* birth = DateToString(u.ngaySinh);
-	fprintf(f, "%s %s %d %s %s %s %s %d 1\n", u.name, u.password, u.permission, u.HoTen, u.CMND, birth, u.DiaChi, u.Nam);
+	fprintf(f, "%s, %s, %d, %s, %s, %s, %s, %d, 1\n", u.name, u.password, u.permission, u.HoTen, u.CMND, birth, u.DiaChi, u.Nam);
 	fclose(f);
 	free(birth);
-	printf("Ghi file thanh cong");
+	return 1;
 }
 
 void addPerm(User &u, PermUser perm) {
@@ -201,10 +204,8 @@ void nhapUser(User &u)
 	printf("Username: ");
 	scanf("%s", u.name);
 	
-	
 	printf("Password: ");
 	getPassword(u.password);
-
 
 	printf("Phan quyen (Quan li: 1, Chuyen vien: 2): ");
 	PermUser perm;

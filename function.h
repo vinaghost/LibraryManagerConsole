@@ -7,6 +7,7 @@
 
 FUNCTION_CASE changePass(User &u);
 FUNCTION_CASE changeInfo(User &u);
+FUNCTION_CASE createUser(User &u);
 
 
 FUNCTION_CASE viewReader(User u, ListReader lReader);

@@ -161,25 +161,16 @@ void clearEnter()
 
 char* maHoa(char* password)
 {
-	int len = strlen(password) * 2 + 1;
+	int len = strlen(password) + 1;
 	char* encrypt = (char*)malloc(sizeof(char)*len);
 	
-	int len_s = strlen(salt), len_p = strlen(password);
-	int num_s = 0, num_p = 0;
+	int num_pepper = 0;
 	for (int i = 0; i < len - 1; i++) {
-		if (i % 2 == 0) {
-			*(encrypt + i) = *(salt + num_s);
-			num_s++;
-			if (num_s > len_s) {
-				num_s = 0;
-			}
+		*(encrypt + i) ^= num_pepper;
+		num_pepper++;
+		if (num_pepper > PEPPER) {
+			num_pepper = 0;
 		}
-		else {
-			*(encrypt + i) = *(password + num_p);
-			num_p++;
-		}
-
-		*(encrypt + i) ^= pepper;
 	}
 	encrypt[len-1] = '\0';
 	return encrypt;

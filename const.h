@@ -5,8 +5,7 @@
 #define AD_USERNAME "admin"
 #define AD_PERMSSION 67108813
 
-constexpr char salt[] = "NhanQuangViet";
-#define pepper 3
+#define PEPPER 5
 
 #define USER_FILE "user.dat"
 #define ADMIN_FILE "admin.dat"

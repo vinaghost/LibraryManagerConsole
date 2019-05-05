@@ -1,6 +1,7 @@
 #pragma once
 
 #include "const.h"
+#include <stdio.h>
 #include "utility.h"
 struct User {
 	char name[PASS_LENGTH];
@@ -26,7 +27,7 @@ User isExistUser(User u);
 
 int isVaildUser(User t);
 
-void createUser(User u);
+int addUser(User u);
 
 void addPerm(User &u, PermUser perm);
 
@@ -37,5 +38,7 @@ void nhapInf(User &u);
 void newPass(char *pass);
 
 int isPassWordSame(User u, User f);
+
+void addUser(FILE* f, User u);
 
 
