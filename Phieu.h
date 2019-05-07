@@ -15,3 +15,12 @@ struct Phieu
 	Date ngaytrathucte;
 	int kt;
 };
+
+void InputPhieuMuon(Phieu &PhieuMuon);
+void AddPhieuMuonintoFile(Phieu PhieuMuon);
+void InputPhieuTra(Phieu &PhieuTra);
+int FindGia(char ch[20]);
+int KTThang(int i, int j);
+int Ngay(Date D1, Date D2);
+int FindPhieuMuon(Phieu &PhieuTra, Phieu PhieuMuon);
+void AddPhieuTraintoFile(Phieu PhieuTra, Phieu PhieuMuon);
