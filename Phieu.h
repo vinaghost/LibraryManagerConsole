@@ -10,7 +10,7 @@ struct Phieu
 	char madocgia[10];
 	Date ngaymuon;
 	Date ngaytradukien;
-	int soluong;
+	int soluong = 0;
 	Book *a = new Book[soluong];
 	Date ngaytrathucte;
 	int kt;
