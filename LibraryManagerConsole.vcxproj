@@ -122,6 +122,7 @@
     <ClCompile Include="login.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
+    <ClCompile Include="phieu.cpp" />
     <ClCompile Include="reader.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="utility.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="LinkedListReader.h" />
     <ClInclude Include="login.h" />
     <ClInclude Include="menu.h" />
+    <ClInclude Include="Phieu.h" />
     <ClInclude Include="reader.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="utility.h" />

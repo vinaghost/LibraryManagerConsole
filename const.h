@@ -11,7 +11,8 @@
 #define ADMIN_FILE "admin.dat"
 #define READER_FILE "reader.dat"
 #define BOOK_FILE "book.dat"
-#define PHIEU_FILE "phieu.dat"
+#define PHIEUMUON_FILE "phieu_muon.dat"
+#define PHIEUTRA_FILE "phieu_tra.dat"
 
 #define TMP_FILE "tmp.dat"
 

@@ -15,6 +15,8 @@ void showInfo(const char* info);
 void initDate(Date &date);
 Date nhapDate();
 void showDate(Date date);
+int getCachNgay(Date D1, Date D2);
+int getDay(int month, int year);
 
 int CharToNum(char num);
 int MSToNum(char *str);

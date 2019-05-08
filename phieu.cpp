@@ -6,49 +6,123 @@
 #include "Book.h"
 #include "utility.h"
 
-void InputPhieuMuon(Phieu &PhieuMuon)
+void initPhieu(Phieu & phieu)
 {
-	PhieuMuon.kt = 0;
-	printf("Ma doc gia: ");
-	scanf("%s", PhieuMuon.madocgia);
-	printf("Ngay muon(dd/mm/yyyy): ");
-	PhieuMuon.ngaymuon = nhapDate();
-	printf("Ngay tra du kien(dd/mm/yyyy): ");
-	PhieuMuon.ngaytradukien = nhapDate();
-	printf("So luong sach muon: ");
-	scanf("%d", PhieuMuon.soluong);
-	for (int i = 0; i < PhieuMuon.soluong; i++)
-	{
-		printf("Ma sach: ");
-		scanf("%s", PhieuMuon.a[i].ISBN);
-		printf("Gia sach: ");
-		scanf("%d", PhieuMuon.a[i].Gia);
-	}
+	phieu.MS[0] = '\0';
+	phieu.ISBN[0] ='\0';
+	initDate(phieu.ngayTaoPhieu);
 }
 
-void AddPhieuMuonintoFile(Phieu PhieuMuon)
+void nhapPhieuMuon_info(Phieu &phieuMuon)
+{
+	printf("Ma doc gia: ");
+	scanf("%s", phieuMuon.MS);
+
+	printf("Ngay muon (dd/mm/yyyy): ");
+	phieuMuon.ngayTaoPhieu = nhapDate();
+	
+}
+
+void nhapPhieuMuon_info(Phieu phieuMuon_root, Phieu &phieuMuon)
+{
+	strcpy(phieuMuon.MS, phieuMuon_root.MS);
+
+	phieuMuon.ngayTaoPhieu = phieuMuon_root.ngayTaoPhieu;
+}
+char* nhapPhieuMuon_book() {
+	printf("Nhap ma ISBN cua sach: ");
+	char *isbn = (char*)malloc(sizeof(char) * 15);
+	clearEnter();
+	if (fgets(isbn, 15, stdin) != NULL) {
+		size_t len = strlen(isbn);
+		if (len > 0 && isbn[len - 1] == '\n') {
+			isbn[--len] = '\0';
+		}
+	}
+	return isbn;
+}
+int writePhieuMuonToFile(Phieu &phieuMuon)
 {
 	FILE *f;
-	f = fopen(PHIEU_FILE, "w");
-	InputPhieuMuon(PhieuMuon);
-	fprintf(f, "%s %d %d ", PhieuMuon.madocgia, PhieuMuon.kt, PhieuMuon.soluong);
-	fprintf(f, "%02d/%02d/%04d ", PhieuMuon.ngaymuon.day, PhieuMuon.ngaymuon.month, PhieuMuon.ngaymuon.year);
-	fprintf(f, "%02d/%02d/%04d ", PhieuMuon.ngaytradukien.day, PhieuMuon.ngaytradukien.month, PhieuMuon.ngaytradukien.year);
-	for (int i = 0; i < PhieuMuon.soluong; i++)
-	{
-		fprintf(f, "%s ", PhieuMuon.a[i].ISBN);
+	f = fopen(PHIEUMUON_FILE, "a");
+	if (f == NULL) {
+		return -1;
 	}
-	fprintf(f, "\n");
+
+	char *ngayTaoPhieu = DateToString(phieuMuon.ngayTaoPhieu);
+	fprintf(f, "%s, %s, %s\n", phieuMuon.MS, phieuMuon.ISBN, ngayTaoPhieu);
+	free(ngayTaoPhieu);
 	fclose(f);
+	return 1;
 }
 
-void InputPhieuTra(Phieu &PhieuTra)
+void xuatPhieuMuon(Phieu &phieuMuon)
+{
+	printf("] Ma doc gia: %s\n", phieuMuon.MS);
+	printf("ISBN sach muon: %s\n", phieuMuon.ISBN);
+	printf("Ngay muon: ");
+	showDate(phieuMuon.ngayTaoPhieu);
+	printf("\n");
+}
+
+void nhapPhieuTra_info(Phieu &phieuTra)
 {
 	printf("Ma doc gia: ");
-	scanf("%s", PhieuTra.madocgia);
-	PhieuTra.kt = false;
-	printf("Ngay tra thuc te: ");
-	PhieuTra.ngaytrathucte = nhapDate();
+	scanf("%s", phieuTra.MS);
+
+	printf("Ngay muon (dd/mm/yyyy): ");
+	phieuTra.ngayTaoPhieu = nhapDate();
+
+}
+
+void nhapPhieuTra_info(Phieu phieuTra_root, Phieu &phieuTra)
+{
+	strcpy(phieuTra.MS, phieuTra_root.MS);
+
+	phieuTra.ngayTaoPhieu = phieuTra_root.ngayTaoPhieu;
+}
+char* nhapPhieuTra_book() {
+	printf("Nhap ma ISBN cua sach: ");
+	char *isbn = (char*)malloc(sizeof(char) * 15);
+	clearEnter();
+	if (fgets(isbn, 15, stdin) != NULL) {
+		size_t len = strlen(isbn);
+		if (len > 0 && isbn[len - 1] == '\n') {
+			isbn[--len] = '\0';
+		}
+	}
+	return isbn;
+}
+int writePhieuTraToFile(Phieu &phieuTra)
+{
+	FILE *f;
+	f = fopen(PHIEUTRA_FILE, "a");
+	if (f == NULL) {
+		return -1;
+	}
+
+	char *ngayTaoPhieu = DateToString(phieuTra.ngayTaoPhieu);
+	fprintf(f, "%s, %s, %s\n", phieuTra.MS, phieuTra.ISBN, ngayTaoPhieu);
+	free(ngayTaoPhieu);
+	fclose(f);
+
+
+	f = fopen(PHIEUMUON_FILE, "w+");
+	if (f == NULL) {
+		return -1;
+	}
+
+
+	return 1;
+}
+
+void xuatPhieuTra(Phieu &phieuTra)
+{
+	printf("] Ma doc gia: %s\n", phieuTra.MS);
+	printf("ISBN sach muon: %s\n", phieuTra.ISBN);
+	printf("Ngay muon: ");
+	showDate(phieuTra.ngayTaoPhieu);
+	printf("\n");
 }
 
 int FindGia(char ch[20])
@@ -76,166 +150,3 @@ int FindGia(char ch[20])
 	return gia;
 }
 
-
-int KTThang(int i, int j)
-{
-	if ((i == 1) || (i == 3) || (i == 5) || (i == 7) || (i == 8) || (i == 10) || (i == 12))
-	{
-		return 31;
-	}
-	if ((i == 4) || (i == 6) || (i == 9) || (i == 11))
-	{
-		return 30;
-	}
-	if (i == 2)
-	{
-		if ((j % 4 == 0) && (j % 100 == 0) || (j % 400 == 0))
-		{
-			return 29;
-		}
-		else
-		{
-			return 28;
-		}
-	}
-}
-
-int Ngay(Date D1, Date D2)
-{
-	int SoNgay = D2.day;
-	int dem = KTThang(D1.month, D1.year);
-	SoNgay = SoNgay + dem;
-	if (D1.year == D2.year)
-	{
-		for (int i = D1.month + 1; i <= D2.month; i++)
-		{
-			dem = KTThang(i, D1.year);
-			SoNgay = SoNgay + dem;
-		}
-	}
-	else if (D1.year < D2.year)
-	{
-		for (int i = D1.month + 1; i <= 12; i++)
-		{
-			dem = KTThang(i, D1.year);
-			SoNgay = SoNgay + dem;
-		}
-		for (int i = D1.year + 1; i <= D2.year; i++)
-		{
-			dem = KTThang(2, i);
-			if (dem == 28)
-			{
-				SoNgay = SoNgay + 365;
-			}
-			else if (dem == 29)
-			{
-				SoNgay = SoNgay + 366;
-			}
-		}
-		for (int i = 1; i <= D2.month; i++)
-		{
-			dem = KTThang(i, D2.year);
-			SoNgay = SoNgay + dem;
-		}
-	}
-	return SoNgay;
-}
-
-int FindPhieuMuon(Phieu &PhieuTra, Phieu PhieuMuon)
-{
-	int dem = 0, tmp = 0;
-	FILE *f;
-	f = fopen(PHIEU_FILE, "r");
-	InputPhieuTra(PhieuTra);
-	while (!feof(f))
-	{
-		dem++;
-		fscanf(f, "%s %d %d", PhieuMuon.madocgia, PhieuMuon.kt, PhieuMuon.soluong);
-		char st[20];
-		fscanf(f, "%s", st);
-		sscanf(st, "%d/%d/%d", PhieuTra.ngaymuon.day, PhieuTra.ngaymuon.month, PhieuTra.ngaymuon.year);
-		fscanf(f, "%s", st);
-		sscanf(st, "%d/%d/%d", PhieuTra.ngaytradukien.day, PhieuTra.ngaytradukien.month, PhieuTra.ngaytradukien.year);
-		for (int i = 0; i < PhieuMuon.soluong; i++)
-		{
-			fscanf(f, "%s", PhieuMuon.a[i].ISBN);
-		}
-		if ((strcmp(PhieuTra.madocgia, PhieuMuon.madocgia) == 0) && (PhieuMuon.kt == 0))
-		{
-			tmp = dem;
-			printf("%s\n", PhieuMuon.madocgia);
-			showDate(PhieuTra.ngaymuon);
-			printf("\n");
-			showDate(PhieuTra.ngaytradukien);
-			printf("\n");
-			printf("so luong sach da tra: ");
-			scanf("%d", PhieuTra.soluong);
-			printf("danh sach ma sach da tra: ");
-			for (int i = 0; i < PhieuTra.soluong; i++)
-			{
-				scanf("%s", PhieuTra.a[i].ISBN);
-			}
-			int S = 0;
-			if (PhieuTra.soluong < PhieuMuon.soluong)
-			{
-				int a;
-				printf("So luong sach chua tra: ");
-				scanf("%d", a);
-				for (int i = 0; i < a; i++)
-				{
-					char ch[20];
-					printf("Ma sach mat: ");
-					if (fgets(ch, sizeof(ch), stdin) != NULL) {
-						size_t len = strlen(ch);
-						if (len > 0 && ch[len - 1] == '\n') {
-							ch[--len] = '\0';
-						}
-					}
-					int gia;
-					gia = FindGia(ch);
-					S = S + gia * 2;
-				}
-			}
-			int SoNgay = Ngay(PhieuMuon.ngaytradukien, PhieuTra.ngaytrathucte);
-			PhieuTra.kt = 1;
-		}
-	}
-	return tmp;
-}
-
-
-void AddPhieuTraintoFile(Phieu PhieuTra, Phieu PhieuMuon)
-{
-	FILE *f1, *f2;
-	char ch;
-	int delete_line, temp = 1;
-	delete_line = FindPhieuMuon(PhieuTra, PhieuMuon);
-	f1 = fopen(PHIEU_FILE, "r");
-	f2 = fopen(TMP_FILE, "w");
-	ch = getc(f1);
-	while (ch != EOF)
-	{
-		ch = getc(f1);
-		if (ch == '\n')
-			temp++;
-		if (temp != delete_line)
-		{
-			putc(ch, f2);
-		}
-	}
-	fclose(f1);
-	fclose(f2);
-	remove(PHIEU_FILE);
-	rename(TMP_FILE, PHIEU_FILE);
-	f1 = fopen(PHIEU_FILE, "a");
-	fprintf(f1, "%s %d %s", PhieuTra.madocgia, PhieuTra.kt, PhieuTra.soluong);
-	fprintf(f1, "%02d/%02d/%04d ", PhieuTra.ngaymuon.day, PhieuTra.ngaymuon.month, PhieuTra.ngaymuon.year);
-	fprintf(f1, "%02d/%02d/%04d ", PhieuTra.ngaytradukien.day, PhieuTra.ngaytradukien.month, PhieuTra.ngaytradukien.year);
-	fprintf(f1, "%02d/%02d/%04d ", PhieuTra.ngaytrathucte.day, PhieuTra.ngaytrathucte.month, PhieuTra.ngaytrathucte.year);
-
-	for (int i = 0; i < PhieuTra.soluong; i++)
-	{
-		fprintf(f1, "%s ", PhieuTra.a[i].ISBN);
-	}
-	fclose(f1);
-}

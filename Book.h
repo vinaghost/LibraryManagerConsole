@@ -2,7 +2,7 @@
 #include "utility.h"
 
 struct Book {
-	char ISBN[20];
+	char ISBN[15];
 	char TenSach[40];
 	char TenTacGia[40];
 	char NXB[40];

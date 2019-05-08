@@ -1,26 +1,27 @@
 #pragma once
 
 #include "const.h"
-#include <stdio.h>
-#include "Book.h"
 #include "utility.h"
 
 struct Phieu
 {
-	char madocgia[10];
-	Date ngaymuon;
-	Date ngaytradukien;
-	int soluong;
-	Book *a = new Book[soluong];
-	Date ngaytrathucte;
-	int kt;
+	char MS[10];
+	char ISBN[15];
+	Date ngayTaoPhieu
 };
 
-void InputPhieuMuon(Phieu &PhieuMuon);
-void AddPhieuMuonintoFile(Phieu PhieuMuon);
-void InputPhieuTra(Phieu &PhieuTra);
+void initPhieu(Phieu &phieu);
+
+void nhapPhieuMuon_info(Phieu &phieuMuon);
+void nhapPhieuMuon_info(Phieu phieuMuon_root, Phieu &phieuMuon );
+char* nhapPhieuMuon_book();
+void xuatPhieuMuon(Phieu &phieuMuon);
+int writePhieuMuonToFile(Phieu &phieuMuon);
+
+void nhapPhieuTra_info(Phieu &phieuTra);
+void nhapPhieuTra_info(Phieu phieuTra_root, Phieu &phieuTra );
+char* nhapPhieuTra_book();
+void xuatPhieuTra(Phieu &phieuTra);
+int writePhieuTraToFile(Phieu &phieuTra);
+
 int FindGia(char ch[20]);
-int KTThang(int i, int j);
-int Ngay(Date D1, Date D2);
-int FindPhieuMuon(Phieu &PhieuTra, Phieu PhieuMuon);
-void AddPhieuTraintoFile(Phieu PhieuTra, Phieu PhieuMuon);

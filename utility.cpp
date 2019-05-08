@@ -139,6 +139,65 @@ Date StringToDate(char *sdate)
 	return date;
 }
 
+int getDay(int month, int year)
+{
+	if (month == 2)
+	{
+		if ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)) {
+			return 29;
+		}
+		return 28;
+	}
+
+	if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+		return 31;
+	}
+	return 30;
+}
+
+
+int getCachNgay(Date D1, Date D2)
+{
+	int SoNgay = D2.day;
+	int dem = getDay(D1.month, D1.year);
+	SoNgay = SoNgay + dem;
+	if (D1.year == D2.year)
+	{
+		for (int i = D1.month + 1; i <= D2.month; i++)
+		{
+			dem = getDay(i, D1.year);
+			SoNgay = SoNgay + dem;
+		}
+	}
+	else if (D1.year < D2.year)
+	{
+		for (int i = D1.month + 1; i <= 12; i++)
+		{
+			dem = getDay(i, D1.year);
+			SoNgay = SoNgay + dem;
+		}
+		for (int i = D1.year + 1; i <= D2.year; i++)
+		{
+			dem = getDay(2, i);
+			if (dem == 28)
+			{
+				SoNgay = SoNgay + 365;
+			}
+			else if (dem == 29)
+			{
+				SoNgay = SoNgay + 366;
+			}
+		}
+		for (int i = 1; i <= D2.month; i++)
+		{
+			dem = getDay(i, D2.year);
+			SoNgay = SoNgay + dem;
+		}
+	}
+	return SoNgay;
+}
+
+
 int isCapPhatThanhCong(void *p, const char *info)
 {
 	if (p == nullptr) {

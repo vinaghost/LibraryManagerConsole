@@ -39,6 +39,5 @@ void newPass(char *pass);
 
 int isPassWordSame(User u, User f);
 
-void addUser(FILE* f, User u);
 
 
