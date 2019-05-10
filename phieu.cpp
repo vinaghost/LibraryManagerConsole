@@ -183,31 +183,31 @@ int FindPhieuMuon(Phieu &PhieuTra, Phieu PhieuMuon)
 			printf("\n");
 			printf("so luong sach da tra: ");
 			scanf("%d", &PhieuTra.soluong);
-			printf("danh sach ma sach da tra: \n");
-			for (int i = 0; i < PhieuTra.soluong; i++)
+			if (PhieuTra.soluong > 0)
 			{
-				scanf("%s", PhieuTra.a[i].ISBN);
+				printf("danh sach ma sach da tra: \n");
+				for (int i = 0; i < PhieuTra.soluong; i++)
+				{
+					scanf("%s", PhieuTra.a[i].ISBN);
+				}
 			}
 			int S = 0;
 			if (PhieuTra.soluong < PhieuMuon.soluong)
 			{
-				int a = PhieuMuon.soluong - PhieuTra.soluong;
-				for (int i = 0; i < a; i++)
+				int n = PhieuMuon.soluong - PhieuTra.soluong;
+				for (int i = 0; i < n; i++)
 				{
-					char ch[20];
 					printf("Ma sach mat: ");
-					if (fgets(ch, sizeof(ch), stdin) != NULL) {
-						size_t len = strlen(ch);
-						if (len > 0 && ch[len - 1] == '\n') {
-							ch[--len] = '\0';
-						}
-					}
+					scanf("%s", PhieuTra.a[i].ISBN);
 					int gia;
-					gia = FindGia(ch);
+					gia = FindGia(PhieuTra.a[i].ISBN);
 					S = S + gia * 2;
 				}
 			}
-			int SoNgay = Ngay(PhieuMuon.ngaytradukien, PhieuTra.ngaytrathucte);
+			int SoNgay = Ngay(PhieuTra.ngaytradukien, PhieuTra.ngaytrathucte);
+			printf("%d", SoNgay);
+			S = S + SoNgay * 7000;
+			printf("So tien phai thanh toan la: %d\n", S);
 			PhieuTra.kt = 1;
 		}
 	}
