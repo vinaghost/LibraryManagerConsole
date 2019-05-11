@@ -347,8 +347,8 @@ void loadListReader(ListReader &l)
 
 	Reader freader;
 	
-	char birth[11];
-	char lapThe[11];
+	char birth[DAY_LENGTH];
+	char lapThe[DAY_LENGTH];
 	char str[200];
 	while (fgets(str, sizeof(str), readerFile)!= NULL) {
 

@@ -17,6 +17,7 @@
 #define TMP_FILE "tmp.dat"
 
 #define HET_HAN_THE 48
+#define MUON_SACH_LENGTH 7
 
 #define PASS_LENGTH 50
 #define DAY_LENGTH 12
@@ -92,6 +93,12 @@ enum TITLE_CASE {
 	USER,
 	READER,
 	BOOK
+};
+
+enum CARD_TYPE {
+	NONE,
+	MUON,
+	TRA
 };
 #define setBit(a, b) a |= (1 << b)
 #define getBit(a, b) !(!(a & (1 << b)))

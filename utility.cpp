@@ -91,6 +91,30 @@ Date nhapDate()
 	return result;
 }
 
+Date increaseDate(Date current, int day)
+{
+	Date result;
+
+	result = current;
+
+	result.day += day;
+
+	int day_odd = result.day - getDay(result.month, result.year);
+	while (day_odd > 0 ) {
+		result.month++;
+		result.day = day_odd;
+		
+
+		if (result.month > 12) {
+			result.month = 1;
+			result.year++;
+		}
+
+		day_odd = result.day - getDay(result.month, result.year);
+	}
+	return result;
+}
+
 void showDate(Date date)
 {
 	printf("%02d/%02d/%04d", date.day, date.month, date.year);
