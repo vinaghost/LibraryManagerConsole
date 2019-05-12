@@ -5,8 +5,8 @@
 
 struct Phieu
 {
-	char MS[10];
-	char ISBN[15];
+	char MS[MS_LENGTH];
+	char ISBN[ISBN_LENGTH];
 	Date ngayMuon;
 	Date ngayTra;
 	CARD_TYPE type;

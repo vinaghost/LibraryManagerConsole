@@ -35,6 +35,7 @@ void deleteListBook(ListBook &l);
 Book geBookFirst(ListBook l);
 Book geBookLast(ListBook l);
 Book geBookPos(ListBook l, int pos);
+NodeBook* getBookFromISBN(ListBook l, char* isbn);
 
 int getTotal(ListBook l);
 

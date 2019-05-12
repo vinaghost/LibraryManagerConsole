@@ -3,22 +3,26 @@
 #include "User.h"
 #include "LinkedListReader.h"
 #include "LinkedListBook.h"
+#include "LinkedListCard.h"
 
 
-FUNCTION_CASE changePass(User &u);
-FUNCTION_CASE changeInfo(User &u);
-FUNCTION_CASE createUser(User &u);
+void changePass(User &u);
+void changeInfo(User &u);
+void createUser(User &u);
 
-FUNCTION_CASE viewReader(User u, ListReader lReader);
-FUNCTION_CASE addReader(User u, ListReader &lReader);
-FUNCTION_CASE editReader(User u, ListReader &lReader);
-FUNCTION_CASE deleteReader(User u, ListReader &lReader);
-FUNCTION_CASE findReaderAsName(User u, ListReader &lReader);
-FUNCTION_CASE findReaderAsCMND(User u, ListReader &lReader);
+void viewReader(User u, ListReader lReader);
+void addReader(User u, ListReader &lReader);
+void editReader(User u, ListReader &lReader);
+void deleteReader(User u, ListReader &lReader);
+void findReaderAsName(User u, ListReader &lReader);
+void findReaderAsCMND(User u, ListReader &lReader);
 
-FUNCTION_CASE viewBook(User u, ListBook lBook);
-FUNCTION_CASE addBook(User u, ListBook &lBook);
-FUNCTION_CASE editBook(User u, ListBook &lBook);
-FUNCTION_CASE deleteBook(User u, ListBook &lBook);
-FUNCTION_CASE findBookAsName(User u, ListBook &lBook);
-FUNCTION_CASE findBookAsISBN(User u, ListBook &lBook);
+void viewBook(User u, ListBook lBook);
+void addBook(User u, ListBook &lBook);
+void editBook(User u, ListBook &lBook);
+void deleteBook(User u, ListBook &lBook);
+void findBookAsName(User u, ListBook &lBook);
+void findBookAsISBN(User u, ListBook &lBook);
+
+
+void creatTheMuon(User u, ListPhieu &lPhieu);

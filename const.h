@@ -26,6 +26,8 @@
 #define NAME_LENGTH 50
 #define CMND_LENGTH 13
 
+#define MS_LENGTH 10
+#define ISBN_LENGTH 15
 enum PermUser {
 	ADMIN,
 	QUANLI,
@@ -79,13 +81,6 @@ enum READER_CASE {
 enum BOOK_CASE {
 	ISBN,
 	TEN_SACH
-};
-
-enum FUNCTION_CASE {
-	INVAILD = -1,
-	SUCCESS,
-	ERROR,
-	NOT_FOUND
 };
 
 enum TITLE_CASE {

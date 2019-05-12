@@ -2,7 +2,7 @@
 #include "utility.h"
 
 struct Reader {
-	char MS[10];
+	char MS[MS_LENGTH];
 	char HoTen[NAME_LENGTH];
 	char CMND[CMND_LENGTH];
 	Date birth;

@@ -39,7 +39,7 @@ Reader getReaderPos(ListReader l, int pos);
 
 NodeReader* getNodeReaderPos(ListReader l, int pos);
 
-
+int getPosReader(ListReader l, char* ms);
 
 int getTotal(ListReader l);
 

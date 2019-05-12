@@ -245,6 +245,21 @@ Book geBookPos(ListBook l, int pos)
 	return current->data;
 }
 
+NodeBook* getBookFromISBN(ListBook l, char * isbn)
+{
+	assert(l.head != NULL);
+
+	NodeBook* current = l.head;
+
+	while (current != NULL) {
+		if (strcmp(current->data.ISBN, isbn) == 0) {
+			return current;
+		}
+		current = current->next;
+	}
+	return NULL;
+}
+
 NodeBook* getNodeBookPos(ListBook l, int pos)
 {
 	assert(l.head != NULL);

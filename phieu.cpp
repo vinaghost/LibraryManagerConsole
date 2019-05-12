@@ -18,7 +18,7 @@ void initPhieu(Phieu & phieu)
 void nhapPhieuMuon_info(Phieu &phieuMuon)
 {
 	printf("Ma doc gia: ");
-	scanf("%s", phieuMuon.MS);
+	gets_s(phieuMuon.MS, sizeof(phieuMuon.MS));
 
 	printf("Ngay muon (dd/mm/yyyy): ");
 	phieuMuon.ngayMuon = nhapDate();

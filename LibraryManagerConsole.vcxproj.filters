@@ -65,6 +65,7 @@
     <None Include="admin.dat">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="LibraryManagerConsole.licenseheader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Book.h">

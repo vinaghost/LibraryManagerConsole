@@ -131,6 +131,7 @@
   <ItemGroup>
     <None Include="admin.dat" />
     <None Include="book.dat" />
+    <None Include="LibraryManagerConsole.licenseheader" />
     <None Include="reader.dat" />
     <None Include="user.dat" />
   </ItemGroup>

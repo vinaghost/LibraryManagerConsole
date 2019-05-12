@@ -235,6 +235,21 @@ NodeReader* getNodeReaderPos(ListReader l, int pos)
 	return current;
 }
 
+int getPosReader(ListReader l, char* ms)
+{
+	NodeReader* current = l.head;
+
+	int count = 1;
+	while (current != NULL) {
+		if (strcmp(ms, current->data.MS) == 0) {
+			return count;
+		}
+		current = current->next;
+		count++;
+	}
+	return -1;
+}
+
 Reader getReaderFirst(ListReader l)
 {
 	assert(l.head != NULL);
