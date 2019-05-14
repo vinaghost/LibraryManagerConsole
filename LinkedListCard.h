@@ -40,7 +40,7 @@ Phieu getPhieuPos(ListPhieu l, int pos);
 
 NodePhieu* getNodePhieuPos(ListPhieu l, int pos);
 
-int getPosPhieu(ListPhieu l, Phieu data);
+int getPosFromData(ListPhieu l, char* ms, char* isbn);
 
 int getTotal(ListPhieu l);
 

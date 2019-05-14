@@ -1,9 +1,10 @@
-#include "utility.h"
+﻿#include "utility.h"
 #include "const.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <conio.h>
+#include <time.h>
 
 void getPassword(char *pass)
 {
@@ -62,6 +63,10 @@ void showTitle(TITLE_CASE type)
 		}
 		case USER: {
 			Title_user();
+			break;
+		}
+		case CARD: {
+			Title_card();
 			break;
 		}
 	}
@@ -133,7 +138,7 @@ int MSToNum(char *str)
 	if (strlen(str) < 9) {
 		return 0;
 	}
-	int num; 
+	int num;
 
 	num = CharToNum(str[4]) * 10000 + CharToNum(str[5]) * 1000 + CharToNum(str[6]) * 100 + CharToNum(str[7]) * 10 + CharToNum(str[8]);
 	return num;
@@ -179,7 +184,22 @@ int getDay(int month, int year)
 	return 30;
 }
 
+Date getToday() {
+	Date today;
 
+	time_t current;
+	tm *timeinfo;
+
+	current = time(NULL);
+
+	timeinfo = localtime(&current);
+
+	today.day = timeinfo->tm_mday;
+	today.month = timeinfo->tm_mon + 1; // tm_mon lưu từ 0 đến 1
+	today.year = timeinfo->tm_year + 1900; // tm_year lưu từ 1900, tức năm 1901 sẽ là tm_year = 1
+
+	return today;
+}
 int getCachNgay(Date D1, Date D2)
 {
 	int SoNgay = D2.day;

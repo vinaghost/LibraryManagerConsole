@@ -18,10 +18,8 @@ void nhapPhieuMuon_info(Phieu &phieuMuon);
 void nhapPhieuMuon_info(Phieu phieuMuon_root, Phieu &phieuMuon );
 char* nhapPhieuMuon_book();
 void showPhieuMuon(Phieu &phieuMuon);
-int writePhieuMuonToFile(Phieu &phieuMuon);
 
 void nhapPhieuTra_info(Phieu &phieuTra);
 void nhapPhieuTra_info(Phieu phieuTra_root, Phieu &phieuTra );
 char* nhapPhieuTra_book();
 void showPhieuTra(Phieu &phieuTra);
-int writePhieuTraToFile(Phieu &phieuTra);

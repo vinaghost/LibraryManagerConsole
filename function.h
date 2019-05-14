@@ -25,4 +25,5 @@ void findBookAsName(User u, ListBook &lBook);
 void findBookAsISBN(User u, ListBook &lBook);
 
 
-void creatTheMuon(User u, ListPhieu &lPhieu);
+void creatTheMuon(User u, ListPhieu &lPhieuMuon, ListPhieu &lPhieuTra, ListBook &lBook, ListReader &lReader);
+void creatTheTra(User u, ListPhieu &lPhieuMuon, ListPhieu &lPhieuTra, ListBook &lBook, ListReader &lReader);

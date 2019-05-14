@@ -17,12 +17,15 @@ void initPhieu(Phieu & phieu)
 
 void nhapPhieuMuon_info(Phieu &phieuMuon)
 {
-	printf("Ma doc gia: ");
-	gets_s(phieuMuon.MS, sizeof(phieuMuon.MS));
+	printf("Ma doc gia: "); 
+	if (fgets(phieuMuon.MS, MS_LENGTH, stdin) != NULL) {
+		size_t len = strlen(phieuMuon.MS);
+		if (len > 0 && phieuMuon.MS[len - 1] == '\n') {
+			phieuMuon.MS[--len] = '\0';
+		}
+	}
 
-	printf("Ngay muon (dd/mm/yyyy): ");
-	phieuMuon.ngayMuon = nhapDate();
-
+	phieuMuon.ngayMuon = getToday();
 	phieuMuon.ngayTra = increaseDate(phieuMuon.ngayMuon, MUON_SACH_LENGTH);
 
 	phieuMuon.type = MUON;
@@ -38,6 +41,7 @@ void nhapPhieuMuon_info(Phieu phieuMuon_root, Phieu &phieuMuon)
 
 	phieuMuon.type = MUON;
 }
+
 char* nhapPhieuMuon_book() {
 	printf("Nhap ma ISBN cua sach: ");
 	char *isbn = (char*)malloc(sizeof(char) * 15);
@@ -65,15 +69,14 @@ void showPhieuMuon(Phieu &phieuMuon)
 void nhapPhieuTra_info(Phieu &phieuTra)
 {
 	printf("Ma doc gia: ");
-	scanf("%s", phieuTra.MS);
+	if (fgets(phieuTra.MS, MS_LENGTH, stdin) != NULL) {
+		size_t len = strlen(phieuTra.MS);
+		if (len > 0 && phieuTra.MS[len - 1] == '\n') {
+			phieuTra.MS[--len] = '\0';
+		}
+	}
 
-	printf("Ngay muon (dd/mm/yyyy): ");
-	phieuTra.ngayMuon = nhapDate();
-
-	printf("Ngay tra (dd/mm/yyyy): ");
-	phieuTra.ngayTra = nhapDate();
-
-	phieuTra.type = MUON;
+	phieuTra.type = TRA;
 
 }
 
@@ -81,16 +84,14 @@ void nhapPhieuTra_info(Phieu phieuTra_root, Phieu &phieuTra)
 {
 	strcpy(phieuTra.MS, phieuTra_root.MS);
 
-	phieuTra.ngayMuon = phieuTra_root.ngayMuon;
-	phieuTra.ngayTra = phieuTra_root.ngayTra;
-
-	phieuTra.type = MUON;
+	phieuTra.type = TRA;
 }
+
 char* nhapPhieuTra_book() {
 	printf("Nhap ma ISBN cua sach: ");
-	char *isbn = (char*)malloc(sizeof(char) * 15);
+	char *isbn = (char*)malloc(sizeof(char) * ISBN_LENGTH);
 	clearEnter();
-	if (fgets(isbn, 15, stdin) != NULL) {
+	if (fgets(isbn, ISBN_LENGTH, stdin) != NULL) {
 		size_t len = strlen(isbn);
 		if (len > 0 && isbn[len - 1] == '\n') {
 			isbn[--len] = '\0';
@@ -98,6 +99,7 @@ char* nhapPhieuTra_book() {
 	}
 	return isbn;
 }
+
 void showPhieuTra(Phieu &phieuTra)
 {
 	printf("Ma doc gia: %s\n", phieuTra.MS);

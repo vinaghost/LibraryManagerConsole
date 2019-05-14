@@ -251,22 +251,24 @@ NodePhieu* getNodePhieuPos(ListPhieu l, int pos)
 	return current;
 }
 
-int getPosPhieu(ListPhieu l, Phieu data)
+int getPosFromData(ListPhieu l, char *ms, char *isbn)
 {
 	assert(l.head != NULL);
 
 	NodePhieu* current = l.head;
 
 	int count = 1;
-	while (strcmp(current->data.MS, data.MS) != 0 && strcmp(current->data.ISBN, data.ISBN) != 0) {
+	while (current != NULL) {
+
+		if (strcmp(current->data.MS, ms) == 0 && strcmp(current->data.ISBN, isbn) == 0) {
+			return count;
+		}
+
 		current = current->next;
 		count++;
-		if (current == NULL) {
-			return NULL;
-		}
 	}
 
-	return count;
+	return -1;
 }
 
 Phieu getPhieuFirst(ListPhieu l)

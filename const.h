@@ -87,7 +87,8 @@ enum TITLE_CASE {
 	MAIN,
 	USER,
 	READER,
-	BOOK
+	BOOK,
+	CARD
 };
 
 enum CARD_TYPE {
@@ -105,3 +106,4 @@ enum CARD_TYPE {
 #define Title_reader() printf("\tQuan li doc gia\n")
 #define Title_user() printf("\tQuan li tai khoan\n")
 #define Title_book() printf("\tQuan li sach\n")
+#define Title_card() printf("\tMuon/Tra sach\n")
