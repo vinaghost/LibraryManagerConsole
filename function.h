@@ -27,3 +27,8 @@ void findBookAsISBN(User u, ListBook &lBook);
 
 void creatTheMuon(User u, ListPhieu &lPhieuMuon, ListPhieu &lPhieuTra, ListBook &lBook, ListReader &lReader);
 void creatTheTra(User u, ListPhieu &lPhieuMuon, ListPhieu &lPhieuTra, ListBook &lBook, ListReader &lReader);
+
+void soluongBook(ListBook lBook);
+void soluongReader(ListReader lReader);
+void Book_theotheloai(ListBook lBook, Book aBook[]);
+void Reader_theogioitinh(ListReader lReader, Reader aReader[2]);
