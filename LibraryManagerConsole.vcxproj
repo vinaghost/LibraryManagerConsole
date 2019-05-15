@@ -125,6 +125,7 @@
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="phieu.cpp" />
     <ClCompile Include="reader.cpp" />
+    <ClCompile Include="statistics.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="utility.cpp" />
   </ItemGroup>
@@ -145,6 +146,7 @@
     <ClInclude Include="menu.h" />
     <ClInclude Include="Phieu.h" />
     <ClInclude Include="reader.h" />
+    <ClInclude Include="statistics.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="utility.h" />
   </ItemGroup>
