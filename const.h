@@ -99,7 +99,7 @@ enum CARD_TYPE {
 #define setBit(a, b) a |= (1 << b)
 #define getBit(a, b) !(!(a & (1 << b)))
 
-
+#define clearScreen() system("cls")
 
 #define Line() printf("======================================\n")
 #define Title() printf("\tPhan mem quan li thu vien\n")

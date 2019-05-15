@@ -323,7 +323,7 @@ void loadListPhieu(ListPhieu &l, CARD_TYPE type)
 		case MUON: {
 			PhieuFile = fopen(PHIEUMUON_FILE, "r");
 			if (PhieuFile == NULL) {
-				printf("[ERROR] Khong tim thay file %s", PHIEUMUON_FILE);
+				fopen(PHIEUMUON_FILE, "w");
 				return;
 			}
 			break;
@@ -331,7 +331,7 @@ void loadListPhieu(ListPhieu &l, CARD_TYPE type)
 		case TRA: {
 			PhieuFile = fopen(PHIEUTRA_FILE, "r");
 			if (PhieuFile == NULL) {
-				printf("[ERROR] Khong tim thay file %s", PHIEUTRA_FILE);
+				fopen(PHIEUTRA_FILE, "w");
 				return;
 			}
 			break;

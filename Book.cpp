@@ -53,7 +53,6 @@ int addBookToFile(Book book)
 
 int nhapBook(Book &book)
 {
-	sprintf(book.ISBN, "processing");
 	printf("Nhap thong tin sach: \n");
 	printf("] Ten sach: ");
 	if (fgets(book.TenSach, sizeof(book.TenSach), stdin) != NULL) {
@@ -62,6 +61,14 @@ int nhapBook(Book &book)
 			book.TenSach[--len] = '\0';
 		}
 	}
+	printf("] Ma ISBN: ");
+	if (fgets(book.ISBN, sizeof(book.ISBN), stdin) != NULL) {
+		size_t len = strlen(book.ISBN);
+		if (len > 0 && book.ISBN[len - 1] == '\n') {
+			book.ISBN[--len] = '\0';
+		}
+	}
+
 	printf("] Ten tac gia: ");
 	if (fgets(book.TenTacGia, sizeof(book.TenTacGia), stdin) != NULL) {
 		size_t len = strlen(book.TenTacGia);
@@ -83,11 +90,11 @@ int nhapBook(Book &book)
 			book.TheLoai[--len] = '\0';
 		}
 	}
-	printf("Nam xuat ban: ");
+	printf("] Nam xuat ban: ");
 	scanf("%d", &book.NamXB);
-	printf("Gia sach: ");
+	printf("] Gia sach: ");
 	scanf("%d", &book.Gia);
-	printf("So luong sach: ");
+	printf("] So luong sach: ");
 	scanf("%d", &book.SoLuong);
 
 	return 1;
