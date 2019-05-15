@@ -13,7 +13,7 @@ void initListReader(ListReader &l)
 	l.total = 0;
 }
 
-NodeReader* CreatNodeReader(TData data)
+NodeReader* CreatNodeReader(Reader data)
 {
 	NodeReader *result = (NodeReader*)malloc(sizeof(NodeReader));
 
@@ -97,7 +97,7 @@ NodeReader* addPos(ListReader &l, NodeReader *p, int pos)
 	return p;
 }
 
-NodeReader* addFirst(ListReader &l, TData data)
+NodeReader* addFirst(ListReader &l, Reader data)
 {
 	NodeReader *p = CreatNodeReader(data);
 
@@ -107,7 +107,7 @@ NodeReader* addFirst(ListReader &l, TData data)
 	return addFirst(l, p);
 }
 
-NodeReader* addLast(ListReader & l, TData data)
+NodeReader* addLast(ListReader & l, Reader data)
 {
 	NodeReader *p = CreatNodeReader(data);
 
@@ -117,7 +117,7 @@ NodeReader* addLast(ListReader & l, TData data)
 	return addLast(l, p);
 }
 
-NodeReader* addPos(ListReader & l, TData data, int pos)
+NodeReader* addPos(ListReader & l, Reader data, int pos)
 {
 	NodeReader *p = CreatNodeReader(data);
 
@@ -151,18 +151,11 @@ int showListReader(ListReader l)
 		return -1;
 	}
 	printf("Co tong cong %d doc gia trong du lieu\n", l.total);
-	int num = 1;
+	int num = 0;
 	while (l.head != NULL) {
-
-		/*//Nen dung std::cout de co the dung TData tot nhat
-
-		printf("%d", l.head->data);
-
-		if (l.head->next != NULL) {
-			printf(" -> ");
-		}*/
-		printf("Doc gia #%d/\n", num);
 		num++;
+		printf("Doc gia #%d\n", num);
+	
 		showReader(l.head->data);
 		Line();
 
@@ -170,6 +163,42 @@ int showListReader(ListReader l)
 	}
 	printf("\n");
 	return 0;
+}
+
+int showListReader(ListReader l, char* data, READER_CASE type)
+{
+	if (l.head == NULL) {
+		return -1;
+	}
+	int num = 0;
+	int count = 0;
+	char *str = NULL;
+	while (l.head != NULL) {
+		num++;
+
+		switch (type) {
+			case HO_TEN: {
+				str = l.head->data.HoTen;
+				break;
+			}
+			case CMND: {
+				str = l.head->data.CMND;
+				break;
+			}
+		}
+
+		if (strcmp(str, data) == 0) {
+			printf("Doc gia #%d\n", num);
+			count++;
+			showReader(l.head->data);
+			Line();
+		}
+
+		
+		l.head = l.head->next;
+	}
+	printf("\n");
+	return count;
 }
 
 void deleteListReader(ListReader &l)
@@ -186,24 +215,56 @@ void deleteListReader(ListReader &l)
 		current = next;
 	}
 
-	l = ListReader();
+	initListReader(l);
 }
 
-TData getDataFirst(ListReader l)
+NodeReader* getNodeReaderPos(ListReader l, int pos)
+{
+	assert(l.head != NULL);
+
+	NodeReader* current = l.head;
+
+	int count = 1;
+	while (count != pos) {
+		current = current->next;
+		count++;
+		if (current == NULL) {
+			return NULL;
+		}
+	}
+	return current;
+}
+
+int getPosReader(ListReader l, char* ms)
+{
+	NodeReader* current = l.head;
+
+	int count = 1;
+	while (current != NULL) {
+		if (strcmp(ms, current->data.MS) == 0) {
+			return count;
+		}
+		current = current->next;
+		count++;
+	}
+	return -1;
+}
+
+Reader getReaderFirst(ListReader l)
 {
 	assert(l.head != NULL);
 
 	return l.head->data;
 }
 
-TData getDataLast(ListReader l)
+Reader getReaderLast(ListReader l)
 {
 	assert(l.head != NULL);
 
 	return l.tail->data;
 }
 
-TData getDataPos(ListReader l, int pos)
+Reader getReaderPos(ListReader l, int pos)
 {
 	assert(l.head != NULL);
 
@@ -223,7 +284,7 @@ int getTotal(ListReader l)
 	return l.total;
 }
 
-/*NodeReader* getNodeReaderFromData(ListReader l, TData data)
+/*NodeReader* getNodeReaderFromData(ListReader l, Reader data)
 {
 	if (l.head == NULL) {
 		return NULL;
@@ -240,7 +301,7 @@ int getTotal(ListReader l)
 	return current;
 }*/
 
-ListReader getNodeReaderFromData(ListReader l, char *data, READER_CASE type)
+/*ListReader getNodeReaderFromData(ListReader l, char *data, READER_CASE type)
 {
 	ListReader result;
 	initListReader(result);
@@ -277,7 +338,7 @@ ListReader getNodeReaderFromData(ListReader l, char *data, READER_CASE type)
 	
 
 	return result;
-}
+}*/
 
 ListReader joinListReader(ListReader a, ListReader b)
 {
@@ -301,8 +362,8 @@ void loadListReader(ListReader &l)
 
 	Reader freader;
 	
-	char birth[11];
-	char lapThe[11];
+	char birth[DAY_LENGTH];
+	char lapThe[DAY_LENGTH];
 	char str[200];
 	while (fgets(str, sizeof(str), readerFile)!= NULL) {
 

@@ -7,11 +7,11 @@
 
 void initBook(Book &book)
 {
-	book.ISBN[0] = '/0';
-	book.TenSach[0] = '/0';
-	book.TenTacGia[0] = '/0';
-	book.NXB[0] = '/0';
-	book.TheLoai[0] = '/0';
+	book.ISBN[0] = '\0';
+	book.TenSach[0] = '\0';
+	book.TenTacGia[0] = '\0';
+	book.NXB[0] = '\0';
+	book.TheLoai[0] = '\0';
 	book.NamXB = 0;
 	book.Gia = 0;
 	book.SoLuong = 0;
@@ -19,21 +19,22 @@ void initBook(Book &book)
 
 int isVaildBook(Book book)
 {
-	if (book.ISBN[0] == '/0') {
+	if (book.ISBN[0] == '\0') {
 		return 0;
 	}
-	if (book.TenSach[0] == '/0') {
+	if (book.TenSach[0] == '\0') {
 		return 0;
 	}
-	if (book.TenTacGia[0] == '/0') {
+	if (book.TenTacGia[0] == '\0') {
 		return 0;
 	}
-	if (book.NXB[0] == '/0') {
+	if (book.NXB[0] == '\0') {
 		return 0;
 	}
-	if (book.TheLoai[0] == '/0') {
+	if (book.TheLoai[0] == '\0') {
 		return 0;
 	}
+	return 1;
 }
 
 int addBookToFile(Book book)
@@ -52,7 +53,6 @@ int addBookToFile(Book book)
 
 int nhapBook(Book &book)
 {
-	sprintf(book.ISBN, "processing");
 	printf("Nhap thong tin sach: \n");
 	printf("] Ten sach: ");
 	if (fgets(book.TenSach, sizeof(book.TenSach), stdin) != NULL) {
@@ -61,6 +61,14 @@ int nhapBook(Book &book)
 			book.TenSach[--len] = '\0';
 		}
 	}
+	printf("] Ma ISBN: ");
+	if (fgets(book.ISBN, sizeof(book.ISBN), stdin) != NULL) {
+		size_t len = strlen(book.ISBN);
+		if (len > 0 && book.ISBN[len - 1] == '\n') {
+			book.ISBN[--len] = '\0';
+		}
+	}
+
 	printf("] Ten tac gia: ");
 	if (fgets(book.TenTacGia, sizeof(book.TenTacGia), stdin) != NULL) {
 		size_t len = strlen(book.TenTacGia);
@@ -82,11 +90,11 @@ int nhapBook(Book &book)
 			book.TheLoai[--len] = '\0';
 		}
 	}
-	printf("Nam xuat ban: ");
+	printf("] Nam xuat ban: ");
 	scanf("%d", &book.NamXB);
-	printf("Gia sach: ");
+	printf("] Gia sach: ");
 	scanf("%d", &book.Gia);
-	printf("So luong sach: ");
+	printf("] So luong sach: ");
 	scanf("%d", &book.SoLuong);
 
 	return 1;
@@ -99,9 +107,9 @@ void showBook(Book book)
 	printf("] Ten tac gia: %s\n", book.TenTacGia);
 	printf("] Ten nha xuat ban:  %s\n", book.NXB);
 	printf("] The loai: %s\n", book.TheLoai);
-	printf("Nam xuat ban: %d\n", book.NamXB);
-	printf("Gia sach: %d\n", book.Gia);
-	printf("So luong sach: %d\n", book.SoLuong);
+	printf("] Nam xuat ban: %d\n", book.NamXB);
+	printf("] Gia sach: %d\n", book.Gia);
+	printf("] So luong sach: %d\n", book.SoLuong);
 }
 
 char* nhapBook_ISBN()

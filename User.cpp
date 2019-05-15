@@ -3,6 +3,7 @@
 #include "User.h"
 #include "const.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "utility.h"
 
@@ -13,8 +14,8 @@ void initUser(User &t) {
 	t.permission = 0;
 
 	t.HoTen[0] = '\0';
-	t.MS[0] = '\0';
-	t.Birth[0] = '\0';
+	t.CMND[0] = '\0';
+	initDate(t.ngaySinh);
 	t.DiaChi[0] = '\0';
 	t.Nam = 0;
 	t.active = 0;
@@ -26,18 +27,20 @@ void showUser(User u)
 {
 
 	printf("Username: %s\n", u.name);
-	printf("password: %s\n", u.password);
+	//printf("password: %s\n", u.password);
 
 
 	printf("Phan quyen (Quan li: 1, Chuyen vien: 2): %d\n", u.permission);
 
-	printf("Ho Ten(cac tu cach nhau bang dau _): %s\n", u.HoTen);
+	printf("Ho Ten: %s\n", u.HoTen);
 
-	printf("Ma So SV: %s\n", u.MS);
+	printf("CMND: %s\n", u.CMND);
 
-	printf("Birth: %s\n", u.Birth);
+	printf("Birth: ");
+	showDate(u.ngaySinh);
+	printf("\n");
 
-	printf("Tinh/Thanh pho(cac tu cach nhau bang dau _): %s\n", u.DiaChi);
+	printf("Tinh/Thanh pho: %s\n", u.DiaChi);
 
 	printf("Gioi Tinh (Nam: 1; Nu: 0): %d\n", u.Nam);
 	
@@ -45,6 +48,38 @@ void showUser(User u)
 
 }
 
+User isExistUser(User u)
+{
+	FILE *userFile;
+
+	userFile = fopen(USER_FILE, "r");
+
+	if (userFile == NULL) {
+		printf("[ERROR] Khong tim thay file user.dat");
+	}
+
+
+	User fuser;
+	int count = 1;
+	char str[200];
+	while (fgets(str, sizeof(str), userFile) != NULL) {
+
+		char birth[DAY_LENGTH];
+		sscanf(str, "%[^,\n], %[^,\n], %d, %[^,\n], %[^,\n], %[^,\n], %[^,\n], %d %d", fuser.name, fuser.password, &fuser.permission, fuser.HoTen, fuser.CMND, birth, fuser.DiaChi, &fuser.Nam, &fuser.active);
+
+		if (strcmp(u.name, fuser.name) == 0) {
+			fuser.location = count;
+			fuser.ngaySinh = StringToDate(birth);
+			return fuser;
+		}
+
+		count++;
+	}
+
+	initUser(fuser);
+
+	return fuser;
+}
 int isVaildUser(User t)
 {
 	if (t.name[0] == '\0') {
@@ -53,51 +88,23 @@ int isVaildUser(User t)
 	return 1;
 }
 
-int findUserLocation(User u)
+int addUser(User u)
 {
-	FILE *userFile;
-
-	userFile = fopen(USER_FILE, "r");
-
-	if (userFile == NULL)
-	{
-		printf("[ERROR] Khong tim thay file %s", USER_FILE);
-	}
-	int dem = 0;
-
-	User f;
-
-	while (!feof(userFile))
-	{
-		dem++;
-		char str[200];
-		fgets(str, sizeof(str), userFile);
-
-		sscanf(str, "%s %s %d %s %s %s %s %d %d", f.name, f.password, &f.permission, f.HoTen, f.MS, f.Birth, f.DiaChi, &f.Nam, &f.active);
-
-
-		if (strcmp(u.name, f.name) == 0)
-		{
-			return dem;
-		}
-	}
-
-	return -1;
-}
-
-void createUser(User u)
-{
-	printf("Nhap thong tin nguoi dung:\n");
+	printf("Nhap thong tin tai khoan:\n");
 	FILE *f;
 	f = fopen(USER_FILE, "a+");
 	
+	if (f == NULL) {
+		return -1;
+	}
 	nhapUser(u);
 	nhapInf(u);
 
-	fprintf(f, "%s %s %d %s %s %s %s %d 1\n", u.name, u.password, u.permission, u.HoTen, u.MS, u.Birth, u.DiaChi, u.Nam);
+	char* birth = DateToString(u.ngaySinh);
+	fprintf(f, "%s, %s, %d, %s, %s, %s, %s, %d, 1\n", u.name, u.password, u.permission, u.HoTen, u.CMND, birth, u.DiaChi, u.Nam);
 	fclose(f);
-
-	printf("Ghi file thanh cong");
+	free(birth);
+	return 1;
 }
 
 void addPerm(User &u, PermUser perm) {
@@ -197,121 +204,57 @@ void nhapUser(User &u)
 	printf("Username: ");
 	scanf("%s", u.name);
 	
-	
+	clearEnter();
 	printf("Password: ");
 	getPassword(u.password);
-
 
 	printf("Phan quyen (Quan li: 1, Chuyen vien: 2): ");
 	PermUser perm;
 	scanf("%d", &perm);
 	addPerm(u, perm);
+
+	clearEnter();
 }
 
 void nhapInf(User &u)
 {
-	printf("Ho Ten(cac tu cach nhau bang dau _): ");
-	scanf("%s", u.HoTen);
+	printf("Ho Ten: ");
+	if (fgets(u.HoTen, sizeof(u.HoTen), stdin) != NULL) {
+		size_t len = strlen(u.HoTen);
+		if (len > 0 && u.HoTen[len - 1] == '\n') {
+			u.HoTen[--len] = '\0';
+		}
+	}
+	printf("Ngay sinh (dd/mm/yyyy): ");
+	u.ngaySinh = nhapDate();
 
-	printf("Ma So SV: ");
-	scanf("%s", u.MS);
-
-	printf("Birth: ");
-	scanf("%s", u.Birth);
-
-	printf("Tinh/Thanh pho(cac tu cach nhau bang dau _): ");
-	scanf("%s", u.DiaChi);
-
+	clearEnter();
+	printf("CMND: ");
+	scanf("%s", u.CMND);
+	clearEnter();
+	printf("Tinh/Thanh pho: ");
+	if (fgets(u.DiaChi, sizeof(u.DiaChi), stdin) != NULL) {
+		size_t len = strlen(u.DiaChi);
+		if (len > 0 && u.DiaChi[len - 1] == '\n') {
+			u.DiaChi[--len] = '\0';
+		}
+	}
 	printf("Gioi Tinh (Nam: 1; Nu: 0): ");
 	scanf("%d", &u.Nam);
 }
 
-int changePass(User &u)
-{
-	int delete_line = u.location;
-
-	FILE *root, *tmp;
-	char ch;
-	int count = 1;
-
-	char pass[50];
-
-
-	newPass(pass);
-
-	if (strcmp(pass, u.password) != 0) {
-		return 0;
-	}
-
-	root = fopen(USER_FILE, "r");
-	tmp = fopen(TMP_FILE, "w");
-
-	ch = getc(root);
-	while (ch != EOF)
-	{
-		ch = getc(root);
-		if (ch == '\n')
-			count++;
-		if (count != delete_line)
-		{
-			putc(ch, tmp);
-		}
-	}
-
-	fprintf(tmp, "%s %s %d %s %s %s %s %d 1\n", u.name, pass, u.permission, u.HoTen, u.MS, u.Birth, u.DiaChi, u.Nam);
-
-	fclose(root);
-	fclose(tmp);
-	remove(USER_FILE);
-	rename(TMP_FILE, USER_FILE);
-
-	return 1;
-}
 
 void newPass(char *pass)
 {
 	printf("Nhap pass moi: ");
-	scanf("%s", pass);
+	getPassword(pass);
 }
 
-int changeInf(User &u)
+
+int isPassWordSame(User u, User f)
 {
-	int delete_line = u.location;
-
-	FILE *root, *tmp;
-	char ch;
-	int count = 1;
-
-	char pass[50];
-
-
-	nhapInf(u);
-
-	if (strcmp(pass, u.password) != 0) {
-		return 0;
+	if (strcmp(u.password, f.password) == 0) {
+		return 1;
 	}
-
-	root = fopen(USER_FILE, "r");
-	tmp = fopen(TMP_FILE, "w");
-
-	ch = getc(root);
-	while (ch != EOF)
-	{
-		ch = getc(root);
-		if (ch == '\n')
-			count++;
-		if (count != delete_line)
-		{
-			putc(ch, tmp);
-		}
-	}
-
-	fprintf(tmp, "%s %s %d %s %s %s %s %d 1", u.name, pass, u.permission, u.HoTen, u.MS, u.Birth, u.DiaChi, u.Nam);
-
-	fclose(root);
-	fclose(tmp);
-	remove(USER_FILE);
-	rename(TMP_FILE, USER_FILE);
-
-	return 1;
+	return 0;
 }

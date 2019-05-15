@@ -2,9 +2,9 @@
 #include "utility.h"
 
 struct Reader {
-	char MS[10];
-	char HoTen[40];
-	char CMND[20];
+	char MS[MS_LENGTH];
+	char HoTen[NAME_LENGTH];
+	char CMND[CMND_LENGTH];
 	Date birth;
 	int nam;
 	Date lapThe;

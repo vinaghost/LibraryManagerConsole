@@ -115,30 +115,39 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="const.h" />
-    <ClInclude Include="function.h" />
-    <ClInclude Include="LinkedListReader.h" />
-    <ClInclude Include="login.h" />
-    <ClInclude Include="logout.h" />
-    <ClInclude Include="menu.h" />
-    <ClInclude Include="reader.h" />
-    <ClInclude Include="User.h" />
-    <ClInclude Include="utility.h" />
-  </ItemGroup>
-  <ItemGroup>
+    <ClCompile Include="Book.cpp" />
     <ClCompile Include="function.cpp" />
+    <ClCompile Include="LinkedListBook.cpp" />
+    <ClCompile Include="LinkedListCard.cpp" />
     <ClCompile Include="LinkedListReader.cpp" />
     <ClCompile Include="login.cpp" />
-    <ClCompile Include="logout.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
+    <ClCompile Include="phieu.cpp" />
     <ClCompile Include="reader.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="utility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="admin.dat" />
+    <None Include="book.dat" />
+    <None Include="LibraryManagerConsole.licenseheader" />
     <None Include="reader.dat" />
     <None Include="user.dat" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Book.h" />
+    <ClInclude Include="const.h" />
+    <ClInclude Include="function.h" />
+    <ClInclude Include="LinkedListBook.h" />
+    <ClInclude Include="LinkedListCard.h" />
+    <ClInclude Include="LinkedListReader.h" />
+    <ClInclude Include="login.h" />
+    <ClInclude Include="menu.h" />
+    <ClInclude Include="Phieu.h" />
+    <ClInclude Include="reader.h" />
+    <ClInclude Include="User.h" />
+    <ClInclude Include="utility.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

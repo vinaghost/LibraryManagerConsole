@@ -12,7 +12,7 @@ void initListBook(ListBook &l)
 	l.total = 0;
 }
 
-NodeBook* CreatNodeBook(TData data)
+NodeBook* CreatNodeBook(Book data)
 {
 	NodeBook *result = (NodeBook*)malloc(sizeof(NodeBook));
 
@@ -96,7 +96,7 @@ NodeBook* addPos(ListBook &l, NodeBook *p, int pos)
 	return p;
 }
 
-NodeBook* addFirst(ListBook &l, TData data)
+NodeBook* addFirst(ListBook &l, Book data)
 {
 	NodeBook *p = CreatNodeBook(data);
 
@@ -106,7 +106,7 @@ NodeBook* addFirst(ListBook &l, TData data)
 	return addFirst(l, p);
 }
 
-NodeBook* addLast(ListBook & l, TData data)
+NodeBook* addLast(ListBook & l, Book data)
 {
 	NodeBook *p = CreatNodeBook(data);
 
@@ -116,7 +116,7 @@ NodeBook* addLast(ListBook & l, TData data)
 	return addLast(l, p);
 }
 
-NodeBook* addPos(ListBook & l, TData data, int pos)
+NodeBook* addPos(ListBook & l, Book data, int pos)
 {
 	NodeBook *p = CreatNodeBook(data);
 
@@ -150,25 +150,54 @@ int showListBook(ListBook l)
 		return -1;
 	}
 	printf("Co tong cong %d sach trong du lieu\n", l.total);
-	int num = 1;
+	int num = 0;
 	while (l.head != NULL) {
-
-		/*//Nen dung std::cout de co the dung TData tot nhat
-
-		printf("%d", l.head->data);
-
-		if (l.head->next != NULL) {
-			printf(" -> ");
-		}*/
-		printf("Sach #%d/\n", num);
 		num++;
+
+
+		printf("Sach #%d\n", num);
 		showBook(l.head->data);
 		Line();
 
 		l.head = l.head->next;
 	}
 	printf("\n");
-	return 0;
+	return num;
+}
+
+int showListBook(ListBook l, char * data, BOOK_CASE type)
+{
+	if (l.head == NULL) {
+		return -1;
+	}
+
+	int num = 0;
+	int count = 0;
+	char *str = NULL;
+	while (l.head != NULL) {
+		num++;
+
+
+		switch (type) {
+			case ISBN: {
+				str = l.head->data.ISBN;
+				break;
+			}
+			case TEN_SACH: {
+				str = l.head->data.TenSach;
+				break;
+			}
+		}
+
+		if (strcmp(str, data) == 0) {
+			printf("Sach #%d\n", num);
+			count++;
+			showBook(l.head->data);
+			Line();
+		}
+	}
+	printf("\n");
+	return count;
 }
 
 void deleteListBook(ListBook &l)
@@ -188,21 +217,21 @@ void deleteListBook(ListBook &l)
 	l = ListBook();
 }
 
-TData getDataFirst(ListBook l)
+Book geBookFirst(ListBook l)
 {
 	assert(l.head != NULL);
 
 	return l.head->data;
 }
 
-TData getDataLast(ListBook l)
+Book geBookLast(ListBook l)
 {
 	assert(l.head != NULL);
 
 	return l.tail->data;
 }
 
-TData getDataPos(ListBook l, int pos)
+Book geBookPos(ListBook l, int pos)
 {
 	assert(l.head != NULL);
 
@@ -216,13 +245,44 @@ TData getDataPos(ListBook l, int pos)
 	return current->data;
 }
 
+NodeBook* getBookFromISBN(ListBook l, char * isbn)
+{
+	assert(l.head != NULL);
+
+	NodeBook* current = l.head;
+
+	while (current != NULL) {
+		if (strcmp(current->data.ISBN, isbn) == 0) {
+			return current;
+		}
+		current = current->next;
+	}
+	return NULL;
+}
+
+NodeBook* getNodeBookPos(ListBook l, int pos)
+{
+	assert(l.head != NULL);
+
+	NodeBook* current = l.head;
+
+	int count = 1;
+	while (count != pos) {
+		current = current->next;
+		count++;
+		if (current == NULL) {
+			return NULL;
+		}
+	}
+	return current;
+}
 
 int getTotal(ListBook l)
 {
 	return l.total;
 }
 
-/*NodeBook* getNodeBookFromData(ListBook l, TData data)
+/*NodeBook* getNodeBookFromData(ListBook l, Book data)
 {
 	if (l.head == NULL) {
 		return NULL;

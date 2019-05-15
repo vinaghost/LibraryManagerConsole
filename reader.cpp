@@ -65,10 +65,8 @@ Date getHetHan(Date lapThe)
 }
 
 int nhapReader(Reader &reader)
-{
-	sprintf(reader.MS, "processing");
-
-	printf("Nhap thong tin doc gia: \n");
+{	
+	clearEnter();
 	printf("] Ho ten: ");
 	if (fgets(reader.HoTen, sizeof(reader.HoTen), stdin) != NULL) {
 		size_t len = strlen(reader.HoTen);
@@ -105,7 +103,7 @@ void showReader(Reader reader)
 	showDate(reader.birth);
 	printf("\n");
 
-	printf("] Gioi tinh: %s", reader.nam ? "nam" : "nu");
+	printf("] Gioi tinh: %s\n", reader.nam ? "nam" : "nu");
 
 	printf("] Ngay tao the: ");
 	showDate(reader.lapThe);
@@ -114,12 +112,12 @@ void showReader(Reader reader)
 
 char* nhapReader_CMND()
 {
-	char* cmnd = (char*)malloc(sizeof(char) * 13);
+	char* cmnd = (char*)malloc(sizeof(char) * CMND_LENGTH);
 	if (cmnd == NULL) {
 		return NULL;
 	}
 	printf("Nhap CMND cua doc gia: ");
-	if (fgets(cmnd, sizeof(cmnd), stdin) != NULL) {
+	if (fgets(cmnd, CMND_LENGTH, stdin) != NULL) {
 		size_t len = strlen(cmnd);
 		if (len > 0 && cmnd[len - 1] == '\n') {
 			cmnd[--len] = '\0';
@@ -131,11 +129,11 @@ char* nhapReader_CMND()
 
 char* nhapReader_HoTen()
 {
-	char* hoTen = (char*)malloc(sizeof(char) * 13);
+	char* hoTen = (char*)malloc(sizeof(char) * NAME_LENGTH);
 	if (hoTen == NULL) {
 		return NULL;
 	}
-	if (fgets(hoTen, sizeof(hoTen), stdin) != NULL) {
+	if (fgets(hoTen, NAME_LENGTH, stdin) != NULL) {
 		size_t len = strlen(hoTen);
 		if (len > 0 && hoTen[len - 1] == '\n') {
 			hoTen[--len] = '\0';

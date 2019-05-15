@@ -2,10 +2,8 @@
 #include "Book.h"
 #include "const.h"
 
-typedef Book TData;
-
 struct NodeBook {
-	TData data;
+	Book data;
 	NodeBook* next;
 };
 
@@ -18,29 +16,31 @@ struct ListBook {
 
 void initListBook(ListBook &l);
 
-NodeBook* CreatNodeBook(TData data);
+NodeBook* CreatNodeBook(Book data);
 
 NodeBook* addFirst(ListBook &l, NodeBook *p);
 NodeBook* addLast(ListBook &l, NodeBook *p);
 NodeBook* addPos(ListBook &l, NodeBook *p, int pos);
 
-NodeBook* addFirst(ListBook &l, TData data);
-NodeBook* addLast(ListBook &l, TData data);
-NodeBook* addPos(ListBook &l, TData data, int pos);
+NodeBook* addFirst(ListBook &l, Book data);
+NodeBook* addLast(ListBook &l, Book data);
+NodeBook* addPos(ListBook &l, Book data, int pos);
 
 
 void deletePos(ListBook &l, int pos);
 int showListBook(ListBook l);
+int showListBook(ListBook l, char* data, BOOK_CASE type);
 void deleteListBook(ListBook &l);
 
-TData getDataFirst(ListBook l);
-TData getDataLast(ListBook l);
-TData getDataPos(ListBook l, int pos);
+Book geBookFirst(ListBook l);
+Book geBookLast(ListBook l);
+Book geBookPos(ListBook l, int pos);
+NodeBook* getBookFromISBN(ListBook l, char* isbn);
 
 int getTotal(ListBook l);
 
-ListBook getNodeBookFromData(ListBook l, char* data, BOOK_CASE type);
-
+//ListBook getNodeBookFromData(ListBook l, char* data, BOOK_CASE type);
+NodeBook* getNodeBookPos(ListBook l, int pos);
 ListBook joinListBook(ListBook a, ListBook b);
 
 void loadListBook(ListBook &l);
