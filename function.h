@@ -32,3 +32,4 @@ void soluongBook(ListBook lBook);
 void soluongReader(ListReader lReader);
 void Book_theotheloai(ListBook lBook, Book aBook[]);
 void Reader_theogioitinh(ListReader lReader, Reader aReader[2]);
+void Card_trehan(ListPhieu lPhieu);
