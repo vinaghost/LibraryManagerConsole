@@ -278,3 +278,27 @@ char* maHoa(char* password)
 	encrypt[len-1] = '\0';
 	return encrypt;
 }
+
+bool ktngay(Date D1, Date D2)
+{
+	bool kt = false;
+	if (D1.year < D2.year)
+	{
+		kt = true;
+	}
+	else if (D1.year == D2.year)
+	{
+		if (D1.month < D2.month)
+		{
+			kt = true;
+		}
+		else if (D1.month == D2.month)
+		{
+			if (D1.day < D2.day)
+			{
+				kt = true;
+			}
+		}
+	}
+	return kt;
+}
