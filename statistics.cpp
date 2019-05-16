@@ -6,19 +6,6 @@
 #include <string.h>
 #include "LinkedListBook.h"
 
-int soluongBook(ListBook lBook)
-{
-	int dem = 0;
-	NodeBook *current, *next;
-	current = lBook.head;
-	while (current != NULL) {
-		dem++;
-		next = current->next;
-		free(current);
-		current = next;
-	}
-	return dem;
-}
 
 int soluongReader(ListReader lReader)
 {
@@ -68,7 +55,7 @@ void Book_theotheloai(ListBook lBook, Book aBook[])
 void Reader_theogioitinh(ListReader lReader, Reader aReader[2])
 {
 	//aReader[1] chua so luong raeder nam, aReader[2] chua so luong reader nu
-	NodeReader *current, *next;
+	NodeReader *current;
 	current = lReader.head;
 	while (current != NULL) {
 		if (current->data.nam == 1)
@@ -79,9 +66,7 @@ void Reader_theogioitinh(ListReader lReader, Reader aReader[2])
 		{
 			aReader[2].nam = aReader[2].nam + 1;
 		}
-		next = current->next;
-		free(current);
-		current = next;
+		current = current->next;
 	}
 	printf("So luong doc gia nam: %d", aReader[1].nam);
 	printf("So luong doc gia nu: %d", aReader[2].nam);
