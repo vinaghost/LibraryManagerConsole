@@ -214,6 +214,7 @@ void deleteListBook(ListBook &l)
 		current = next;
 	}
 
+	free(l.typeArray);
 	l = ListBook();
 }
 
@@ -375,6 +376,24 @@ void loadListBook(ListBook &l)
 
 	fclose(BookFile);
 
+	TypeBook* typeBook = (TypeBook*)malloc(sizeof(TypeBook) * l.total);
+
+	NodeBook *current = l.head;
+	int count = 0;
+	while (current != NULL) {
+		for (int i = 0; i < count; i++) {
+			if (strcmp(current->data.TheLoai, (typeBook + i)->type) == 0) {
+				(typeBook + i)->SoLuong++;
+				break;
+			}
+		}
+
+		strcpy((typeBook + count)->type, current->data.TheLoai);
+		(typeBook + count)->SoLuong++;
+		count++;
+	}
+	l.totalType = count;
+	l.typeArray = typeBook;
 }
 
 void writeListBookToFile(ListBook l)

@@ -12,6 +12,11 @@ struct Book {
 	int SoLuong;
 };
 
+struct TypeBook {
+	char type[20];
+	int SoLuong;
+};
+
 void initBook(Book &book);
 
 int isVaildBook(Book book);
