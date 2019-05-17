@@ -111,7 +111,7 @@ void addPerm(User &u, PermUser perm) {
 
 	switch (perm) {
 		case ADMIN: {
-			for (int i = LOGIN; i < VIEWNUMREADERASLATE + 1; i++) {
+			for (int i = LOGIN; i < VIEWNUMREADERLATE + 1; i++) {
 				u.permission |= (1 << i);
 			}
 			break;
@@ -147,11 +147,11 @@ void addPerm(User &u, PermUser perm) {
 
 			//6.x
 			setBit(u.permission, VIEWNUMBOOK);
-			setBit(u.permission, VIEWNUMBOOKASCATA);
+			setBit(u.permission, VIEWNUMBOOKASTYPE);
 			setBit(u.permission, VIEWNUMREADER);
 			setBit(u.permission, VIEWNUMREADERASGENDER);
 			setBit(u.permission, VIEWNUMBOOKASBORROW);
-			setBit(u.permission, VIEWNUMREADERASLATE);
+			setBit(u.permission, VIEWNUMREADERLATE);
 			break;
 		}
 		
@@ -192,7 +192,7 @@ void addPerm(User &u, PermUser perm) {
 			//setBit(u.permission, VIEWNUMREADER);
 			//setBit(u.permission, VIEWNUMREADERASGENDER);
 			setBit(u.permission, VIEWNUMBOOKASBORROW);
-			setBit(u.permission, VIEWNUMREADERASLATE);
+			setBit(u.permission, VIEWNUMREADERLATE);
 			break;
 		}
 	}
