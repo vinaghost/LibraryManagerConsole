@@ -30,7 +30,7 @@ void creatTheTra(User u, ListPhieu &lPhieuMuon, ListPhieu &lPhieuTra, ListBook &
 
 
 void viewNumBook(User u, ListBook lBook);
-void viewNumBookAsType(User u, ListBook lBook, Book aBook[]);
+void viewNumBookAsType(User u, ListBook lBook);
 void viewNumReader(User u, ListReader lReader);
 void viewNumReaderAsGender(User u, ListReader lReader, Reader aReader[2]);
 void viewBookAsBorrow(User u, ListPhieu lPhieu);
