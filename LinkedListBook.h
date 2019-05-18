@@ -11,6 +11,8 @@ struct ListBook {
 	NodeBook *head, *tail;
 	int total;
 
+	TypeBook* typeArray;
+	int totalType;
 
 };
 

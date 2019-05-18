@@ -13,6 +13,7 @@ struct ListReader {
 	NodeReader *head, *tail;
 	int total;
 
+	int nam;
 
 };
 

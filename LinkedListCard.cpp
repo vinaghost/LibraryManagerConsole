@@ -217,6 +217,29 @@ int showListPhieu(ListPhieu l, char* ms)
 	return num;
 }
 
+int showListPhieuLate(ListPhieu l)
+{
+	if (l.head == NULL) {
+		return -1;
+	}
+	int num = 0;
+
+	if (l.head->data.type == MUON) {
+		while (l.head != NULL) {
+			num++;
+			printf("Phieu #%d\n", num);
+			showPhieuMuon(l.head->data);
+			Line();
+			if (getCachNgay(l.head->data.ngayTra, getToday()) > MUON_SACH_LENGTH) {
+				break;
+			}
+			l.head = l.head->next;
+		}
+		printf("\n");
+	}
+	return num;
+}
+
 void deleteListPhieu(ListPhieu &l)
 {
 	if (l.head == NULL) {

@@ -374,8 +374,13 @@ void loadListReader(ListReader &l)
 		sscanf(str, "%[^,\n], %[^,\n], %[^,\n], %[^,\n], %d, %[^,\n]\n", freader.MS, freader.HoTen, freader.CMND, birth, &freader.nam, lapThe);
 		freader.birth = StringToDate(birth);
 		freader.lapThe = StringToDate(lapThe);
-
+		
 		addFirst(l, freader);
+
+		if (freader.nam == 1) {
+			l.nam++;
+		}
+
 	}
 
 	fclose(readerFile);

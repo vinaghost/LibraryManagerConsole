@@ -32,6 +32,7 @@ NodePhieu* addPos(ListPhieu &l, Phieu data, int pos);
 void deletePos(ListPhieu &l, int pos);
 int showListPhieu(ListPhieu l);
 int showListPhieu(ListPhieu l, char* MS);
+int showListPhieuLate(ListPhieu l);
 void deleteListPhieu(ListPhieu &l);
 
 Phieu getPhieuFirst(ListPhieu l);
