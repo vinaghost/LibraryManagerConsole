@@ -395,9 +395,11 @@ void loadListBook(ListBook &l)
 		if (!exist) {
 			strcpy((typeBook + count)->type, current->data.TheLoai);
 			(typeBook + count)->SoLuong = 1;
+			
+			count++;
 		}
 		exist = 0;
-		count++;
+		
 		current = current->next;
 	}
 	l.totalType = count;
