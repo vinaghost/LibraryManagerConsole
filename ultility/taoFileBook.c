@@ -18,13 +18,18 @@ char *randomString(int len) {
   char *rstr = malloc((len + 1) * sizeof(char));
   int i;
   for (i = 0; i < len; i++) {
-    rstr[i] = alphabet[intN(strlen(alphabet))];
+        if(rand() % 10 == 0) {
+            rstr[i] = ' ';
+        }
+        else {
+            rstr[i] = alphabet[intN(strlen(alphabet))];
+        }
   }
   rstr[len] = '\0';
   return rstr;
 }
 int main() {
-    FILE* f = fopen(BOOK_FILE, "a");
+    FILE* f = fopen(BOOK_FILE, "w");
     if( f == NULL ) {
         return -1;
     }
