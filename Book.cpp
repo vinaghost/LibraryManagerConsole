@@ -96,13 +96,14 @@ int nhapBook(Book &book)
 	scanf("%d", &book.Gia);
 	printf("] So luong sach: ");
 	scanf("%d", &book.SoLuong);
+	clearEnter();
 
 	return 1;
 }
 
 void showBook(Book book)
 {
-	printf("Ma sach(ISBN): %s\n", book.ISBN);
+	printf("] Ma sach(ISBN): %s\n", book.ISBN);
 	printf("] Ten sach: %s\n", book.TenSach);
 	printf("] Ten tac gia: %s\n", book.TenTacGia);
 	printf("] Ten nha xuat ban:  %s\n", book.NXB);

@@ -378,19 +378,27 @@ void loadListBook(ListBook &l)
 
 	TypeBook* typeBook = (TypeBook*)malloc(sizeof(TypeBook) * l.total);
 
+	if (typeBook == NULL) {
+		printf("[ERROR] thieu bo nho");
+		return;
+	}
 	NodeBook *current = l.head;
-	int count = 0;
+	int count = 0, exist = 0;
 	while (current != NULL) {
 		for (int i = 0; i < count; i++) {
 			if (strcmp(current->data.TheLoai, (typeBook + i)->type) == 0) {
 				(typeBook + i)->SoLuong++;
+				exist = 1;
 				break;
 			}
 		}
-
-		strcpy((typeBook + count)->type, current->data.TheLoai);
-		(typeBook + count)->SoLuong++;
+		if (!exist) {
+			strcpy((typeBook + count)->type, current->data.TheLoai);
+			(typeBook + count)->SoLuong = 1;
+		}
+		exist = 0;
 		count++;
+		current = current->next;
 	}
 	l.totalType = count;
 	l.typeArray = typeBook;
