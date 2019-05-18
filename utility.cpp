@@ -69,6 +69,10 @@ void showTitle(TITLE_CASE type)
 			Title_card();
 			break;
 		}
+		case STATISTICS: {
+			Title_statistics();
+			break;
+		}
 	}
 	Line();
 }

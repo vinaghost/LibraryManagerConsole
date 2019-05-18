@@ -25,6 +25,7 @@ int MSToNum(char *str);
 
 char* DateToString(Date date);
 Date StringToDate(char *sdate);
+
 void showInfo(const char* info); 
 
 

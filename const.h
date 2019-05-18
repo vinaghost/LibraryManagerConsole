@@ -108,3 +108,4 @@ enum CARD_TYPE {
 #define Title_user() printf("\tQuan li tai khoan\n")
 #define Title_book() printf("\tQuan li sach\n")
 #define Title_card() printf("\tMuon/Tra sach\n")
+#define Title_statistics() printf("\tThong ke\n")
