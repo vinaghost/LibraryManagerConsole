@@ -97,6 +97,7 @@ Date nhapDate()
 	Date result;
 
 	scanf("%d/%d/%d", &result.day, &result.month, &result.year);
+	clearEnter();
 	return result;
 }
 
