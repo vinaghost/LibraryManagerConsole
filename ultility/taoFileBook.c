@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
 #define BOOK_FILE "book.dat"
@@ -14,11 +15,11 @@ char theLoai[][20] = {
     "Tu dien",
     "Tai lieu tham khao"
 };
-char *randomString(int len) {
+char *randomString(int len, int space) {
   char *rstr = malloc((len + 1) * sizeof(char));
   int i;
   for (i = 0; i < len; i++) {
-        if(rand() % 10 == 0) {
+        if(space && rand() % 10 == 0) {
             rstr[i] = ' ';
         }
         else {
@@ -41,26 +42,26 @@ int main() {
 
     char *tmp;
     while(n--) {
-        tmp = randomString(14);
+        tmp = randomString(14, 0);
         sprintf(isbn, tmp);
         isbn[14] = '\0';
         printf(tmp);
         printf("\n");
         free(tmp);
 
-        tmp =  randomString( 12);
+        tmp =  randomString( 12, 1);
         sprintf(tenTacGia, tmp);
         printf(tmp);
         printf("\n");
         free(tmp);
 
-         tmp = randomString( 12);
+         tmp = randomString( 12, 1);
         sprintf(tensach, tmp);
         printf(tmp);
         printf("\n");
         free(tmp);
 
-         tmp = randomString( 12);
+         tmp = randomString( 12, 1);
         sprintf(nXB, tmp);
         printf(tmp);
         printf("\n");
