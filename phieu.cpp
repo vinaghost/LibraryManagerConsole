@@ -45,7 +45,6 @@ void nhapPhieuMuon_info(Phieu phieuMuon_root, Phieu &phieuMuon)
 char* nhapPhieuMuon_book() {
 	printf("Nhap ma ISBN cua sach: ");
 	char *isbn = (char*)malloc(sizeof(char) * 15);
-	clearEnter();
 	if (fgets(isbn, 15, stdin) != NULL) {
 		size_t len = strlen(isbn);
 		if (len > 0 && isbn[len - 1] == '\n') {
