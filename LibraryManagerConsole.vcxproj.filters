@@ -68,6 +68,9 @@
     <None Include="admin.dat">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="phieu_muon.dat">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Book.h">
