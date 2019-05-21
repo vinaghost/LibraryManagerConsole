@@ -33,7 +33,7 @@ NodeReader* CreatNodeReader(Reader data)
 	return result;
 }
 
-NodeReader* addFirst(ListReader &l, NodeReader *p)
+NodeReader* addFirst (ListReader &l, NodeReader *p)
 {
 	if (p == NULL) return NULL;
 
@@ -47,6 +47,10 @@ NodeReader* addFirst(ListReader &l, NodeReader *p)
 	p->next = l.head;
 	l.head = p;
 	l.total++;
+
+	if (p->data.nam == 1) {
+		l.nam++;
+	}
 	return p;
 }
 
@@ -378,9 +382,7 @@ void loadListReader(ListReader &l)
 		
 		addFirst(l, freader);
 
-		if (freader.nam == 1) {
-			l.nam++;
-		}
+		
 
 	}
 
