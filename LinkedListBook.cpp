@@ -1,6 +1,5 @@
 #include "LinkedListBook.h"
 #include "const.h"
-#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -222,38 +221,8 @@ void deleteListBook(ListBook &l)
 	l = ListBook();
 }
 
-Book geBookFirst(ListBook l)
-{
-	assert(l.head != NULL);
-
-	return l.head->data;
-}
-
-Book geBookLast(ListBook l)
-{
-	assert(l.head != NULL);
-
-	return l.tail->data;
-}
-
-Book geBookPos(ListBook l, int pos)
-{
-	assert(l.head != NULL);
-
-	NodeBook* current = l.head;
-
-	int count = 1;
-	while (count != pos) {
-		current = current->next;
-		count++;
-	}
-	return current->data;
-}
-
 NodeBook* getBookFromISBN(ListBook l, char * isbn)
 {
-	assert(l.head != NULL);
-
 	NodeBook* current = l.head;
 
 	while (current != NULL) {
@@ -267,42 +236,24 @@ NodeBook* getBookFromISBN(ListBook l, char * isbn)
 
 NodeBook* getNodeBookPos(ListBook l, int pos)
 {
-	assert(l.head != NULL);
-
 	NodeBook* current = l.head;
 
 	int count = 1;
-	while (count != pos) {
-		current = current->next;
-		count++;
-		if (current == NULL) {
-			return NULL;
+
+	while (current != NULL) {
+		if (count == pos) {
+			return current;
 		}
+		count++;
+		current = current->next;
 	}
-	return current;
+	return NULL;
 }
 
 int getTotal(ListBook l)
 {
 	return l.total;
 }
-
-/*NodeBook* getNodeBookFromData(ListBook l, Book data)
-{
-	if (l.head == NULL) {
-		return NULL;
-	}
-
-	NodeBook* current = l.head;
-	while (current->data != data) {
-		current = current->next;
-
-		if (current == NULL) {
-			return NULL;
-		}
-	}
-	return current;
-}*/
 
 ListBook getNodeBookFromData(ListBook l, char *data, BOOK_CASE type)
 {
@@ -341,15 +292,6 @@ ListBook getNodeBookFromData(ListBook l, char *data, BOOK_CASE type)
 
 
 	return result;
-}
-
-ListBook joinListBook(ListBook a, ListBook b)
-{
-	assert(a.head != NULL && b.head != NULL);
-
-	a.tail->next = b.head;
-	a.total += b.total;
-	return a;
 }
 
 void loadListBook(ListBook &l)

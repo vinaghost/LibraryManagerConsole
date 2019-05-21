@@ -1,6 +1,5 @@
 #include "LinkedListReader.h"
 #include "const.h"
-#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -225,19 +224,19 @@ void deleteListReader(ListReader &l)
 
 NodeReader* getNodeReaderPos(ListReader l, int pos)
 {
-	assert(l.head != NULL);
 
 	NodeReader* current = l.head;
 
 	int count = 1;
-	while (count != pos) {
-		current = current->next;
-		count++;
-		if (current == NULL) {
-			return NULL;
+
+	while (current != NULL) {
+		if (count == pos) {
+			return current;
 		}
+		count++;
+		current = current->next;
 	}
-	return current;
+	return NULL;
 }
 
 int getPosReader(ListReader l, char* ms)
@@ -255,103 +254,9 @@ int getPosReader(ListReader l, char* ms)
 	return -1;
 }
 
-Reader getReaderFirst(ListReader l)
-{
-	assert(l.head != NULL);
-
-	return l.head->data;
-}
-
-Reader getReaderLast(ListReader l)
-{
-	assert(l.head != NULL);
-
-	return l.tail->data;
-}
-
-Reader getReaderPos(ListReader l, int pos)
-{
-	assert(l.head != NULL);
-
-	NodeReader* current = l.head;
-
-	int count = 1;
-	while (count != pos) {
-		current = current->next;
-		count++;
-	}
-	return current->data;
-}
-
-
 int getTotal(ListReader l)
 {
 	return l.total;
-}
-
-/*NodeReader* getNodeReaderFromData(ListReader l, Reader data)
-{
-	if (l.head == NULL) {
-		return NULL;
-	}
-
-	NodeReader* current = l.head;
-	while (current->data != data) {
-		current = current->next;
-
-		if (current == NULL) {
-			return NULL;
-		}
-	}
-	return current;
-}*/
-
-/*ListReader getNodeReaderFromData(ListReader l, char *data, READER_CASE type)
-{
-	ListReader result;
-	initListReader(result);
-
-	if (l.head == NULL) {
-		return result;
-	}
-
-	NodeReader* current = l.head;
-	switch(type) 
-	{
-		case HO_TEN: {
-			while (current != NULL) {
-				if (strcmp(current->data.HoTen, data) == 0) {
-					addLast(result, current);
-				}
-				current = current->next;
-			}
-			break;
-		}
-		case CMND: {
-			while (current != NULL) {
-				if (strcmp(current->data.CMND, data) == 0) {
-					addLast(result, current);
-
-				}
-
-				current = current->next;
-
-			}
-			break;
-		}
-	}
-	
-
-	return result;
-}*/
-
-ListReader joinListReader(ListReader a, ListReader b)
-{
-	assert(a.head != NULL && b.head != NULL);
-
-	a.tail->next = b.head;
-	a.total += b.total;
-	return a;
 }
 
 void loadListReader(ListReader &l)

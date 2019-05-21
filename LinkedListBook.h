@@ -34,16 +34,11 @@ int showListBook(ListBook l);
 int showListBook(ListBook l, char* data, BOOK_CASE type);
 void deleteListBook(ListBook &l);
 
-Book geBookFirst(ListBook l);
-Book geBookLast(ListBook l);
-Book geBookPos(ListBook l, int pos);
 NodeBook* getBookFromISBN(ListBook l, char* isbn);
 
 int getTotal(ListBook l);
 
-//ListBook getNodeBookFromData(ListBook l, char* data, BOOK_CASE type);
 NodeBook* getNodeBookPos(ListBook l, int pos);
-ListBook joinListBook(ListBook a, ListBook b);
 
 void loadListBook(ListBook &l);
 

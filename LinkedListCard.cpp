@@ -1,6 +1,5 @@
 #include "LinkedListCard.h"
 #include "const.h"
-#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -259,24 +258,22 @@ void deleteListPhieu(ListPhieu &l)
 
 NodePhieu* getNodePhieuPos(ListPhieu l, int pos)
 {
-	assert(l.head != NULL);
-
 	NodePhieu* current = l.head;
 
 	int count = 1;
-	while (count != pos) {
-		current = current->next;
-		count++;
-		if (current == NULL) {
-			return NULL;
+
+	while (current != NULL) {
+		if (count == pos) {
+			return current;
 		}
+		count++;
+		current = current->next;
 	}
-	return current;
+	return NULL;
 }
 
 int getPosFromData(ListPhieu l, char *ms, char *isbn)
 {
-	assert(l.head != NULL);
 
 	NodePhieu* current = l.head;
 
@@ -294,49 +291,12 @@ int getPosFromData(ListPhieu l, char *ms, char *isbn)
 	return -1;
 }
 
-Phieu getPhieuFirst(ListPhieu l)
-{
-	assert(l.head != NULL);
-
-	return l.head->data;
-}
-
-Phieu getPhieuLast(ListPhieu l)
-{
-	assert(l.head != NULL);
-
-	return l.tail->data;
-}
-
-Phieu getPhieuPos(ListPhieu l, int pos)
-{
-	assert(l.head != NULL);
-
-	NodePhieu* current = l.head;
-
-	int count = 1;
-	while (count != pos) {
-		current = current->next;
-		count++;
-	}
-	return current->data;
-}
-
 
 int getTotal(ListPhieu l)
 {
 	return l.total;
 }
 
-
-ListPhieu joinListPhieu(ListPhieu a, ListPhieu b)
-{
-	assert(a.head != NULL && b.head != NULL);
-
-	a.tail->next = b.head;
-	a.total += b.total;
-	return a;
-}
 
 void loadListPhieu(ListPhieu &l, CARD_TYPE type)
 {
