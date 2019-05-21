@@ -197,6 +197,8 @@ int showListBook(ListBook l, char * data, BOOK_CASE type)
 			showBook(l.head->data);
 			Line();
 		}
+		l.head = l.head->next;
+
 	}
 	printf("\n");
 	return count;
