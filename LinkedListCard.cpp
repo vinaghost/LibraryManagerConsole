@@ -385,7 +385,7 @@ void writeListPhieuToFile(ListPhieu l, CARD_TYPE type)
 
 	switch (type) {
 		case MUON: {
-			PhieuFile = fopen(PHIEUMUON_FILE, "r");
+			PhieuFile = fopen(PHIEUMUON_FILE, "w");
 			if (PhieuFile == NULL) {
 				printf("[ERROR] Khong tim thay file %s", PHIEUMUON_FILE);
 				return;
@@ -393,7 +393,7 @@ void writeListPhieuToFile(ListPhieu l, CARD_TYPE type)
 			break;
 		}
 		case TRA: {
-			PhieuFile = fopen(PHIEUTRA_FILE, "r");
+			PhieuFile = fopen(PHIEUTRA_FILE, "w");
 			if (PhieuFile == NULL) {
 				printf("[ERROR] Khong tim thay file %s", PHIEUTRA_FILE);
 				return;
