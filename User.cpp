@@ -202,9 +202,12 @@ void addPerm(User &u, PermUser perm) {
 void nhapUser(User &u)
 {
 	printf("Username: ");
-	scanf("%s", u.name);
-	
-	clearEnter();
+	if (fgets(u.HoTen, sizeof(u.name), stdin) != NULL) {
+		size_t len = strlen(u.name);
+		if (len > 0 && u.name[len - 1] == '\n') {
+			u.name[--len] = '\0';
+		}
+	}
 	printf("Password: ");
 	getPassword(u.password);
 
@@ -212,7 +215,6 @@ void nhapUser(User &u)
 	PermUser perm;
 	scanf("%d", &perm);
 	addPerm(u, perm);
-
 	clearEnter();
 }
 
