@@ -9,6 +9,7 @@ void getPassword(char *pass);
 int getChoice();
 
 void showTitle(TITLE_CASE type);
+void showTitle(const char* info);
 
 void showInfo(const char* info);
 

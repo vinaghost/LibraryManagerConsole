@@ -27,7 +27,7 @@ int main() {
     }
     srand(time(NULL));
 
-    int n = 50;
+    int n = 500;
     char ms[10], hoTen[50], cmnd[13], birth[12], lapThe[12];
     int nam;
 

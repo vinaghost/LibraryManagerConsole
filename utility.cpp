@@ -77,6 +77,13 @@ void showTitle(TITLE_CASE type)
 	Line();
 }
 
+void showTitle(const char* info)
+{
+	Line();
+	printf("\t%s\n", info);
+	Line();
+}
+
 void showInfo(const char *info)
 {
 	Line();

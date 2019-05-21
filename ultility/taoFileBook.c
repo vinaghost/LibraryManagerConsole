@@ -36,7 +36,7 @@ int main() {
     }
     srand(time(NULL));
 
-    int n = 50;
+    int n = 500;
     char isbn[15], tensach[40], tenTacGia[40], nXB[40], str_theLoai[20];
     int namXB, gia, soLuong;
 
@@ -45,7 +45,7 @@ int main() {
         tmp = randomString(14, 0);
         sprintf(isbn, tmp);
         isbn[14] = '\0';
-        printf(tmp);
+        //printf(tmp);
         printf("\n");
         free(tmp);
 

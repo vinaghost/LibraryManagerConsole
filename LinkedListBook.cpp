@@ -10,6 +10,8 @@ void initListBook(ListBook &l)
 	l.head = NULL;
 	l.tail = NULL;
 	l.total = 0;
+	l.totalType = 0;
+	l.typeArray = NULL;
 }
 
 NodeBook* CreatNodeBook(Book data)
@@ -402,6 +404,9 @@ void loadListBook(ListBook &l)
 		
 		current = current->next;
 	}
+
+	typeBook = (TypeBook*)realloc(typeBook, sizeof(TypeBook) * count);
+
 	l.totalType = count;
 	l.typeArray = typeBook;
 }

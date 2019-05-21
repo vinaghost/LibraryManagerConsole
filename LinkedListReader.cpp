@@ -11,6 +11,7 @@ void initListReader(ListReader &l)
 	l.head = NULL;
 	l.tail = NULL;
 	l.total = 0;
+	l.nam = 0;
 }
 
 NodeReader* CreatNodeReader(Reader data)
