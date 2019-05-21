@@ -298,7 +298,7 @@ void loadListBook(ListBook &l)
 {
 	FILE *BookFile;
 
-	BookFile = fopen(BOOK_FILE, "r");
+	BookFile = fopen(BOOK_FILE, "r+");
 
 	if (BookFile == NULL) {
 		printf("[ERROR] Khong tim thay file %s", BOOK_FILE);

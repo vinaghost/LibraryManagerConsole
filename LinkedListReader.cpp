@@ -263,7 +263,7 @@ void loadListReader(ListReader &l)
 {
 	FILE *readerFile;
 
-	readerFile = fopen(READER_FILE, "r");
+	readerFile = fopen(READER_FILE, "r+");
 
 	if (readerFile == NULL) {
 		printf("[ERROR] Khong tim thay file %s", READER_FILE);

@@ -304,17 +304,15 @@ void loadListPhieu(ListPhieu &l, CARD_TYPE type)
 
 	switch (type) {
 		case MUON: {
-			PhieuFile = fopen(PHIEUMUON_FILE, "r");
+			PhieuFile = fopen(PHIEUMUON_FILE, "r+");
 			if (PhieuFile == NULL) {
-				fopen(PHIEUMUON_FILE, "w");
 				return;
 			}
 			break;
 		}
 		case TRA: {
-			PhieuFile = fopen(PHIEUTRA_FILE, "r");
+			PhieuFile = fopen(PHIEUTRA_FILE, "r+");
 			if (PhieuFile == NULL) {
-				fopen(PHIEUTRA_FILE, "w");
 				return;
 			}
 			break;
