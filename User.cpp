@@ -48,7 +48,7 @@ void showUser(User u)
 
 }
 
-User isExistUser(User u)
+User isExistUser(User &u)
 {
 	FILE *userFile;
 
@@ -88,7 +88,7 @@ int isVaildUser(User t)
 	return 1;
 }
 
-int addUser(User u)
+int addUser(User &u)
 {
 	printf("Nhap thong tin tai khoan:\n");
 	FILE *f;
@@ -202,7 +202,7 @@ void addPerm(User &u, PermUser perm) {
 void nhapUser(User &u)
 {
 	printf("Username: ");
-	if (fgets(u.HoTen, sizeof(u.name), stdin) != NULL) {
+	if (fgets(u.name, sizeof(u.name), stdin) != NULL) {
 		size_t len = strlen(u.name);
 		if (len > 0 && u.name[len - 1] == '\n') {
 			u.name[--len] = '\0';
@@ -229,8 +229,6 @@ void nhapInf(User &u)
 	}
 	printf("Ngay sinh (dd/mm/yyyy): ");
 	u.ngaySinh = nhapDate();
-
-	clearEnter();
 	printf("CMND: ");
 	scanf("%s", u.CMND);
 	clearEnter();

@@ -22,12 +22,12 @@ void initUser(User &t);
 
 void showUser(User u);
 
-User isExistUser(User u);
+User isExistUser(User &u);
 
 
 int isVaildUser(User t);
 
-int addUser(User u);
+int addUser(User &u);
 
 void addPerm(User &u, PermUser perm);
 

@@ -3,6 +3,7 @@
 
 // admin account
 #define AD_USERNAME "admin"
+#define AD_PASSWORD "kunwo48"
 #define AD_PERMSSION 67108863
 
 #define PEPPER 5

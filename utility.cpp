@@ -171,6 +171,9 @@ Date StringToDate(char *sdate)
 {
 	Date date;
 
+	if (*sdate == '\0') {
+		return Date();
+	}
 	//dd/mm/yyyy
 	date.day = CharToNum(sdate[0]) * 10 + CharToNum(sdate[1]);
 	date.month = CharToNum(sdate[3]) * 10 + CharToNum(sdate[4]);
@@ -294,6 +297,7 @@ char* maHoa(char* password)
 	
 	int num_pepper = 0;
 	for (int i = 0; i < len - 1; i++) {
+		*(encrypt + i) = *(password + i);
 		*(encrypt + i) ^= num_pepper;
 		num_pepper++;
 		if (num_pepper > PEPPER) {
