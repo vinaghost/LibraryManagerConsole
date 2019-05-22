@@ -133,19 +133,37 @@ NodeReader* addPos(ListReader & l, Reader data, int pos)
 
 void deletePos(ListReader &l, int pos)
 {
-	if (pos > l.total) {
+	if (l.head == NULL) {
 		return;
 	}
 
+	if (pos > l.total) {
+		return;
+	}
 	NodeReader* current = l.head;
+	if (pos == 1) {
+		
+		l.head = l.head->next;
+		free(current);
+		return;
+	}
+
 	int count = 1;
+
 	while (current != NULL) {
-		if (count == pos) {
-			/* pos - 1     pos            pos + 1*/
-			/*    tmp   tmp->next   (tmp->next)->next*/
-			current->next = (current->next)->next;
+		if (count == pos - 1) {
+			
+			NodeReader* next = (current->next)->next;
+
+			if (current == NULL || current->next == NULL) {
+				return;
+			}
+			free(current->next);
+			
+			current->next = next;
 			return;
 		}
+
 		count++;
 	}
 	return;
