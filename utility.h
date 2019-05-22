@@ -17,7 +17,7 @@ void initDate(Date &date);
 Date nhapDate();
 Date increaseDate(Date current, int day);
 void showDate(Date date);
-int getCachNgay(Date D1, Date D2);
+int getCachNgay(Date ngayTruoc, Date ngaySau);
 int getDay(int month, int year);
 Date getToday();
 

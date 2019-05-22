@@ -11,7 +11,6 @@ void getPassword(char *pass)
 	char buff[50] = { 0 }, ch;
 	int len = 0;
 	
-
 	//clear;
 	
 	while ((ch = _getch()) != '\n' )
@@ -212,27 +211,31 @@ Date getToday() {
 
 	return today;
 }
-int getCachNgay(Date D1, Date D2)
+
+int getCachNgay(Date ngayTruoc, Date ngaySau)
 {
-	int SoNgay = D2.day;
-	int dem = getDay(D1.month, D1.year);
+	int SoNgay = ngaySau.day;
+
+	int dem = getDay(ngayTruoc.month, ngayTruoc.year) - ngayTruoc.day;
+	
 	SoNgay = SoNgay + dem;
-	if (D1.year == D2.year)
+	
+	if (ngayTruoc.year == ngaySau.year)
 	{
-		for (int i = D1.month + 1; i <= D2.month; i++)
+		for (int i = ngayTruoc.month + 1; i <= ngaySau.month; i++)
 		{
-			dem = getDay(i, D1.year);
+			dem = getDay(i, ngayTruoc.year);
 			SoNgay = SoNgay + dem;
 		}
 	}
-	else if (D1.year < D2.year)
+	else if (ngayTruoc.year < ngaySau.year)
 	{
-		for (int i = D1.month + 1; i <= 12; i++)
+		for (int i = ngayTruoc.month + 1; i <= 12; i++)
 		{
-			dem = getDay(i, D1.year);
+			dem = getDay(i, ngayTruoc.year);
 			SoNgay = SoNgay + dem;
 		}
-		for (int i = D1.year + 1; i <= D2.year; i++)
+		for (int i = ngayTruoc.year + 1; i <= ngaySau.year; i++)
 		{
 			dem = getDay(2, i);
 			if (dem == 28)
@@ -244,9 +247,9 @@ int getCachNgay(Date D1, Date D2)
 				SoNgay = SoNgay + 366;
 			}
 		}
-		for (int i = 1; i <= D2.month; i++)
+		for (int i = 1; i <= ngaySau.month; i++)
 		{
-			dem = getDay(i, D2.year);
+			dem = getDay(i, ngaySau.year);
 			SoNgay = SoNgay + dem;
 		}
 	}
