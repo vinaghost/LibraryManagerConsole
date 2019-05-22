@@ -137,15 +137,17 @@ void deletePos(ListReader &l, int pos)
 		return;
 	}
 
-	NodeReader* tmp = l.head;
+	NodeReader* current = l.head;
 	int count = 1;
-	while (count != pos - 1) {
-		tmp = tmp->next;
+	while (current != NULL) {
+		if (count == pos) {
+			/* pos - 1     pos            pos + 1*/
+			/*    tmp   tmp->next   (tmp->next)->next*/
+			current->next = (current->next)->next;
+			return;
+		}
 		count++;
 	}
-	/* pos - 1     pos            pos + 1*/
-	/*    tmp   tmp->next   (tmp->next)->next*/
-	tmp->next = (tmp->next)->next;
 	return;
 }
 
