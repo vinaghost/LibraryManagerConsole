@@ -286,8 +286,7 @@ int isHavePerm(unsigned int uPerm, Perm perm)
 
 void clearEnter()
 {
-	char t; 
-	while ((t = getchar()) != '\n' && t != EOF);
+	while ((getchar()) != '\n');
 }
 
 char* maHoa(char* password)
