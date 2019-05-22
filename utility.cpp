@@ -218,30 +218,36 @@ int getCachNgay(Date ngayTruoc, Date ngaySau)
 		return -1;
 	}
 
-	int SoNgay = ngaySau.day;
-
-	int dem = getDay(ngayTruoc.month, ngayTruoc.year) - ngayTruoc.day;
-	
-	SoNgay = SoNgay + dem;
-	
+	int SoNgay = 0;
 	if (ngayTruoc.year == ngaySau.year)
 	{
-		for (int i = ngayTruoc.month + 1; i <= ngaySau.month; i++)
+		if (ngayTruoc.month == ngaySau.month)
 		{
-			dem = getDay(i, ngayTruoc.year);
-			SoNgay = SoNgay + dem;
+			SoNgay = SoNgay + ngaySau.day - ngayTruoc.day;
+		}
+		else if (ngayTruoc.month < ngaySau.month)
+		{
+			SoNgay = SoNgay + ngaySau.day;
+			SoNgay = SoNgay + getDay(ngayTruoc.month, ngayTruoc.year) - ngayTruoc.day;
+			for (int i = ngayTruoc.month + 1; i < ngaySau.month; i++)
+			{
+				int dem = getDay(i, ngaySau.year);
+				SoNgay = SoNgay + dem;
+			}
 		}
 	}
 	else if (ngayTruoc.year < ngaySau.year)
 	{
+		SoNgay = SoNgay + ngaySau.day;
+		SoNgay = SoNgay + getDay(ngayTruoc.month, ngayTruoc.year) - ngayTruoc.day;
 		for (int i = ngayTruoc.month + 1; i <= 12; i++)
 		{
-			dem = getDay(i, ngayTruoc.year);
+			int dem = getDay(i, ngayTruoc.year);
 			SoNgay = SoNgay + dem;
 		}
-		for (int i = ngayTruoc.year + 1; i <= ngaySau.year; i++)
+		for (int i = ngayTruoc.year + 1; i < ngaySau.year; i++)
 		{
-			dem = getDay(2, i);
+			int dem = getDay(2, i);
 			if (dem == 28)
 			{
 				SoNgay = SoNgay + 365;
@@ -251,9 +257,9 @@ int getCachNgay(Date ngayTruoc, Date ngaySau)
 				SoNgay = SoNgay + 366;
 			}
 		}
-		for (int i = 1; i <= ngaySau.month; i++)
+		for (int i = 1; i < ngaySau.month; i++)
 		{
-			dem = getDay(i, ngaySau.year);
+			int dem = getDay(i, ngaySau.year);
 			SoNgay = SoNgay + dem;
 		}
 	}
