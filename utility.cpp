@@ -214,6 +214,10 @@ Date getToday() {
 
 int getCachNgay(Date ngayTruoc, Date ngaySau)
 {
+	if (!kiemTraTre(ngayTruoc, ngaySau)) {
+		return -1;
+	}
+
 	int SoNgay = ngaySau.day;
 
 	int dem = getDay(ngayTruoc.month, ngayTruoc.year) - ngayTruoc.day;
@@ -294,26 +298,17 @@ char* maHoa(char* password)
 	return encrypt;
 }
 
-bool ktngay(Date D1, Date D2)
+int kiemTraTre(Date ngayKiemTra, Date ngayLamMoc)
 {
-	bool kt = false;
-	if (D1.year < D2.year)
-	{
-		kt = true;
+	if (ngayKiemTra.year < ngayLamMoc.year) {
+		return 0;
 	}
-	else if (D1.year == D2.year)
-	{
-		if (D1.month < D2.month)
-		{
-			kt = true;
-		}
-		else if (D1.month == D2.month)
-		{
-			if (D1.day < D2.day)
-			{
-				kt = true;
-			}
-		}
+	if (ngayKiemTra.month < ngayLamMoc.month) {
+		return 0;
 	}
-	return kt;
+	if (ngayKiemTra.day < ngayLamMoc.day) {
+		return 0;
+	}
+
+	return 1;
 }

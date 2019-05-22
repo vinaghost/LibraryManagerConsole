@@ -37,4 +37,4 @@ int isHavePerm(unsigned int uPerm, Perm perm);
 char *maHoa(char *password);
 void getPassword(char *pass);
 void clearEnter();
-bool ktngay(Date D1, Date D2);
+int kiemTraTre(Date ngayKiemTra, Date ngayLamMoc);
