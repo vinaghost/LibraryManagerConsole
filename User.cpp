@@ -202,6 +202,7 @@ void addPerm(User &u, PermUser perm) {
 void nhapUser(User &u)
 {
 	printf("Username: ");
+
 	if (fgets(u.name, sizeof(u.name), stdin) != NULL) {
 		size_t len = strlen(u.name);
 		if (len > 0 && u.name[len - 1] == '\n') {
@@ -241,6 +242,7 @@ void nhapInf(User &u)
 	}
 	printf("Gioi Tinh (Nam: 1; Nu: 0): ");
 	scanf("%d", &u.Nam);
+	clearEnter();
 }
 
 
