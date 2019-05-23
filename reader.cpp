@@ -115,7 +115,6 @@ char* nhapReader_CMND()
 	if (cmnd == NULL) {
 		return NULL;
 	}
-	printf("Nhap CMND cua doc gia: ");
 	if (fgets(cmnd, CMND_LENGTH, stdin) != NULL) {
 		size_t len = strlen(cmnd);
 		if (len > 0 && cmnd[len - 1] == '\n') {
