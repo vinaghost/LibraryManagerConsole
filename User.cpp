@@ -112,7 +112,7 @@ void addPerm(User &u, PermUser perm) {
 	switch (perm) {
 		case ADMIN: {
 			for (int i = LOGIN; i < VIEWNUMREADERLATE + 1; i++) {
-				u.permission |= (1 << i);
+				setBit(u.permission, i);
 			}
 			break;
 		}
