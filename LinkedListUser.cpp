@@ -253,7 +253,6 @@ void writeListUserToFile(ListUser l)
 
 		nUser = l.head;
 
-
 		char* birth = DateToString(nUser->data.ngaySinh);
 		fprintf(userFile, "%s, %s, %d, %s, %s, %s, %s, %d, 1\n", nUser->data.name, nUser->data.password, nUser->data.permission, nUser->data.HoTen, nUser->data.CMND, birth, nUser->data.DiaChi, nUser->data.Nam);
 		free(birth);
