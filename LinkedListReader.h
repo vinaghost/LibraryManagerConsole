@@ -34,8 +34,6 @@ int showListReader(ListReader l);
 int showListReader(ListReader l, char* data, READER_CASE type);
 void deleteListReader(ListReader &l);
 
-
-
 NodeReader* getNodeReaderPos(ListReader l, int pos);
 
 int getPosReader(ListReader l, char* ms);

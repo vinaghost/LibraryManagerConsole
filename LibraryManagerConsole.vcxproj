@@ -120,6 +120,7 @@
     <ClCompile Include="LinkedListBook.cpp" />
     <ClCompile Include="LinkedListCard.cpp" />
     <ClCompile Include="LinkedListReader.cpp" />
+    <ClCompile Include="LinkedListUser.cpp" />
     <ClCompile Include="login.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="LinkedListBook.h" />
     <ClInclude Include="LinkedListCard.h" />
     <ClInclude Include="LinkedListReader.h" />
+    <ClInclude Include="LinkedListUser.h" />
     <ClInclude Include="login.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="Phieu.h" />
