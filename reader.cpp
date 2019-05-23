@@ -84,6 +84,7 @@ int nhapReader(Reader &reader)
 	reader.birth = nhapDate();
 	printf("] Gioi tinh ( 1 - Nam, 0 - Nu): ");
 	scanf("%d", &reader.nam);
+	clearEnter();
 	printf("] Ngay/thang/nam tao the (dd/mm/yyyy): ");
 	reader.lapThe = nhapDate();
 
