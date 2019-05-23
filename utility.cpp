@@ -8,7 +8,7 @@
 
 void getPassword(char *pass)
 {
-	char buff[50] = { 0 }, ch;
+	char ch;
 	int len = 0;
 	
 	//clear;

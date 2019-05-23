@@ -1,7 +1,7 @@
 #pragma once
 
 #include "reader.h"
-#include "const.h"
+//#include "const.h"
 
 
 struct NodeReader {

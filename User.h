@@ -27,8 +27,6 @@ User isExistUser(User &u);
 
 int isVaildUser(User t);
 
-int addUser(User &u);
-
 void addPerm(User &u, PermUser perm);
 
 void nhapUser(User &u);

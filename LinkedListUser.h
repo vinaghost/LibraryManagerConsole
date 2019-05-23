@@ -1,8 +1,6 @@
 #pragma once
-
+#include "User.h"
 #include "const.h"
-#include "user.h"
-
 
 struct NodeUser {
 	User data;

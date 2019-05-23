@@ -10,6 +10,7 @@ void initListUser(ListUser &l)
 	l.head = NULL;
 	l.tail = NULL;
 	l.total = 0;
+
 }
 
 NodeUser* CreatNodeUser(User data)
@@ -198,7 +199,6 @@ NodeUser* getNodeUserPos(ListUser l, int pos)
 	}
 	return NULL;
 }
-
 
 int getTotal(ListUser l)
 {

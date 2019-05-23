@@ -1,5 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
-
 #include "User.h"
 #include "const.h"
 #include <stdio.h>
@@ -85,25 +83,6 @@ int isVaildUser(User t)
 	if (t.name[0] == '\0') {
 		return 0;
 	}
-	return 1;
-}
-
-int addUser(User &u)
-{
-	printf("Nhap thong tin tai khoan:\n");
-	FILE *f;
-	f = fopen(USER_FILE, "a+");
-	
-	if (f == NULL) {
-		return -1;
-	}
-	nhapUser(u);
-	nhapInf(u);
-
-	char* birth = DateToString(u.ngaySinh);
-	fprintf(f, "%s, %s, %d, %s, %s, %s, %s, %d, 1\n", u.name, u.password, u.permission, u.HoTen, u.CMND, birth, u.DiaChi, u.Nam);
-	fclose(f);
-	free(birth);
 	return 1;
 }
 
@@ -232,7 +211,12 @@ void nhapInf(User &u)
 	u.ngaySinh = nhapDate();
 	printf("CMND: ");
 	scanf("%s", u.CMND);
-	clearEnter();
+	if (fgets(u.CMND, sizeof(u.CMND), stdin) != NULL) {
+		size_t len = strlen(u.CMND);
+		if (len > 0 && u.CMND[len - 1] == '\n') {
+			u.CMND[--len] = '\0';
+		}
+	}
 	printf("Tinh/Thanh pho: ");
 	if (fgets(u.DiaChi, sizeof(u.DiaChi), stdin) != NULL) {
 		size_t len = strlen(u.DiaChi);
