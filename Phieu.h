@@ -3,8 +3,7 @@
 #include "const.h"
 #include "utility.h"
 
-struct Phieu
-{
+struct Phieu {
 	char MS[MS_LENGTH];
 	char ISBN[ISBN_LENGTH];
 	Date ngayMuon;
