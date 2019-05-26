@@ -194,6 +194,7 @@ void nhapUser(User &u)
 	printf("Phan quyen (Quan li: 1, Chuyen vien: 2): ");
 	PermUser perm;
 	scanf("%d", &perm);
+	clearEnter();
 	addPerm(u, perm);
 	clearEnter();
 }
@@ -211,6 +212,7 @@ void nhapInf(User &u)
 	u.ngaySinh = nhapDate();
 	printf("CMND: ");
 	scanf("%s", u.CMND);
+	clearEnter();
 	if (fgets(u.CMND, sizeof(u.CMND), stdin) != NULL) {
 		size_t len = strlen(u.CMND);
 		if (len > 0 && u.CMND[len - 1] == '\n') {
