@@ -36,7 +36,10 @@ int main() {
     }
     srand(time(NULL));
 
-    int n = 500;
+    int n;
+    printf("Nhap so luong sach duoc tao ra (vi du 500): ");
+    scanf("%d", &n);
+
     char isbn[15], tensach[40], tenTacGia[40], nXB[40], str_theLoai[20];
     int namXB, gia, soLuong;
 
@@ -45,28 +48,18 @@ int main() {
         tmp = randomString(14, 0);
         sprintf(isbn, tmp);
         isbn[14] = '\0';
-        //printf(tmp);
-        printf("\n");
         free(tmp);
 
         tmp =  randomString( 12, 1);
         sprintf(tenTacGia, tmp);
-        printf(tmp);
-        printf("\n");
         free(tmp);
 
          tmp = randomString( 12, 1);
         sprintf(tensach, tmp);
-        printf(tmp);
-        printf("\n");
         free(tmp);
 
          tmp = randomString( 12, 1);
         sprintf(nXB, tmp);
-        printf(tmp);
-        printf("\n");
-        printf("\n");
-        printf("\n");
         free(tmp);
 
         sprintf(str_theLoai, theLoai[ rand() % 6]);
@@ -77,5 +70,6 @@ int main() {
         fprintf(f, "%s, %s, %s, %s, %s, %d, %d, %d\n", isbn, tensach, tenTacGia, nXB, str_theLoai, namXB, gia, soLuong);
     }
     fclose(f);
+    printf("Da tao thanh cong file\n");
     return 0;
 }

@@ -8,7 +8,6 @@ struct Phieu {
 	char ISBN[ISBN_LENGTH];
 	Date ngayMuon;
 	Date ngayTra;
-	CARD_TYPE type;
 };
 
 void initPhieu(Phieu &phieu);

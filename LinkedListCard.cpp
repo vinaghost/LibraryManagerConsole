@@ -172,30 +172,18 @@ int showListPhieu(ListPhieu l)
 	printf("Co tong cong %d phieu trong du lieu\n", l.total);
 	int num = 0;
 
-	if (l.head->data.type == MUON) {
-		while (l.head != NULL) {
-			num++;
-			printf("Phieu #%d\n", num);
+	while (l.head != NULL) {
+		num++;
+		printf("Phieu #%d\n", num);
 
-			showPhieuMuon(l.head->data);
-			Line();
+		showPhieuMuon(l.head->data);
+		Line();
 
-			l.head = l.head->next;
-		}
-		printf("\n");
+		l.head = l.head->next;
 	}
-	else {
-		while (l.head != NULL) {
-			num++;
-			printf("Phieu #%d\n", num);
 
-			showPhieuTra(l.head->data);
-			Line();
-
-			l.head = l.head->next;
-		}
-		printf("\n");
-	}
+	printf("\n");
+	
 	return num;
 }
 
@@ -206,33 +194,18 @@ int showListPhieu(ListPhieu l, char* ms)
 	}
 	int num = 0;
 
-	if (l.head->data.type == MUON) {
-		while (l.head != NULL) {
-			num++;
-			printf("Phieu #%d\n", num);
+	while (l.head != NULL) {
+		num++;
+		printf("Phieu #%d\n", num);
 
-			if (strcmp(l.head->data.MS, ms) == 0) {
-				showPhieuMuon(l.head->data);
-				Line();
-			}
-			l.head = l.head->next;
+		if (strcmp(l.head->data.MS, ms) == 0) {
+			showPhieuMuon(l.head->data);
+			Line();
 		}
-		printf("\n");
+		l.head = l.head->next;
 	}
-	else {
-		while (l.head != NULL) {
-			num++;
-			printf("Phieu #%d\n", num);
+	printf("\n");
 
-			if (strcmp(l.head->data.MS, ms) == 0) {
-				showPhieuTra(l.head->data);
-				Line();
-			}
-
-			l.head = l.head->next;
-		}
-		printf("\n");
-	}
 	return num;
 }
 
@@ -243,19 +216,18 @@ int showListPhieuLate(ListPhieu l)
 	}
 	int num = 0;
 
-	if (l.head->data.type == MUON) {
-		while (l.head != NULL) {
-			num++;
-			printf("Phieu #%d\n", num);
-			showPhieuMuon(l.head->data);
-			Line();
-			if (getCachNgay(l.head->data.ngayTra, getToday()) > MUON_SACH_LENGTH) {
-				break;
-			}
-			l.head = l.head->next;
+	while (l.head != NULL) {
+		num++;
+		printf("Phieu #%d\n", num);
+		showPhieuMuon(l.head->data);
+		Line();
+		if (getCachNgay(l.head->data.ngayTra, getToday()) > MUON_SACH_LENGTH) {
+			break;
 		}
-		printf("\n");
+		l.head = l.head->next;
 	}
+	printf("\n");
+	
 	return num;
 }
 
@@ -318,26 +290,15 @@ int getTotal(ListPhieu l)
 }
 
 
-void loadListPhieu(ListPhieu &l, CARD_TYPE type)
+void loadListPhieu(ListPhieu &l)
 {
 	FILE *PhieuFile = NULL;
 
-	switch (type) {
-		case MUON: {
-			PhieuFile = fopen(PHIEUMUON_FILE, "r+");
-			if (PhieuFile == NULL) {
-				return;
-			}
-			break;
-		}
-		case TRA: {
-			PhieuFile = fopen(PHIEUTRA_FILE, "r+");
-			if (PhieuFile == NULL) {
-				return;
-			}
-			break;
-		}
+	PhieuFile = fopen(PHIEUMUON_FILE, "r+");
+	if (PhieuFile == NULL) {
+		return;
 	}
+
 	Phieu fPhieu;
 
 	char ngayMuon[DAY_LENGTH];
@@ -357,28 +318,16 @@ void loadListPhieu(ListPhieu &l, CARD_TYPE type)
 
 }
 
-void writeListPhieuToFile(ListPhieu l, CARD_TYPE type)
+void writeListPhieuToFile(ListPhieu l)
 {
 	FILE *PhieuFile = NULL;
 
-	switch (type) {
-		case MUON: {
-			PhieuFile = fopen(PHIEUMUON_FILE, "w");
-			if (PhieuFile == NULL) {
-				printf("[ERROR] Khong tim thay file %s", PHIEUMUON_FILE);
-				return;
-			}
-			break;
-		}
-		case TRA: {
-			PhieuFile = fopen(PHIEUTRA_FILE, "w");
-			if (PhieuFile == NULL) {
-				printf("[ERROR] Khong tim thay file %s", PHIEUTRA_FILE);
-				return;
-			}
-			break;
-		}
+	PhieuFile = fopen(PHIEUMUON_FILE, "w");
+	if (PhieuFile == NULL) {
+		printf("[ERROR] Khong tim thay file %s", PHIEUMUON_FILE);
+		return;
 	}
+
 	NodePhieu* nPhieu;
 	while (l.head != NULL) {
 

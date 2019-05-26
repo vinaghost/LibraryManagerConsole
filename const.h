@@ -13,7 +13,6 @@
 #define READER_FILE "reader.dat"
 #define BOOK_FILE "book.dat"
 #define PHIEUMUON_FILE "phieu_muon.dat"
-#define PHIEUTRA_FILE "phieu_tra.dat"
 
 #define TMP_FILE "tmp.dat"
 
@@ -92,12 +91,13 @@ enum TITLE_CASE {
 	CARD,
 	STATISTICS
 };
+//
+//enum CARD_TYPE {
+//	NONE,
+//	MUON,
+//	TRA
+//};
 
-enum CARD_TYPE {
-	NONE,
-	MUON,
-	TRA
-};
 #define setBit(a, b) a |= (1 << b)
 #define getBit(a, b) !(!(a & (1 << b)))
 

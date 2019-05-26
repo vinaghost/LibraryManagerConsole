@@ -27,7 +27,10 @@ int main() {
     }
     srand(time(NULL));
 
-    int n = 500;
+    int n;
+    printf("Nhap so luong sach duoc tao ra (vi du 500): ");
+    scanf("%d", &n);
+
     char ms[10], hoTen[50], cmnd[13], birth[12], lapThe[12];
     int nam;
 
@@ -53,6 +56,8 @@ int main() {
         fprintf(f, "%s, %s, %s, %s, %d, %s\n", ms, hoTen, cmnd, birth, nam, lapThe);
     }
     fclose(f);
+
+    printf("Da tao thanh cong file\n");
 
     return 0;
 }

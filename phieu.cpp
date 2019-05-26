@@ -12,7 +12,6 @@ void initPhieu(Phieu & phieu)
 	phieu.ISBN[0] ='\0';
 	initDate(phieu.ngayMuon);
 	initDate(phieu.ngayTra);
-	phieu.type = NONE;
 }
 
 void nhapPhieuMuon_info(Phieu &phieuMuon)
@@ -27,9 +26,7 @@ void nhapPhieuMuon_info(Phieu &phieuMuon)
 
 	phieuMuon.ngayMuon = getToday();
 	phieuMuon.ngayTra = increaseDate(phieuMuon.ngayMuon, MUON_SACH_LENGTH);
-
-	phieuMuon.type = MUON;
-	
+		
 }
 
 void nhapPhieuMuon_info(Phieu phieuMuon_root, Phieu &phieuMuon)
@@ -39,7 +36,6 @@ void nhapPhieuMuon_info(Phieu phieuMuon_root, Phieu &phieuMuon)
 	phieuMuon.ngayMuon = phieuMuon_root.ngayMuon;
 	phieuMuon.ngayTra = phieuMuon_root.ngayTra;
 
-	phieuMuon.type = MUON;
 }
 
 char* nhapPhieuMuon_book() {
@@ -75,7 +71,6 @@ void nhapPhieuTra_info(Phieu &phieuTra)
 		}
 	}
 
-	phieuTra.type = TRA;
 
 }
 
@@ -83,7 +78,6 @@ void nhapPhieuTra_info(Phieu phieuTra_root, Phieu &phieuTra)
 {
 	strcpy(phieuTra.MS, phieuTra_root.MS);
 
-	phieuTra.type = TRA;
 }
 
 char* nhapPhieuTra_book() {

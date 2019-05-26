@@ -41,6 +41,6 @@ int getPosFromData(ListPhieu l, char* ms, char* isbn);
 
 int getTotal(ListPhieu l);
 
-void loadListPhieu(ListPhieu &l, CARD_TYPE type);
+void loadListPhieu(ListPhieu &l);
 
-void writeListPhieuToFile(ListPhieu l, CARD_TYPE type);
+void writeListPhieuToFile(ListPhieu l);

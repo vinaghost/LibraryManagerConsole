@@ -50,7 +50,7 @@ User isExistUser(User &u)
 {
 	FILE *userFile;
 
-	userFile = fopen(USER_FILE, "r");
+	userFile = fopen(USER_FILE, "r+");
 
 	if (userFile == NULL) {
 		printf("[ERROR] Khong tim thay file user.dat");
@@ -196,7 +196,6 @@ void nhapUser(User &u)
 	scanf("%d", &perm);
 	clearEnter();
 	addPerm(u, perm);
-	clearEnter();
 }
 
 void nhapInf(User &u)
@@ -211,8 +210,6 @@ void nhapInf(User &u)
 	printf("Ngay sinh (dd/mm/yyyy): ");
 	u.ngaySinh = nhapDate();
 	printf("CMND: ");
-	scanf("%s", u.CMND);
-	clearEnter();
 	if (fgets(u.CMND, sizeof(u.CMND), stdin) != NULL) {
 		size_t len = strlen(u.CMND);
 		if (len > 0 && u.CMND[len - 1] == '\n') {
